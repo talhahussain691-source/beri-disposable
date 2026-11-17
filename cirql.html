@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600;700&amp;family=Permanent+Marker&amp;family=Lexend+Exa:wght@500;600;700&amp;family=Roboto:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600;700&amp;family=Permanent+Marker&amp;family=Lexend+Exa:wght@500;600;700&amp;family=Roboto:wght@400;500;700;900&amp;display=swap">
 <style>
 @font-face{font-family:"GraffitiBomb Fill";src:url("assets/blob/8da92d24c4f602d89a83527e9f6ea0e2.ttf") format("truetype");font-display:swap}
 @font-face{font-family:"GraffitiBomb Outline";src:url("assets/blob/beacc7fcc275100fd9de2ed4d2b72321.ttf") format("truetype");font-display:swap}
@@ -178,6 +178,76 @@ a{color:#111113}a:hover{color:#7A5F14}
 .t-cirql .xl-sec .xl-card{border-color:rgba(212,175,99,.24)}
 @media (max-width:1180px){.t-cirql .xl-sec .xl-name{font-size:16px}}
 @media (max-width:899px){.t-crush .xl-sec .xl-title{font-size:40px !important}.t-cirql .xl-sec .xl-title{font-size:36px !important}.t-cirql .xl-sec .xl-name{font-size:14px;letter-spacing:.02em}}
+/* Cirql: tighter gap between the banner and Flavors */
+.t-cirql section[aria-label$=" features"]{padding-bottom:0 !important}
+@media (max-width:899px){.t-cirql #flavors > div{padding-top:72px !important}}
+/* Wholesale call-to-action (shared layout; colours come from the page theme below). */
+.wh-sec{padding:40px 32px 24px}
+.wh-card{position:relative;overflow:hidden;isolation:isolate;max-width:1320px;margin:0 auto;border-radius:40px;padding:64px;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:40px;align-items:center}
+.wh-copy{position:relative;display:flex;flex-direction:column;gap:20px;min-width:0}
+.wh-pill{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.32em;padding:8px 14px;border-radius:999px}
+.wh-title{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(54px,7vw,108px);line-height:.9;text-transform:uppercase}
+.wh-accent{display:inline-block}
+.wh-text{margin:0;max-width:520px;font-size:18px;line-height:1.55}
+.wh-points{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px 28px;font-size:15px;font-weight:600}
+.wh-points li{display:inline-flex;align-items:center;gap:8px}
+.wh-tick{display:inline-flex}
+.wh-btns{display:flex;flex-wrap:wrap;gap:12px;padding-top:8px}
+.wh-btn,.wh-btn2{display:inline-flex;align-items:center;min-height:58px;padding:0 28px;border-radius:999px;font-weight:700;text-decoration:none;box-sizing:border-box;transition:transform .2s ease}
+.wh-btn:hover,.wh-btn2:hover{transform:translateY(-2px)}
+.wh-btn2{font-weight:600;border:1.5px solid currentColor}
+.wh-visual{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;min-width:0}
+.wh-glow{position:absolute;left:12%;right:12%;top:6%;bottom:22%;border-radius:50%;filter:blur(46px);opacity:.75;pointer-events:none}
+.wh-img{position:relative;display:block;height:360px;width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(0,0,0,.35))}
+.wh-stats{position:relative;display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+.wh-stat{display:flex;flex-direction:column;align-items:center;min-width:96px;padding:12px 16px;border-radius:16px;box-sizing:border-box}
+.wh-stat b{font-family:var(--display);font-size:26px;line-height:1;font-weight:400}
+.wh-stat span{font-size:12px;letter-spacing:.04em;margin-top:4px}
+@media (max-width:899px){.wh-sec{padding:24px 16px 8px}.wh-card{grid-template-columns:minmax(0,1fr);padding:40px 24px;border-radius:28px;gap:28px}.wh-img{height:260px}.wh-btn,.wh-btn2{min-height:52px;padding:0 22px}.wh-stat{min-width:84px;padding:10px 12px}.wh-stat b{font-size:22px}}
+/* Cirql: lounge dark with gold border and lowercase script heading. */
+.t-cirql .wh-card{color:#F5F1E8;border:1.5px solid transparent;background:linear-gradient(90deg,rgba(19,16,13,.94) 0%,rgba(19,16,13,.82) 38%,rgba(19,16,13,.3) 68%,rgba(19,16,13,.5) 100%) padding-box,url("assets/blob/b6fbe849cfbe3161409de2158a89dee9.webp") right center/cover no-repeat padding-box,var(--gold-grad) border-box;box-shadow:0 30px 70px rgba(0,0,0,.5)}
+.t-cirql .wh-card::after{content:"";position:absolute;right:22%;bottom:-6%;width:300px;height:420px;z-index:-1;background:url("assets/blob/781635b8e88343ccae1179e46d0925ab.webp") center/contain no-repeat;opacity:.55;transform:rotate(-14deg);pointer-events:none}
+.t-cirql .wh-glow{opacity:.45}
+@media (max-width:899px){.t-cirql .wh-card{background:linear-gradient(180deg,rgba(19,16,13,.94) 0%,rgba(19,16,13,.85) 48%,rgba(19,16,13,.25) 72%,rgba(19,16,13,.55) 100%) padding-box,url("assets/blob/b6fbe849cfbe3161409de2158a89dee9.webp") 75% bottom/auto 55% no-repeat padding-box,linear-gradient(#13100D,#13100D) padding-box,var(--gold-grad) border-box}.t-cirql .wh-card::after{right:auto;left:10%;bottom:4%;width:220px;height:300px}}
+.t-cirql .wh-pill{background:var(--gold-grad);color:#13100D}
+.t-cirql .wh-title{font-family:'Lexend Exa','Roboto',sans-serif !important;font-weight:700 !important;text-transform:uppercase;letter-spacing:-.02em;line-height:.98;font-size:clamp(44px,5.6vw,84px);background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent;padding:0;margin-left:0}
+@media (max-width:479px){.t-cirql .wh-title{font-size:37px}}
+.t-cirql .wh-accent{background:inherit;-webkit-background-clip:text;background-clip:text;color:transparent}
+.t-cirql .wh-text{color:#A8A39A}
+.t-cirql .wh-tick{color:#E2C27A}
+.t-cirql .wh-btn{background:var(--gold-grad);color:#13100D}
+.t-cirql .wh-btn2{color:#E2C27A;border-color:rgba(226,194,122,.6)}
+.t-cirql .wh-glow{background:#B8892B}
+.t-cirql .wh-img{transform:rotate(-8deg)}
+.t-cirql .wh-stat{background:rgba(19,16,13,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:inset 0 0 0 1px rgba(226,194,122,.45)}
+.t-cirql .wh-stat b{color:#E2C27A}
+.t-cirql .wh-stat span{color:#A8A39A}
+/* Cirql highlight tiles: drawn gold icons + live label on a dark jaali tile with a gold border. */
+.t-cirql section[aria-label$=" highlights"] .feat-tile{position:relative;overflow:hidden;justify-content:center !important;gap:24px !important;padding:24px 30px !important;border-radius:20px !important;border:1.5px solid transparent !important;background:radial-gradient(ellipse 45% 80% at 50% 50%,rgba(47,211,194,.08),rgba(47,211,194,0) 70%) padding-box,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='rgba%28226,194,122,0.09%29' stroke-width='1'%3E%3Crect x='14' y='14' width='28' height='28'/%3E%3Crect x='14' y='14' width='28' height='28' transform='rotate%2845 28 28%29'/%3E%3Cpath d='M0 0L14 14M56 0L42 14M0 56L14 42M56 56L42 42'/%3E%3C/g%3E%3C/svg%3E") 0 0/56px 56px padding-box,linear-gradient(160deg,#1E1F1F 0%,#13100D 100%) padding-box,var(--gold-grad) border-box !important;box-shadow:0 20px 44px -20px rgba(0,0,0,.7) !important}
+.t-cirql section[aria-label$=" highlights"] .feat-tile img{height:88px !important;width:auto !important;max-width:none !important;flex:0 0 auto;filter:none !important}
+.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) img{height:118px !important}
+.t-cirql .feat-lbl{position:relative;z-index:1;display:flex;flex-direction:column;gap:8px;min-width:0;text-align:left}
+.t-cirql .feat-lbl b{font-family:'Lexend Exa','Roboto',sans-serif;font-weight:700;font-size:34px;line-height:1.05;letter-spacing:-.02em;background:var(--gold-grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.t-cirql .feat-lbl > span{font-size:15px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#F5F1E8}
+.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) .feat-lbl b{font-size:44px}
+.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) .feat-lbl > span{font-size:17px}
+@media (min-width:700px) and (max-width:899px){.t-cirql section[aria-label$=" highlights"] .feat-grid{grid-template-columns:minmax(0,1fr) !important}.t-cirql section[aria-label$=" highlights"] .feat-tile{grid-column:auto !important;min-height:0 !important}}
+@media (min-width:700px) and (max-width:1180px){.t-cirql section[aria-label$=" highlights"] .feat-tile{padding:20px 22px !important;gap:16px !important}.t-cirql section[aria-label$=" highlights"] .feat-tile img{height:64px !important}.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) img{height:86px !important}.t-cirql .feat-lbl b{font-size:26px}.t-cirql .feat-lbl > span{font-size:13px}.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) .feat-lbl b{font-size:34px}.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) .feat-lbl > span{font-size:14px}}
+@media (max-width:699px){.t-cirql section[aria-label$=" highlights"] .feat-tile{padding:16px 20px !important;gap:16px !important}.t-cirql section[aria-label$=" highlights"] .feat-tile img,.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) img{height:70px !important}.t-cirql .feat-lbl b,.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) .feat-lbl b{font-size:24px;white-space:nowrap}.t-cirql .feat-lbl > span,.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) .feat-lbl > span{font-size:13px}
+@media (max-width:359px){.t-cirql section[aria-label$=" highlights"] .feat-tile img,.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) img{height:58px !important}.t-cirql .feat-lbl b,.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) .feat-lbl b{font-size:20px}}}
+/* Cirql tiles, reference layout: 3D gold icon with teal smoke, gold divider, white uppercase label. */
+.t-cirql section[aria-label$=" highlights"] .feat-tile{gap:0 !important;padding:22px 34px !important;background:linear-gradient(90deg,rgba(14,12,10,.15) 0%,rgba(14,12,10,.55) 30%,rgba(14,12,10,.92) 55%) padding-box,url("assets/blob/40ddcf7588f2862c5b8f0baacb65319a.webp") -60px 55%/auto 110% no-repeat padding-box,radial-gradient(ellipse 50% 90% at 0% 50%,rgba(47,211,194,.10),rgba(47,211,194,0) 70%) padding-box,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56' viewBox='0 0 56 56'%3E%3Cg fill='none' stroke='rgba%28226,194,122,0.09%29' stroke-width='1'%3E%3Crect x='14' y='14' width='28' height='28'/%3E%3Crect x='14' y='14' width='28' height='28' transform='rotate%2845 28 28%29'/%3E%3Cpath d='M0 0L14 14M56 0L42 14M0 56L14 42M56 56L42 42'/%3E%3C/g%3E%3C/svg%3E") 0 0/56px 56px padding-box,linear-gradient(160deg,#17130F 0%,#0E0C0A 100%) padding-box,var(--gold-grad) border-box !important}
+.t-cirql section[aria-label$=" highlights"] .feat-tile img{height:100px !important;filter:drop-shadow(0 10px 18px rgba(0,0,0,.6)) !important;position:relative;z-index:1;margin-right:28px}
+.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) img{height:136px !important;margin-right:36px}
+.t-cirql .feat-lbl{padding-left:28px;border-left:2px solid rgba(226,194,122,.7);gap:10px !important}
+.t-cirql .feat-lbl b{font-family:'Roboto','Inter',sans-serif !important;font-weight:900 !important;text-transform:uppercase;letter-spacing:.01em !important;line-height:1 !important;background:none !important;-webkit-background-clip:border-box !important;background-clip:border-box !important;color:#FFFFFF !important;font-size:30px !important}
+.t-cirql .feat-lbl > span{font-weight:500 !important;letter-spacing:.12em !important;color:#E8E2D4 !important;font-size:15px}
+.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) .feat-lbl{padding-left:36px}
+.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) .feat-lbl b{font-size:30px !important}
+@media (min-width:700px) and (max-width:1180px){.t-cirql section[aria-label$=" highlights"] .feat-tile{padding:18px 20px !important}.t-cirql section[aria-label$=" highlights"] .feat-tile img{height:76px !important;margin-right:18px}.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) img{height:100px !important}.t-cirql .feat-lbl{padding-left:18px}.t-cirql .feat-lbl b{font-size:26px !important}.t-cirql .feat-lbl > span{font-size:12px}.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) .feat-lbl b{font-size:26px !important}}
+@media (max-width:699px){.t-cirql section[aria-label$=" highlights"] .feat-tile{padding:14px 18px !important}.t-cirql section[aria-label$=" highlights"] .feat-tile img,.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) img{height:74px !important;margin-right:16px}.t-cirql .feat-lbl,.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) .feat-lbl{padding-left:16px}.t-cirql .feat-lbl b,.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) .feat-lbl b{font-size:clamp(20px,6.2vw,24px) !important}.t-cirql .feat-lbl > span{font-size:12px}}
+@media (max-width:359px){.t-cirql section[aria-label$=" highlights"] .feat-tile img,.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) img{height:60px !important}.t-cirql .feat-lbl b,.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(n+4) .feat-lbl b{font-size:24px !important}}
+.feat-lbl b span{font:inherit !important;letter-spacing:inherit !important;color:inherit !important;text-transform:inherit !important}
 </style>
 
 </head>
@@ -443,18 +513,6 @@ a{color:#111113}a:hover{color:#7A5F14}
 </section>
 </sc-if>
 
-<sc-if value="{{p.hasFeatures}}" hint-placeholder-val="{{false}}">
-<section aria-label="BERI {{p.name}} highlights" style="{{p.featSecStyle}}">
-<ul class="feat-grid" style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px">
-<sc-for list="{{p.features}}" as="ft" hint-placeholder-count="5">
-<li class="feat-tile" data-reveal="up" style="{{ft.style}}">
-<sc-if value="{{ft.hasImg}}" hint-placeholder-val="{{true}}"><img src="{{ft.img}}" alt="{{ft.alt}}" style="{{ft.imgStyle}}"></sc-if>
-<sc-if value="{{ft.noImg}}" hint-placeholder-val="{{false}}"><span class="feat-txt"><b>{{ft.top}}</b><span>{{ft.main}}</span></span></sc-if>
-</li>
-</sc-for>
-</ul>
-</section>
-</sc-if>
 
 <sc-if value="{{p.hasPackBanner}}" hint-placeholder-val="{{false}}">
 <section aria-label="BERI {{p.name}} retail displays" style="max-width: 1320px; margin: 0 auto; padding: 120px 32px 0; display: flex; flex-direction: column; gap: 24px">
@@ -487,6 +545,50 @@ a{color:#111113}a:hover{color:#7A5F14}
 </div>
 </div>
 </section>
+<sc-if value="{{p.hasFeatures}}" hint-placeholder-val="{{false}}">
+<section aria-label="BERI {{p.name}} highlights" style="{{p.featSecStyle}}">
+<ul class="feat-grid" style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px">
+<sc-for list="{{p.features}}" as="ft" hint-placeholder-count="5">
+<li class="feat-tile" data-reveal="up" style="{{ft.style}}">
+<sc-if value="{{ft.hasImg}}" hint-placeholder-val="{{true}}"><img src="{{ft.img}}" alt="{{ft.alt}}" style="{{ft.imgStyle}}"></sc-if>
+<sc-if value="{{ft.withLbl}}" hint-placeholder-val="{{false}}"><span class="feat-lbl"><b style="font-weight: 900">{{ft.top}}</b><span>{{ft.main}}</span></span></sc-if>
+<sc-if value="{{ft.noImg}}" hint-placeholder-val="{{false}}"><span class="feat-txt"><b>{{ft.top}}</b><span>{{ft.main}}</span></span></sc-if>
+</li>
+</sc-for>
+</ul>
+</section>
+</sc-if>
+
+<sc-if value="{{p.hasWh}}" hint-placeholder-val="{{true}}">
+<section id="wholesale-cta" class="wh-sec" aria-label="Wholesale: stock BERI {{p.name}}">
+<div class="wh-card" data-reveal="scale">
+<div class="wh-copy">
+<span class="wh-pill">WHOLESALE</span>
+<h2 class="wh-title" style="color: #ffffff; letter-spacing: -0.13em">Stock<br><span class="wh-accent" style="color: #ffffff; letter-spacing: -0.13em">BERI {{p.name}}.</span></h2>
+<p class="wh-text">{{p.wh.text}}</p>
+<ul class="wh-points">
+<sc-for list="{{p.wh.points}}" as="wp" hint-placeholder-count="3">
+<li><span class="wh-tick"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span>{{wp.t}}</li>
+</sc-for>
+</ul>
+<div class="wh-btns">
+<a class="wh-btn" href="Wholesale.dc.html">Become a wholesale partner →</a>
+<a class="wh-btn2" href="Authenticate.dc.html">Verify authenticity →</a>
+</div>
+</div>
+<div class="wh-visual">
+<span class="wh-glow" aria-hidden="true"></span>
+<img class="wh-img" src="{{p.wh.img}}" alt="{{p.wh.alt}}" loading="lazy">
+<div class="wh-stats">
+<sc-for list="{{p.wh.stats}}" as="ws" hint-placeholder-count="3">
+<span class="wh-stat"><b>{{ws.v}}</b><span>{{ws.l}}</span></span>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
 <section class="xl-sec" aria-labelledby="xl-title">
 <div class="xl-head">
 <div class="xl-head-text">
@@ -912,21 +1014,44 @@ class Component extends DCLogic {
       video: 'assets/blob/c8e983514891d2f1cc80c2a39220522e.mp4', poster: 'assets/blob/eb8c684067920084ff8ec05da9685285.webp', videoMode: 'play',
       chapters: [{ s: -1, e: 2, eyebrow: 'BERI CIRQL · ELECTRONIC HOOKAH', title: 'Shisha, reimagined.', text: 'Up to 150,000 puffs of shisha-inspired flavor through a quad-mesh coil.' }],
       reveal: [
-        { name: 'Peach Ice', img: 'assets/blob/f1f2cd52ab49ddb46b7471ab0a396135.webp', alt: 'BERI Cirql in Peach Ice', color: '#F2A66B', tint: '#2A170C' },
-        { name: 'Lady Killer', img: 'assets/blob/4ae31177e89431358a0d6d868583c620.webp', alt: 'BERI Cirql in Lady Killer', color: '#E8708C', tint: '#2A0A14' },
-        { name: 'Blue Razz', img: 'assets/blob/9e5b98dc6f71fc7077f983f8b50248c0.webp', alt: 'BERI Cirql in Blue Razz', color: '#6FB4EE', tint: '#0A1A2A' }
+        // fan: open position as [x, y] in device heights from the middle device, and rotation in degrees (laid out on the canvas).
+        { name: 'Blue Razz', img: 'assets/blob/7b6eda9bb20403883afbf7990b357650.webp', alt: 'BERI Cirql in Blue Razz', color: '#6FB4EE', tint: '#0A1A2A', fan: [-0.383, 0.084, -47] },
+        { name: 'Grape Ice', img: 'assets/blob/4249c3a466cda8e26fc85935a293efd7.webp', alt: 'BERI Cirql in Grape Ice', color: '#A98BEA', tint: '#170C2A', fan: [-0.195, 0.002, -24] },
+        { name: 'Lady Killer', img: 'assets/blob/51c7b95a93b728bbf7aa71c4b86a11ef.webp', alt: 'BERI Cirql in Lady Killer', color: '#E8708C', tint: '#2A0A14', fan: [0, 0, 0] },
+        { name: 'Peach Ice', img: 'assets/blob/66eb7e5b17b630d0bda087a486888e8c.webp', alt: 'BERI Cirql in Peach Ice', color: '#F2A66B', tint: '#2A170C', fan: [0.223, 0.011, 28] },
+        { name: 'Double Apple', img: 'assets/blob/3e8147cb3737c03ff41d1bfee0479de8.webp', alt: 'BERI Cirql in Double Apple', color: '#7FC46A', tint: '#0C2410', fan: [0.405, 0.101, 54] }
       ],
       specBanner: 'assets/blob/0f9b20cdbf809de2a74caca0cba9a190.webp', specBannerAlt: 'BERI Cirql: 150K puffs, shown in Mixed Berries and blue with their boxes',
       features: [
-        { size: 'sm', top: '150K', main: 'Puffs' },
-        { size: 'sm', top: 'Quad', main: 'Mesh coil' },
-        { size: 'sm', top: '2', main: 'Modes: Regular / Boost' },
-        { size: 'lg', top: 'Authentic', main: 'Shisha-inspired flavor' },
-        { size: 'lg', top: 'USA', main: 'Made in' }
+        // Cirql 3D gold icons (supplied), shown with teal smoke behind them.
+        { size: 'sm', top: '150K', main: 'Puffs (up to)', img: 'assets/blob/35c0a25353e80b337ebd6f4d4d50888b.webp' },
+        { size: 'sm', top: 'Quad', main: 'Mesh coil', img: 'assets/blob/062f68c8ac6ddf91d6d5e01c9c6a3be4.webp' },
+        { size: 'sm', top: '2 Modes', main: 'Regular + Boost', img: 'assets/blob/988c024517ef0407fb47c313050a3d0d.webp' },
+        { size: 'lg', top: 'Authentic', main: 'Shisha-inspired flavor', img: 'assets/blob/5e981caffebed1b10a8c9a7cb38229ba.webp' },
+        { size: 'lg', top: 'Made in USA', main: 'Origin', img: 'assets/blob/8e518a1942391dbfabfd03fddf0c04c2.webp' }
       ]
     });
     products.CLIQ.theme = 'cliq';
     const order = ['CLIQ', 'CRUSH', 'CIRQL', 'ELIQUID'];
+    // Wholesale call-to-action shown on each product page, above "Explore the lineup".
+    const WH = {
+      CLIQ: { img: 'assets/blob/38e90c83b18e5f9b193d4e2806393e55.webp', alt: 'BERI Cliq device in Blue Rancher',
+        text: 'Retailers and distributors: stock BERI CLIQ pods, kits and devices at wholesale pricing, with authentic supply and 5-pack retail displays.',
+        points: [{ t: 'Wholesale pricing' }, { t: 'Pods, kits & devices' }, { t: 'Retail display packs' }],
+        stats: [{ v: '25', l: 'flavors' }, { v: '50K', l: 'puffs' }, { v: '2.5×', l: 'charging' }] },
+      CRUSH: { img: 'assets/blob/98de8943c95bc88c1c871334365c5bdd.webp', alt: 'BERI Crush device in orange',
+        text: 'Retailers and distributors: stock BERI CRUSH at wholesale pricing. 35 flavors, a 40W Crush Mode and authentic supply your customers can verify.',
+        points: [{ t: 'Wholesale pricing' }, { t: 'Full 35-flavor range' }, { t: 'Authenticity verification' }],
+        stats: [{ v: '35', l: 'flavors' }, { v: '50K', l: 'puffs' }, { v: '40W', l: 'Crush Mode' }] },
+      CIRQL: { img: 'assets/blob/51c7b95a93b728bbf7aa71c4b86a11ef.webp', alt: 'BERI Cirql e-hookah in Lady Killer',
+        text: 'Retailers, lounges and distributors: bring the shisha flavor experience to your shelves with BERI CIRQL at wholesale pricing.',
+        points: [{ t: 'Wholesale pricing' }, { t: 'Shisha-inspired range' }, { t: 'Authenticity verification' }],
+        stats: [{ v: '13', l: 'flavors' }, { v: '150K', l: 'puffs' }, { v: 'Quad', l: 'mesh coil' }] },
+      ELIQUID: { img: 'assets/blob/1a6e959e6fbe802d98e56b00f8beba80.webp', alt: 'BERI E-liquid Blue Frost 30 mL bottle and box',
+        text: 'Retailers and distributors: stock BERI E-LIQUID 30 mL bottles in 25 mg and 50 mg, bottled in California, at wholesale pricing.',
+        points: [{ t: 'Wholesale pricing' }, { t: '12 flavors · 2 strengths' }, { t: 'Bottled in California' }],
+        stats: [{ v: '12', l: 'flavors' }, { v: '30 mL', l: 'bottles' }, { v: '25/50', l: 'mg salt nic' }] }
+    };
     const base = products[PRODUCT_KEY];
     const theme = base.theme || 'cliq';
     const dark = theme === 'crush' || theme === 'cirql';
@@ -1001,13 +1126,25 @@ class Component extends DCLogic {
     const weights = reveal.map((f, i) => Math.max(0, 1 - Math.abs(spotPos - i)));
     const narrow = (this.state.vw || 1440) < 900;
     const kx = narrow ? 0.55 : 1;
-    const devH = narrow ? 300 : 440;
-    // [x, y, rotate, scale, opacity] closed (stacked) and open (fanned), per slot left/middle/right.
-    const slots = [
-      [[0, 60, -8, 0.7, 0], [-190, 20, -10, 0.86, 1]],
-      [[0, 40, -8, 0.85, 1], [0, 0, 0, 1, 1]],
-      [[0, 60, -8, 0.7, 0], [190, 20, 10, 0.86, 1]]
-    ];
+    const hasFan = reveal.some((f) => f.fan);
+    const devH = hasFan ? (narrow ? 270 : 510) : (narrow ? 380 : 545);
+    // [x, y, rotate, scale, opacity] closed (stacked) and open (fanned), one slot per device, spread from the middle out.
+    const nRev = reveal.length;
+    const midRev = (nRev - 1) / 2;
+    const fanGap = nRev <= 3 ? 235 : (narrow ? 62 : 118);
+    const fanShift = nRev > 3 && !narrow ? -10 : 0;
+    const slots = reveal.map((f, i) => {
+      const c = i - midRev;
+      const ac = Math.abs(c);
+      if (f.fan) return [
+        [0, ac ? 60 : 40, -8, ac ? 0.7 : 0.85, ac ? 0 : 1],
+        [(f.fan[0] * devH + (narrow ? 0 : -48)) / kx, f.fan[1] * devH, f.fan[2], 1, 1]
+      ];
+      return [
+        [0, ac ? 60 : 40, -8, ac ? 0.7 : 0.85, ac ? 0 : 1],
+        [c * fanGap + fanShift, nRev <= 3 ? 20 * ac : 14 * ac * ac, nRev <= 3 ? c * 10 : -16, nRev <= 3 ? (ac ? 0.86 : 1) : 1 - 0.05 * ac, 1]
+      ];
+    });
     const hexRgb = (h) => [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16));
     const mix = reveal.reduce((acc, f, i) => {
       const c = hexRgb(f.tint);
@@ -1020,13 +1157,13 @@ class Component extends DCLogic {
       const w = weights[i] * spot;
       const x = lerp(s0[0], s1[0], fanT) * kx;
       const y = lerp(s0[1], s1[1], fanT) - 26 * w;
-      const r = lerp(s0[2], s1[2], fanT) * (1 - 0.6 * w);
+      const r = lerp(s0[2], s1[2], fanT) * (1 - (hasFan ? 0.2 : 0.6) * w);
       const sc = lerp(s0[3], s1[3], fanT) + 0.14 * w - 0.05 * spot * (1 - weights[i]);
       const op = lerp(s0[4], s1[4], fanT) * (1 - 0.4 * spot * (1 - weights[i]));
       return {
         img: f.img,
         alt: f.alt,
-        style: 'position: absolute; left: 50%; top: 46%; z-index: ' + ((i === 1 ? 3 : 2) + (weights[i] > 0.5 && spot > 0 ? 5 : 0)) + '; display: block; height: ' + devH + 'px; width: auto; max-width: none; opacity: ' + op.toFixed(3) + '; transform: translate(-50%, -50%) translate(' + x.toFixed(1) + 'px, ' + y.toFixed(1) + 'px) rotate(' + r.toFixed(2) + 'deg) scale(' + sc.toFixed(3) + '); filter: drop-shadow(0 36px 44px ' + TH.revealShadow + '); will-change: transform, opacity'
+        style: 'position: absolute; left: 50%; top: 46%; z-index: ' + ((5 - Math.round(Math.abs(i - midRev))) + (weights[i] > 0.5 && spot > 0 ? 4 : 0)) + '; display: block; height: ' + devH + 'px; width: auto; max-width: none; opacity: ' + op.toFixed(3) + '; transform: translate(-50%, -50%) translate(' + x.toFixed(1) + 'px, ' + y.toFixed(1) + 'px) rotate(' + r.toFixed(2) + 'deg) scale(' + sc.toFixed(3) + '); filter: drop-shadow(0 36px 44px ' + TH.revealShadow + '); will-change: transform, opacity'
       };
     });
     const revealNames = reveal.filter((f) => f.name).map((f) => {
@@ -1034,7 +1171,7 @@ class Component extends DCLogic {
       const a = weights[i] * spot;
       return {
         name: f.name,
-        style: 'position: absolute; left: 50%; bottom: 8px; z-index: 10; white-space: nowrap; font-family: var(--display); font-size: ' + (narrow ? 36 : 56) + 'px; line-height: 1; text-transform: uppercase; color: ' + f.color + '; opacity: ' + a.toFixed(3) + '; transform: translateX(-50%) translateY(' + (14 * (1 - a)).toFixed(1) + 'px); pointer-events: none'
+        style: 'position: absolute; left: 50%; bottom: ' + (narrow ? 8 : -34) + 'px; z-index: 10; white-space: nowrap; font-family: "Siti Maesaroh", "Lexend Exa", serif; font-size: ' + (narrow ? 44 : 68) + 'px; line-height: 1.25; text-transform: lowercase; letter-spacing: 0; padding: 0 .2em .15em; color: ' + f.color + '; text-shadow: 0 4px 18px rgba(0,0,0,.65); opacity: ' + a.toFixed(3) + '; transform: translateX(-50%) translateY(' + (14 * (1 - a)).toFixed(1) + 'px); pointer-events: none'
       };
     });
 
@@ -1167,7 +1304,7 @@ class Component extends DCLogic {
         modesImg: base.modesImg || '',
         modesAlt: base.modesAlt || '',
         hasFeatures: !!(base.features && base.features.length),
-        featSecStyle: 'max-width: 1320px; margin: 0 auto; padding: 120px 32px ' + (base.packBanner ? '0' : '120px'),
+        featSecStyle: 'max-width: 1320px; margin: 0 auto; padding: 0 32px 120px',
         features: (base.features || []).map((f, i) => {
           const lg = f.size === 'lg';
           if (f.full) {
@@ -1181,13 +1318,15 @@ class Component extends DCLogic {
               style: 'grid-column: span ' + (lg ? 3 : 2) + '; min-height: ' + (lg ? '190px' : '150px') + '; box-sizing: border-box; display: flex; align-items: center; justify-content: center; padding: 28px 22px; ' + (TH.tile || '') + '; transition-delay: ' + (i * 80) + 'ms' };
           }
           return {
-            img: f.img,
+            img: f.img, withLbl: true,
             hasImg: true, noImg: false, top: f.top, main: f.main,
             alt: f.top + ' ' + f.main,
             imgStyle: 'display: block; width: auto; max-width: 100%; height: ' + (lg ? '96px' : '58px'),
             style: 'grid-column: span ' + (lg ? 3 : 2) + '; min-height: ' + (lg ? '190px' : '110px') + '; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: ' + (lg ? '28px' : '16px') + '; padding: ' + (lg ? '32px' : '18px 22px') + '; border-radius: 16px; border: 3.5px solid transparent; background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.07) 0 1px, transparent 1.6px) 0 0 / 8px 8px padding-box, radial-gradient(circle at 70% 70%, rgba(255,255,255,0.045) 0 1px, transparent 1.5px) 0 0 / 13px 13px padding-box, radial-gradient(ellipse 70% 90% at 30% 45%, rgba(110,120,255,0.22), rgba(110,120,255,0) 70%) padding-box, linear-gradient(180deg, #0B1030 0%, #121945 100%) padding-box, linear-gradient(180deg, rgba(110,120,255,0.12) 0%, rgba(110,120,255,0.18) 40%, #4C7DFF 100%) border-box; transition-delay: ' + (i * 80) + 'ms'
           };
         }),
+        hasWh: !!WH[PRODUCT_KEY],
+        wh: WH[PRODUCT_KEY] || { points: [], stats: [] },
         hasSpecBanner: !!base.specBanner,
         specBanner: base.specBanner || '',
         specBannerAlt: base.specBannerAlt || '',
