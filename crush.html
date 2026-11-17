@@ -182,6 +182,49 @@ a{color:#111113}a:hover{color:#7A5F14}
 .tape-warn span{padding:0 48px 0 0;font-family:'Anton',Impact,sans-serif;font-size:21px;line-height:1;letter-spacing:.06em;text-transform:uppercase;color:#141416}
 @media (max-width:899px){.tape-zone{height:170px}.tape-main{top:58px;height:54px;transform:rotate(-6deg)}.tape-main span{padding:0 18px;font-size:23px}.tape-main b{font-size:21px}.tape-warn{top:66px;height:38px;transform:rotate(7deg)}.tape-warn span{padding-right:32px;font-size:15px}}
 @media (prefers-reduced-motion:reduce){.tape-run{animation:none}}
+/* Wholesale call-to-action (shared layout; colours come from the page theme below). */
+.wh-sec{padding:40px 32px 24px}
+.wh-card{position:relative;overflow:hidden;isolation:isolate;max-width:1320px;margin:0 auto;border-radius:40px;padding:64px;box-sizing:border-box;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:40px;align-items:center}
+.wh-copy{position:relative;display:flex;flex-direction:column;gap:20px;min-width:0}
+.wh-pill{align-self:flex-start;font-size:12px;font-weight:700;letter-spacing:.32em;padding:8px 14px;border-radius:999px}
+.wh-title{margin:0;font-family:var(--display);font-weight:400;font-size:clamp(54px,7vw,108px);line-height:.9;text-transform:uppercase}
+.wh-accent{display:inline-block}
+.wh-text{margin:0;max-width:520px;font-size:18px;line-height:1.55}
+.wh-points{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:12px 28px;font-size:15px;font-weight:600}
+.wh-points li{display:inline-flex;align-items:center;gap:8px}
+.wh-tick{display:inline-flex}
+.wh-btns{display:flex;flex-wrap:wrap;gap:12px;padding-top:8px}
+.wh-btn,.wh-btn2{display:inline-flex;align-items:center;min-height:58px;padding:0 28px;border-radius:999px;font-weight:700;text-decoration:none;box-sizing:border-box;transition:transform .2s ease}
+.wh-btn:hover,.wh-btn2:hover{transform:translateY(-2px)}
+.wh-btn2{font-weight:600;border:1.5px solid currentColor}
+.wh-visual{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;min-width:0}
+.wh-glow{position:absolute;left:12%;right:12%;top:6%;bottom:22%;border-radius:50%;filter:blur(46px);opacity:.75;pointer-events:none}
+.wh-img{position:relative;display:block;height:360px;width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(0,0,0,.35))}
+.wh-stats{position:relative;display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+.wh-stat{display:flex;flex-direction:column;align-items:center;min-width:96px;padding:12px 16px;border-radius:16px;box-sizing:border-box}
+.wh-stat b{font-family:var(--display);font-size:26px;line-height:1;font-weight:400}
+.wh-stat span{font-size:12px;letter-spacing:.04em;margin-top:4px}
+@media (max-width:899px){.wh-sec{padding:24px 16px 8px}.wh-card{grid-template-columns:minmax(0,1fr);padding:40px 24px;border-radius:28px;gap:28px}.wh-img{height:260px}.wh-btn,.wh-btn2{min-height:52px;padding:0 22px}.wh-stat{min-width:84px;padding:10px 12px}.wh-stat b{font-size:22px}}
+/* Crush: street yellow with graffiti heading and pink accents. */
+.t-crush .wh-card{color:#0B0B0D;background:radial-gradient(ellipse 50% 70% at 76% 45%,rgba(230,0,126,.22),rgba(230,0,126,0) 70%),#FFD400;box-shadow:0 30px 70px rgba(0,0,0,.45)}
+.t-crush .wh-pill{background:#0B0B0D;color:#FFD400;transform:rotate(-3deg)}
+.t-crush .wh-title{font-family:'Anton',Impact,sans-serif !important;font-weight:400;text-transform:uppercase;letter-spacing:.005em;line-height:.92;font-size:clamp(56px,7.4vw,112px)}
+.t-crush .wh-accent{color:#E6007E}
+.t-crush .wh-text{color:#2A2A2E}
+.t-crush .wh-tick{color:#E6007E}
+.t-crush .wh-btn{background:#0B0B0D;color:#FFD400}
+.t-crush .wh-btn2{color:#0B0B0D;border-color:#0B0B0D;border-width:2px}
+.t-crush .wh-glow{background:#FF4FA8}
+.t-crush .wh-stat{background:#0B0B0D;transform:rotate(-2deg)}
+.t-crush .wh-stat:nth-child(2){transform:rotate(1.5deg)}
+.t-crush .wh-stat b{color:#FFD400;font-family:'Anton',Impact,sans-serif}
+.t-crush .wh-stat span{color:#F4F1EA}
+/* Crush background photos: neon graffiti alley behind the flavor card, yellow street wall behind the wholesale card. */
+.t-crush .fx-feature{background:linear-gradient(90deg,rgba(11,11,13,0) 42%,rgba(11,11,13,.55) 68%,rgba(11,11,13,.7) 100%),url("assets/blob/c4f663b078e0cdcc5c3f5bb2b97931cd.webp") left center/cover no-repeat,#0B0B0D !important;border-color:#2C2C31 !important}
+.t-crush .fx-feature::before{opacity:.45}
+.t-crush .wh-card{background:linear-gradient(90deg,rgba(255,212,0,.7) 0%,rgba(255,212,0,.7) 46%,rgba(255,212,0,0) 62%),url("assets/blob/a3007b0e52e20d1e7d123c144d72789b.webp") right center/cover no-repeat,#FFD400 !important}
+.t-crush .wh-glow{opacity:.35}
+@media (max-width:899px){.t-crush .fx-feature{background:linear-gradient(180deg,rgba(11,11,13,0) 38%,rgba(11,11,13,.82) 58%,rgba(11,11,13,.92) 100%),url("assets/blob/c4f663b078e0cdcc5c3f5bb2b97931cd.webp") 15% top/auto 62% no-repeat,#0B0B0D !important}.t-crush .wh-card{background:linear-gradient(180deg,#FFD400 0%,rgba(255,212,0,.9) 46%,rgba(255,212,0,0) 68%),url("assets/blob/a3007b0e52e20d1e7d123c144d72789b.webp") 88% bottom/auto 58% no-repeat,#FFD400 !important}}
 </style>
 
 </head>
@@ -448,18 +491,6 @@ a{color:#111113}a:hover{color:#7A5F14}
 </section>
 </sc-if>
 
-<sc-if value="{{p.hasFeatures}}" hint-placeholder-val="{{false}}">
-<section aria-label="BERI {{p.name}} highlights" style="{{p.featSecStyle}}">
-<ul class="feat-grid" style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px">
-<sc-for list="{{p.features}}" as="ft" hint-placeholder-count="5">
-<li class="feat-tile" data-reveal="up" style="{{ft.style}}">
-<sc-if value="{{ft.hasImg}}" hint-placeholder-val="{{true}}"><img src="{{ft.img}}" alt="{{ft.alt}}" style="{{ft.imgStyle}}"></sc-if>
-<sc-if value="{{ft.noImg}}" hint-placeholder-val="{{false}}"><span class="feat-txt"><b>{{ft.top}}</b><span>{{ft.main}}</span></span></sc-if>
-</li>
-</sc-for>
-</ul>
-</section>
-</sc-if>
 
 <sc-if value="{{p.hasPackBanner}}" hint-placeholder-val="{{false}}">
 <section aria-label="BERI {{p.name}} retail displays" style="max-width: 1320px; margin: 0 auto; padding: 120px 32px 0; display: flex; flex-direction: column; gap: 24px">
@@ -492,6 +523,49 @@ a{color:#111113}a:hover{color:#7A5F14}
 </div>
 </div>
 </section>
+<sc-if value="{{p.hasFeatures}}" hint-placeholder-val="{{false}}">
+<section aria-label="BERI {{p.name}} highlights" style="{{p.featSecStyle}}">
+<ul class="feat-grid" style="list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 14px">
+<sc-for list="{{p.features}}" as="ft" hint-placeholder-count="5">
+<li class="feat-tile" data-reveal="up" style="{{ft.style}}">
+<sc-if value="{{ft.hasImg}}" hint-placeholder-val="{{true}}"><img src="{{ft.img}}" alt="{{ft.alt}}" style="{{ft.imgStyle}}"></sc-if>
+<sc-if value="{{ft.noImg}}" hint-placeholder-val="{{false}}"><span class="feat-txt"><b>{{ft.top}}</b><span>{{ft.main}}</span></span></sc-if>
+</li>
+</sc-for>
+</ul>
+</section>
+</sc-if>
+
+<sc-if value="{{p.hasWh}}" hint-placeholder-val="{{true}}">
+<section id="wholesale-cta" class="wh-sec" aria-label="Wholesale: stock BERI {{p.name}}">
+<div class="wh-card" data-reveal="scale">
+<div class="wh-copy">
+<span class="wh-pill">WHOLESALE</span>
+<h2 class="wh-title">Stock<br><span class="wh-accent">BERI {{p.name}}.</span></h2>
+<p class="wh-text">{{p.wh.text}}</p>
+<ul class="wh-points">
+<sc-for list="{{p.wh.points}}" as="wp" hint-placeholder-count="3">
+<li><span class="wh-tick"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg></span>{{wp.t}}</li>
+</sc-for>
+</ul>
+<div class="wh-btns">
+<a class="wh-btn" href="Wholesale.dc.html">Become a wholesale partner →</a>
+<a class="wh-btn2" href="Authenticate.dc.html">Verify authenticity →</a>
+</div>
+</div>
+<div class="wh-visual">
+<span class="wh-glow" aria-hidden="true"></span>
+<img class="wh-img" src="{{p.wh.img}}" alt="{{p.wh.alt}}" loading="lazy">
+<div class="wh-stats">
+<sc-for list="{{p.wh.stats}}" as="ws" hint-placeholder-count="3">
+<span class="wh-stat"><b>{{ws.v}}</b><span>{{ws.l}}</span></span>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+</sc-if>
+
 <section class="xl-sec" aria-labelledby="xl-title">
 <div class="xl-head">
 <div class="xl-head-text">
@@ -955,14 +1029,33 @@ class Component extends DCLogic {
     });
     products.CLIQ.theme = 'cliq';
     const order = ['CLIQ', 'CRUSH', 'CIRQL', 'ELIQUID'];
+    // Wholesale call-to-action shown on each product page, above "Explore the lineup".
+    const WH = {
+      CLIQ: { img: 'assets/blob/38e90c83b18e5f9b193d4e2806393e55.webp', alt: 'BERI Cliq device in Blue Rancher',
+        text: 'Retailers and distributors: stock BERI CLIQ pods, kits and devices at wholesale pricing, with authentic supply and 5-pack retail displays.',
+        points: [{ t: 'Wholesale pricing' }, { t: 'Pods, kits & devices' }, { t: 'Retail display packs' }],
+        stats: [{ v: '25', l: 'flavors' }, { v: '50K', l: 'puffs' }, { v: '2.5×', l: 'charging' }] },
+      CRUSH: { img: 'assets/blob/98de8943c95bc88c1c871334365c5bdd.webp', alt: 'BERI Crush device in orange',
+        text: 'Retailers and distributors: stock BERI CRUSH at wholesale pricing. 35 flavors, a 40W Crush Mode and authentic supply your customers can verify.',
+        points: [{ t: 'Wholesale pricing' }, { t: 'Full 35-flavor range' }, { t: 'Authenticity verification' }],
+        stats: [{ v: '35', l: 'flavors' }, { v: '50K', l: 'puffs' }, { v: '40W', l: 'Crush Mode' }] },
+      CIRQL: { img: 'assets/blob/51c7b95a93b728bbf7aa71c4b86a11ef.webp', alt: 'BERI Cirql e-hookah in Lady Killer',
+        text: 'Retailers, lounges and distributors: bring the shisha flavor experience to your shelves with BERI CIRQL at wholesale pricing.',
+        points: [{ t: 'Wholesale pricing' }, { t: 'Shisha-inspired range' }, { t: 'Authenticity verification' }],
+        stats: [{ v: '13', l: 'flavors' }, { v: '150K', l: 'puffs' }, { v: 'Quad', l: 'mesh coil' }] },
+      ELIQUID: { img: 'assets/blob/1a6e959e6fbe802d98e56b00f8beba80.webp', alt: 'BERI E-liquid Blue Frost 30 mL bottle and box',
+        text: 'Retailers and distributors: stock BERI E-LIQUID 30 mL bottles in 25 mg and 50 mg, bottled in California, at wholesale pricing.',
+        points: [{ t: 'Wholesale pricing' }, { t: '12 flavors · 2 strengths' }, { t: 'Bottled in California' }],
+        stats: [{ v: '12', l: 'flavors' }, { v: '30 mL', l: 'bottles' }, { v: '25/50', l: 'mg salt nic' }] }
+    };
     const base = products[PRODUCT_KEY];
     const theme = base.theme || 'cliq';
     const dark = theme === 'crush' || theme === 'cirql';
     const TH = {
       cliq: { nav: 'rgba(246,243,238,0.72)', navLine: 'rgba(17,17,19,0.08)', revealShadow: 'rgba(17,17,19,0.3)' },
       crush: { nav: 'rgba(11,11,13,0.82)', navLine: 'rgba(255,255,255,0.08)', revealShadow: 'rgba(0,0,0,0.7)', badge: 'background: #FF2E93; color: #FFFFFF; transform: rotate(-2deg); box-shadow: 3px 3px 0 #0B0B0D',
-        card: 'flex: 1 1 560px; min-width: 0; box-sizing: border-box; border-radius: 6px; background: #F2EFE8 url(' + "'assets/blob/5935a3b7f7c3b3e8d33d1c3661eb5ace.webp'" + ') center / cover; color: #111113; padding: 22px 36px; transform: rotate(-0.6deg); box-shadow: 0 30px 60px rgba(0,0,0,0.5)',
-        rowLine: '2px dashed rgba(17,17,19,0.22)', key: 'color: #4A4740', summary: '#D8D5CE',
+        card: 'flex: 1 1 560px; min-width: 0; box-sizing: border-box; border-radius: 6px; background: linear-gradient(rgba(244,241,234,0.82), rgba(244,241,234,0.82)), #F2EFE8 url(' + "'assets/blob/5935a3b7f7c3b3e8d33d1c3661eb5ace.webp'" + ') center / cover; color: #111113; padding: 22px 36px; transform: rotate(-0.6deg); box-shadow: 0 30px 60px rgba(0,0,0,0.5)',
+        rowLine: '2px dashed rgba(17,17,19,0.28)', key: 'color: #3A3833; font-weight: 500', summary: '#D8D5CE',
         tile: 'border-radius: 12px; overflow: hidden; background: #0B0B0D; box-shadow: 0 16px 34px rgba(0,0,0,0.45)',
         flavorCard: 'background: #141417; border: 2px solid #FFD400; box-shadow: 6px 6px 0 #FF2E93' },
       cirql: { nav: 'rgba(19,16,13,0.86)', navLine: 'rgba(212,175,99,0.22)', revealShadow: 'rgba(0,0,0,0.7)', badge: 'background: linear-gradient(100deg,#8C6A1F 0%,#F3D98B 28%,#B8892B 52%,#F7E3A0 74%,#9A7425 100%); color: #13100D',
@@ -1026,7 +1119,9 @@ class Component extends DCLogic {
     const fanT = ease(clamp01((rp - 0.05) / 0.45));
     const spot = clamp01((rp - 0.5) / 0.08);
     const spotPos = clamp01((rp - 0.55) / 0.45) * (reveal.length - 1);
-    const weights = reveal.map((f, i) => Math.max(0, 1 - Math.abs(spotPos - i)));
+    // Spotlight order across the devices: left, right, then the middle one, so the scroll ends on the middle device.
+    const spotOrder = reveal.length === 3 ? [0, 2, 1] : reveal.map((f, i) => i);
+    const weights = reveal.map((f, i) => Math.max(0, 1 - Math.abs(spotPos - spotOrder.indexOf(i))));
     const narrow = (this.state.vw || 1440) < 900;
     const kx = narrow ? 0.55 : 1;
     const devH = narrow ? 300 : 440;
@@ -1195,7 +1290,7 @@ class Component extends DCLogic {
         modesImg: base.modesImg || '',
         modesAlt: base.modesAlt || '',
         hasFeatures: !!(base.features && base.features.length),
-        featSecStyle: 'max-width: 1320px; margin: 0 auto; padding: 120px 32px ' + (base.packBanner ? '0' : '120px'),
+        featSecStyle: 'max-width: 1320px; margin: 0 auto; padding: 0 32px 120px',
         features: (base.features || []).map((f, i) => {
           const lg = f.size === 'lg';
           if (f.full) {
@@ -1216,6 +1311,8 @@ class Component extends DCLogic {
             style: 'grid-column: span ' + (lg ? 3 : 2) + '; min-height: ' + (lg ? '190px' : '110px') + '; box-sizing: border-box; display: flex; align-items: center; justify-content: center; gap: ' + (lg ? '28px' : '16px') + '; padding: ' + (lg ? '32px' : '18px 22px') + '; border-radius: 16px; border: 3.5px solid transparent; background: radial-gradient(circle at 30% 40%, rgba(255,255,255,0.07) 0 1px, transparent 1.6px) 0 0 / 8px 8px padding-box, radial-gradient(circle at 70% 70%, rgba(255,255,255,0.045) 0 1px, transparent 1.5px) 0 0 / 13px 13px padding-box, radial-gradient(ellipse 70% 90% at 30% 45%, rgba(110,120,255,0.22), rgba(110,120,255,0) 70%) padding-box, linear-gradient(180deg, #0B1030 0%, #121945 100%) padding-box, linear-gradient(180deg, rgba(110,120,255,0.12) 0%, rgba(110,120,255,0.18) 40%, #4C7DFF 100%) border-box; transition-delay: ' + (i * 80) + 'ms'
           };
         }),
+        hasWh: !!WH[PRODUCT_KEY],
+        wh: WH[PRODUCT_KEY] || { points: [], stats: [] },
         hasSpecBanner: !!base.specBanner,
         specBanner: base.specBanner || '',
         specBannerAlt: base.specBannerAlt || '',
