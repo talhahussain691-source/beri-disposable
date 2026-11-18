@@ -33,8 +33,14 @@
     return m ? m[1] : null;
   }
 
+  // On the WordPress theme, window.BERI_PAGES maps the same names to the site's real page URLs.
   function fixHref(v) {
-    return v.replace(/^([A-Za-z0-9-]+)\.dc\.html/, (m, name) => PAGES[name.toLowerCase()] || name.toLowerCase() + '.html');
+    const wp = window.BERI_PAGES || null;
+    return v.replace(/^([A-Za-z0-9-]+)\.dc\.html/, (m, name) => {
+      const key = name.toLowerCase();
+      if (wp && wp[key]) return wp[key];
+      return PAGES[key] || key + '.html';
+    });
   }
 
   // Template -> virtual nodes: { text } or { tag, ns, attrs: [[name, value]], on: {event: fn}, kids }.
