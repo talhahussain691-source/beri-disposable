@@ -166,7 +166,10 @@ a{color:#111113}a:hover{color:#7A5F14}
 .t-crush .fx-name{font-family:'Anton',Impact,sans-serif}
 @media (max-width:1180px){.fx-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media (max-width:899px){.fx-feature{grid-template-columns:minmax(0,1fr);gap:18px;min-height:0;padding:24px 20px 28px;border-radius:24px}.fx-feature::before{background:radial-gradient(80% 50% at 50% 30%,color-mix(in srgb,var(--fx) 38%,transparent),transparent 72%)}.fx-img{height:270px}.fx-name{font-size:44px}.fx-desc{font-size:16px}.fx-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.fx-card{padding:14px 8px 12px;border-radius:16px}.fx-card img{height:120px}.fx-card span{font-size:12px}}
-.t-cirql .fx-feature{border-color:rgba(212,175,99,.35);background:linear-gradient(135deg,rgba(212,175,99,.08),rgba(255,255,255,.012))}
+.t-cirql .fx-feature{border-color:rgba(212,175,99,.35);background:#020A0A url("/_blob/4728384b1ec878290f6ed620cc89cf9b") left center/cover no-repeat}
+/* Teal smoke backdrop: the flavor glow stays, softer, so the smoke keeps its own colour. */
+.t-cirql .fx-feature::before{opacity:.55}
+@media (max-width:899px){.t-cirql .fx-feature{background-position:left top;background-size:auto 100%}}
 .t-cirql .fx-badge{background:var(--gold-grad);color:#13100D}
 .t-cirql .fx-name{font-weight:600;font-size:52px;letter-spacing:.01em;line-height:1.02}
 .t-cirql .fx-card{background:#17140F;border-color:rgba(212,175,99,.22)}
