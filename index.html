@@ -302,7 +302,7 @@ a{color:#111113}a:hover{color:#7A5F14}
 <main id="top">
 <section id="hero-scroll" aria-label="BERI lineup" style="{{heroTrackStyle}}">
 <div style="{{heroStageStyle}}">
-<video id="hero-video" src="assets/blob/7c3c125b1a599c7d3919907992e33969.mp4" poster="assets/blob/526eee121bd5f2785fff515f8b8ba969.webp" aria-hidden="true" style="{{heroVideoStyle}}"></video>
+<video id="hero-video" data-src="assets/blob/7b1bebd6f4a54514d00a8d946e711dc8.mp4" data-src-sm="assets/blob/239c220b1ef5253615389c7a9b3a42a7.mp4" poster="assets/blob/4f093b9f51d335c96be96b45921f42bf.jpg" aria-hidden="true" style="{{heroVideoStyle}}"></video>
 <div aria-hidden="true" style="{{heroFadeStyle}}"></div>
 <div aria-hidden="true" style="{{hintStyle}}">
 <span>SCROLL</span>
@@ -424,7 +424,7 @@ a{color:#111113}a:hover{color:#7A5F14}
 </div>
 <p class="pw-lede">85 flavors across the lineup, from icy mints to sour gummies. Tap a poster to explore.</p>
 </div>
-<a class="pw-banner" href="Crush-v2.dc.html"><img src="assets/blob/bcc82cfc3893ac6edf657d96a124c491.webp" alt="BERI Crush in green with ice cubes against a graffiti wall" width="2560" height="1441"></a>
+<a class="pw-banner" href="Crush-v2.dc.html"><img src="assets/blob/4d897c375a1eeb72f6b69eaf0728cb2e.webp" alt="BERI Crush in icy blue among glass and ice blocks" width="2560" height="1441"></a>
 <div class="pw-rail" role="region" aria-label="BERI flavor posters">
 <div class="pw-track">
 <a class="pw-card" href="Cliq.dc.html#flavors"><img src="assets/blob/7c29d20368ce7300b7fff1ab7862aa86.webp" alt="BERI Cliq Miami Mint poster" loading="lazy"><span class="pw-tag" style="background: #0F7A42">CLIQ</span><span class="pw-name">Miami Mint</span></a>
@@ -603,6 +603,7 @@ class Component extends DCLogic {
     this.state = { scrolled: false, flavorTab: 0, p: 0, vw: 1440, vh: 900, hdr: 116, tf: -1, bdTab: 0 };
   }
   componentDidMount() {
+    this.mounted = true;
     this.reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
     this.measure = () => {
       const y = window.scrollY || 0;
@@ -619,9 +620,23 @@ class Component extends DCLogic {
         p = total > 0 ? Math.min(1, Math.max(0, -r.top / total)) : 0;
       }
       const hv = document.getElementById('hero-video');
+      // vp is the progress of the frame actually on screen. The stage colour follows vp, not the scroll,
+      // so on a slow first load the colour waits with the video instead of running ahead of it.
+      let vp = this.state.vp || 0;
       if (hv && hv.duration && this.pinOn(vh)) {
-        const ht = p * (hv.duration - 0.05);
-        if (Math.abs(hv.currentTime - ht) > 0.01) hv.currentTime = ht;
+        const span = hv.duration - 0.05;
+        const ht = p * span;
+        // When the frames for this scroll point are already loaded, the colour follows the scroll exactly (smooth).
+        // Otherwise it holds on the frame that is showing, so it never runs ahead of a video still loading.
+        let ready = false;
+        const buf = hv.buffered;
+        for (let i = 0; i < buf.length; i++) if (ht >= buf.start(i) - 0.05 && ht <= buf.end(i) + 0.05) ready = true;
+        if (ready && hv.readyState >= 1) vp = p;
+        else if (!hv.seeking && hv.readyState >= 2) vp = Math.min(1, Math.max(0, hv.currentTime / span));
+        // One seek at a time: a new target waits for "seeked", so a fast scroll never queues up stale seeks.
+        if (!hv.seeking && Math.abs(hv.currentTime - ht) > 0.01) hv.currentTime = ht;
+      } else if (!hv || !hv.duration) {
+        vp = 0;
       }
       // Why BERI list: the row level with the sticky heading zooms in (mid-screen on phones).
       let tf = -1;
@@ -641,8 +656,8 @@ class Component extends DCLogic {
         }
       }
       const s = this.state;
-      if (Math.abs(p - s.p) > 0.001 || scrolled !== s.scrolled || vw !== s.vw || vh !== s.vh || hdr !== s.hdr || tf !== s.tf) {
-        this.setState({ p: p, scrolled: scrolled, vw: vw, vh: vh, hdr: hdr, tf: tf });
+      if (Math.abs(p - s.p) > 0.001 || Math.abs(vp - (s.vp || 0)) > 0.001 || scrolled !== s.scrolled || vw !== s.vw || vh !== s.vh || hdr !== s.hdr || tf !== s.tf) {
+        this.setState({ p: p, vp: vp, scrolled: scrolled, vw: vw, vh: vh, hdr: hdr, tf: tf });
       }
     };
     this.onScroll = () => {
@@ -671,7 +686,27 @@ class Component extends DCLogic {
     v.preload = 'auto';
     v.pause();
     v.addEventListener('loadedmetadata', this.measure);
+    v.addEventListener('seeked', this.measure);
+    v.addEventListener('loadeddata', this.measure);
     v.addEventListener('play', () => v.pause());
+    // The clip URL sits in data-src (not src) so re-renders never reset the source picked here.
+    // Phones get a lighter 720p cut of the same clip.
+    const sm = v.getAttribute('data-src-sm');
+    const full = v.getAttribute('data-src');
+    v.src = sm && (window.innerWidth || 1440) < 900 ? sm : full;
+    // Pull the whole clip into memory once, so every scroll seek is local and instant (no mid-scroll buffering).
+    // Until it arrives the clip streams as normal; if the download fails the streamed clip simply stays.
+    if (window.fetch && window.URL && URL.createObjectURL) {
+      const from = v.currentSrc || v.src;
+      v.preload = 'metadata';
+      fetch(from).then((r) => (r.ok ? r.blob() : null)).then((b) => {
+        if (!b || !this.mounted) return;
+        const at = v.currentTime || 0;
+        this.heroBlobUrl = URL.createObjectURL(b);
+        v.src = this.heroBlobUrl;
+        v.addEventListener('loadedmetadata', () => { try { v.currentTime = at; } catch (e) {} this.measure(); }, { once: true });
+      }).catch(() => {});
+    }
   }
   // The Cliq teaser loops muted only while it is on screen; with motion off it stays on its poster.
   setupTeaser() {
@@ -700,6 +735,8 @@ class Component extends DCLogic {
     this.scanReveal();
   }
   componentWillUnmount() {
+    this.mounted = false;
+    if (this.heroBlobUrl) URL.revokeObjectURL(this.heroBlobUrl);
     window.removeEventListener('scroll', this.onScroll);
     window.removeEventListener('resize', this.onScroll);
     if (this.raf) cancelAnimationFrame(this.raf);
@@ -875,11 +912,11 @@ class Component extends DCLogic {
     // Colour hero: the stage takes the background colour of the lineup clip at the current scroll point
     // (sampled from the clip every half second: Cliq blue, Crush peach, Cirql rose), so the copy side and the
     // clip read as one scene. The far left gets a richer version of the same colour.
-    const heroTints = ["#C9DDE5", "#C9DDE5", "#C9DDE5", "#C9DDE5", "#CADDE5", "#C9DDE7", "#C5DDE6", "#CADDE6", "#C4D7E5", "#CADDE6", "#C5DDE5", "#DDD0C2", "#F3C5A1", "#F2C5A1", "#F2C5A1", "#F2C5A1", "#F3C5A2", "#F3C5A4", "#F3C5A4", "#F3C4A2", "#F3C4A1", "#F2C3A0", "#E5B7A7", "#D8ADAF", "#D8ADB0", "#D7ACAF", "#D7ADAF", "#D9ACAF", "#D8ADB0", "#D8ADAF", "#D7ACAF", "#D7ADAF", "#D7ACAF", "#D8ACAF"];
+    const heroTints = ["#C5DFE7", "#C5DFE7", "#C5DEE7", "#C5DEE7", "#C5DEE7", "#C5DFE7", "#C5DEE7", "#C4DEE7", "#C3DEE7", "#C3DEE7", "#C3DEE7", "#DDD0C2", "#F4C6A5", "#F4C6A5", "#F4C6A5", "#F4C6A5", "#F4C6A5", "#F4C6A5", "#F4C6A5", "#F4C6A5", "#F4C6A5", "#F4C6A5", "#F1C3A8", "#DBAEAF", "#DBAEB0", "#DAAEB0", "#DAAEB0", "#DAAEB0", "#DAAEB0", "#D9ADAF", "#D9ADAF", "#D9ADAF", "#D9ADAE", "#DAAEB0"];
     const hexRgb = (h) => [parseInt(h.slice(1, 3), 16), parseInt(h.slice(3, 5), 16), parseInt(h.slice(5, 7), 16)];
     const tintRgb = (() => {
       const n = heroTints.length - 1;
-      const f = clamp01(p) * n;
+      const f = clamp01(pinned ? (this.state.vp || 0) : 0) * n;
       const i = Math.min(n - 1, Math.floor(f));
       const a = hexRgb(heroTints[i]), b = hexRgb(heroTints[i + 1]);
       return a.map((v, j) => Math.round(lerp(v, b[j], f - i)));
@@ -923,9 +960,10 @@ class Component extends DCLogic {
         const hdr = this.state.hdr || 0;
         const areaH = (pinned ? vh : 900) - hdr;
         const wide = vw / Math.max(1, areaH) > 1.6;
-        return 'position: absolute; z-index: 0; top: ' + hdr + 'px; height: calc(100% - ' + hdr + 'px); ' + (wide
-          ? 'right: 0; width: auto; max-width: none; -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 22%), linear-gradient(180deg, transparent 0, #000 64px); -webkit-mask-composite: source-in; mask-image: linear-gradient(90deg, transparent 0%, #000 22%), linear-gradient(180deg, transparent 0, #000 64px); mask-composite: intersect'
-          : 'left: 0; width: 100%; object-fit: cover; object-position: 62% 50%; -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 64px); mask-image: linear-gradient(180deg, transparent 0, #000 64px)');
+        // The video runs up behind the centred pill header, so no tinted band shows above it.
+        return 'position: absolute; z-index: 0; top: 0; height: 100%; ' + (wide
+          ? 'right: 0; width: auto; max-width: none; transform: translateX(8%); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 22%); mask-image: linear-gradient(90deg, transparent 0%, #000 22%)'
+          : 'left: 0; width: 100%; object-fit: cover; object-position: 62% 50%');
       })(),
       heroBarStyle: 'height: 100%; border-radius: 3px; background: linear-gradient(90deg, #2B7FFF, #FF9A1F, #C2414F); width: ' + (p * 100).toFixed(2) + '%; display: ' + (pinned ? 'block' : 'none'),
       hintStyle: 'position: absolute; z-index: 3; left: 50%; bottom: 110px; transform: translateX(-50%); display: ' + (pinned ? 'flex' : 'none') + '; flex-direction: column; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.32em; color: var(--mute); opacity: ' + clamp01(1 - p * 5),
@@ -1037,6 +1075,6 @@ class Component extends DCLogic {
   }
 }
 </script>
-<script src="assets/js/beri-runtime.js?v=3"></script>
+<script src="assets/js/beri-runtime.js?v=4"></script>
 </body>
 </html>
