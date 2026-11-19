@@ -264,6 +264,9 @@ a{color:#111113}a:hover{color:#7A5F14}
 @media (max-width:899px){#cliq-teaser + div{background:linear-gradient(90deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.4) 55%,rgba(0,0,0,.1) 100%) !important}}
 /* MOBILE-FIX START */
 .nl-lede-m{display:none}
+.au-lede-m{display:none}
+.ws-lede-m,.ws-line-m{display:none}
+.cs-lede-m{display:none}
 .nl-photo img.nl-photo-m{display:none}
 @media (max-width:899px){
 /* Mobile header: logo and links share one pill row, so the logo never floats over the page. */
@@ -275,6 +278,10 @@ header{padding:6px 0 !important}
 .top-nav .pill-link{padding:0 9px !important;min-height:44px}
 .top-nav .pill-cta{margin-left:4px !important;padding:0 14px !important;min-height:44px}
 .nav-menu{left:-60px !important}
+
+/* Nicotine warning on phones: fixed 54px tall and scrolls away with the page; the logo and menu row stays at the top */
+div[style*="position: sticky; top: 0; z-index: 50"]{top:-54px !important}
+div[style*="position: sticky; top: 0; z-index: 50"] > div:first-child{box-sizing:border-box;height:54px;display:flex;align-items:center;justify-content:center;padding:4px 12px !important;font-size:13.5px !important;line-height:1.3 !important}
 /* Footer: bigger tap areas */
 footer .beri-link{display:inline-block;padding:10px 0}
 footer div:has(> .beri-link){gap:2px 26px !important}
@@ -327,6 +334,37 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 .au-lfoot,.au-ltitle,.lu-badge,.nl-eyebrow,.pw-tag,.ws-chip,.ws-count,.ws-kind{font-size:12px !important}
 [style*="font-size: 11px"],[style*="font-size: 10px"]{font-size:12px !important}
 
+/* Even, tighter spacing between the Home cards on phones */
+#products{padding-bottom:28px !important}
+#new-launch,#cliq-spotlight,#flavor-wall,#wholesale{padding-bottom:24px !important}
+#authenticate{padding-top:24px !important}
+#flavor-wall,#wholesale{background:transparent !important}
+.pw-rail{padding-bottom:12px !important}
+/* Built different: left out on phones (the lineup cards already cover the three devices) */
+#built-different{display:none !important}
+/* Stock BERI on phones: one call to action, no repeat of the lineup */
+#wholesale > div{padding:32px 22px !important;gap:0 !important}
+#wholesale > div > div:last-child{display:none !important}
+#wholesale > div > div:first-child{gap:16px !important}
+#wholesale h2{font-size:64px !important}
+#wholesale p[style*="max-width: 480px"]{display:none}
+.ws-lede-m{display:block;margin:0;font-size:16px;line-height:1.45;color:#E6DDFB}
+.ws-line-m{display:flex;flex-direction:column;gap:2px;margin:0;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.08);border:1px solid rgba(216,200,255,.3);font-size:15px;font-weight:700;color:#FFFFFF}
+.ws-line-m span{font-size:13px;font-weight:500;color:#D8C8FF}
+#wholesale a[href*="uthenticate"]{display:none !important}
+#wholesale a[href*="holesale"]{width:100%;justify-content:center;box-sizing:border-box;padding:0 16px !important;min-height:56px !important;font-size:15px}
+#wholesale div[style*="padding-top: 12px"]{padding-top:4px !important}
+/* Find your Cliq on phones: the clip shows on top, the copy sits at the bottom */
+#cliq-spotlight > div{min-height:600px !important;align-items:flex-end !important}
+#cliq-spotlight > div > div[style*="max-width: 600px"]{padding:24px 22px 26px !important;gap:12px !important}
+#cliq-spotlight h2{font-size:64px !important;line-height:.9 !important}
+#cliq-spotlight h2 br{display:none}
+#cliq-spotlight h2 span{display:block}
+#cliq-spotlight p[style*="max-width: 440px"]{display:none}
+.cs-lede-m{display:block;margin:0;font-size:16px;line-height:1.45;color:rgba(255,255,255,.88)}
+#cliq-spotlight .lu-ghost{display:none !important}
+#cliq-spotlight div[style*="padding-top: 8px"]{padding-top:4px !important}
+#cliq-teaser + div{background:linear-gradient(180deg,rgba(0,0,0,0) 30%,rgba(0,0,0,.55) 58%,rgba(0,0,0,.9) 100%) !important}
 /* New launch card on phones */
 .nl-eb-more{display:none}
 .nl-eyebrow{font-size:11px !important;top:auto !important;bottom:44px !important;left:20px !important}
@@ -350,11 +388,10 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 /* The lineup cards: shorter on phones */
 .lu-card{padding:20px !important}
 .lu-num{white-space:nowrap}
-.lu-media{height:198px !important;margin:0 0 6px !important}
-.lu-media .lu-dev{zoom:.66}
-.lu-media::before{width:200px !important;height:200px !important}
-.lu-link{min-height:38px !important}
-.lu-name{font-size:44px !important}
+.lu-media{height:290px !important;margin:0 0 8px !important}
+.lu-kicker,.lu-tag{display:none !important}
+.lu-link{display:none !important}
+.lu-name{font-size:44px !important;margin-top:0 !important}
 .lu-tag{min-height:0 !important;margin-top:8px !important;font-size:14px !important}
 .lu-specs{margin-top:12px !important}
 .lu-specs li{padding:7px 0 !important}
@@ -369,9 +406,25 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 #hero-video{top:calc(var(--hv-top,290px)) !important;height:calc(100% - 290px - 205px) !important;object-position:var(--hv-x,68%) 50% !important;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%) !important;mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%) !important}
 #hero-video + div{display:none}
 div[style*="left: 50%; bottom: 110px"]{display:none !important}
-.au-code{font-size:13px !important;letter-spacing:.06em !important}
-.au-stage{height:360px !important}
-.au-ok{bottom:2px !important;right:4% !important}
+/* Is your BERI real? on phones: smaller label, short intro, steps as one compact list */
+.au-card{padding:28px 20px !important;gap:20px !important}
+.au-stage{height:250px !important;overflow:visible}
+.au-label{width:236px !important;padding:16px !important;transform:rotate(-6deg) scale(.92) !important}
+.au-ring{display:none}
+.au-code{font-size:12px !important;letter-spacing:.04em !important;height:44px !important;margin-top:12px !important}
+.au-ltitle{margin-top:12px !important}
+.au-ok{bottom:0 !important;right:6% !important}
+.au-copy{gap:14px !important}
+.au-title{font-size:52px !important}
+.au-lede{display:none}
+.au-lede-m{display:block;margin:0;font-size:16px;line-height:1.45;color:#B0ACA5}
+.au-steps{gap:0 !important;margin:0 !important;border-top:1px solid rgba(242,194,48,.25)}
+.au-steps li{flex-direction:row !important;align-items:center !important;gap:12px !important;padding:12px 0 !important;border:0 !important;border-bottom:1px solid rgba(242,194,48,.25) !important;border-radius:0 !important;background:none !important}
+.au-steps li span{display:none}
+.au-steps li b{font-size:22px !important;min-width:30px}
+.au-ctas{flex-direction:column;align-items:stretch !important;gap:8px !important}
+.au-btn{justify-content:center}
+.au-note{text-align:center}
 }
 
 @media (max-width:380px){.top-nav{margin:0 6px;padding-left:10px !important}.top-nav .pill-link{padding:0 6px !important;font-size:12.5px}.top-nav .pill-cta{padding:0 11px !important}.top-nav>a:first-child img{height:26px !important}}
@@ -524,6 +577,7 @@ div[style*="left: 50%; bottom: 110px"]{display:none !important}
 <span style="align-self: flex-start; font-size: 12px; font-weight: 700; letter-spacing: 0.32em; color: #062A16; background: #5BE39A; padding: 8px 14px; border-radius: 999px">NEW · BERI CLIQ</span>
 <h2 style="margin: 0; font-family: var(--display); font-weight: 400; font-size: 120px; line-height: 0.88; text-transform: uppercase">Find your<br><span style="color: #5BE39A">Cliq.</span></h2>
 <p style="margin: 0; max-width: 440px; font-size: 18px; color: rgba(255,255,255,0.86)">Up to 50,000 puffs, a 360° crystal tank and a refillable pod, in 25 flavors.</p>
+<p class="cs-lede-m">50,000 puffs. 360° crystal tank. 25 flavors.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 8px">
 <a class="lu-cta" href="Cliq.dc.html" style="min-height: 56px; padding: 0 28px; background: #FFFFFF; color: #0F7A42">Explore BERI Cliq →</a>
 <a class="lu-cta lu-ghost" href="Cliq.dc.html#flavors" style="min-height: 56px; padding: 0 28px">See all 25 flavors</a>
@@ -572,6 +626,8 @@ div[style*="left: 50%; bottom: 110px"]{display:none !important}
 <span style="align-self: flex-start; font-size: 12px; font-weight: 700; letter-spacing: 0.32em; color: #3B1478; background: #D8C8FF; padding: 8px 14px; border-radius: 999px">WHOLESALE</span>
 <h2 style="margin: 0; font-family: var(--display); font-weight: 400; font-size: 120px; line-height: 0.88; text-transform: uppercase">Stock<br><span style="color: #D8C8FF">BERI.</span></h2>
 <p style="margin: 0; max-width: 480px; font-size: 18px; color: #E6DDFB">Retailers and distributors: get wholesale pricing, availability and authentic BERI supply across the full lineup.</p>
+<p class="ws-lede-m">Wholesale pricing and authentic supply across the full lineup.</p>
+<p class="ws-line-m">Cliq · Crush · Cirql · E-liquid<span>4 formats · 85 flavors</span></p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px 28px; font-size: 15px; font-weight: 600; color: #FFFFFF">
 <span style="display: inline-flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D8C8FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>Wholesale pricing</span>
 <span style="display: inline-flex; align-items: center; gap: 8px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#D8C8FF" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>All four product lines</span>
@@ -666,6 +722,7 @@ div[style*="left: 50%; bottom: 110px"]{display:none !important}
 <span class="au-eyebrow">AUTHENTICITY CHECK</span>
 <h2 class="au-title">Is your<br><span>BERI real?</span></h2>
 <p class="au-lede">Every genuine BERI box carries a security label. Scratch it, enter the code and check your device in seconds.</p>
+<p class="au-lede-m">Scratch the label, enter the code, see the result in seconds.</p>
 <ol class="au-steps">
 <li><b>01</b><strong>Scratch the label</strong><span>Find the security label on your BERI box and scratch off the coating.</span></li>
 <li><b>02</b><strong>Enter the code</strong><span>Type the code exactly as printed.</span></li>
