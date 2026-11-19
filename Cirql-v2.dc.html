@@ -368,7 +368,7 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 <sc-if value="{{p.hasVideo}}" hint-placeholder-val="{{false}}">
 <section id="video-hero" aria-label="BERI {{p.name}} reveal" style="{{vTrackStyle}}">
 <div style="{{vStageStyle}}">
-<video id="product-video" data-mode="{{p.videoMode}}" src="{{p.video}}" poster="{{p.poster}}" aria-label="BERI {{p.name}} product reveal" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #000000"></video>
+<video id="product-video" muted="" playsinline="" data-mode="{{p.videoMode}}" src="{{p.video}}" poster="{{p.poster}}" aria-label="BERI {{p.name}} product reveal" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #000000"></video>
 <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(90deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.3) 42%, rgba(0,0,0,0) 68%)"></div>
 <sc-for list="{{chapters}}" as="ch" hint-placeholder-count="1">
 <div style="{{ch.style}}">
@@ -607,7 +607,7 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 
 <section id="specs" class="{{p.specClass}}" style="position: relative; overflow: hidden; scroll-margin-top: 120px">
 <sc-if value="{{p.hasSpecVideo}}" hint-placeholder-val="{{false}}">
-<video class="spec-video" data-mode="{{p.specVideoMode}}" data-rate="{{p.specRate}}" src="{{p.specVideo}}" poster="{{p.specPoster}}" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #000000"></video>
+<video class="spec-video" muted="" playsinline="" data-mode="{{p.specVideoMode}}" data-rate="{{p.specRate}}" src="{{p.specVideo}}" poster="{{p.specPoster}}" aria-hidden="true" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; background: #000000"></video>
 </sc-if>
 <div style="position: relative; max-width: 1320px; margin: 0 auto; padding: 120px 32px; display: flex; flex-wrap: wrap; gap: 40px 64px; justify-content: space-between; align-items: flex-start">
 <div style="{{p.specIntroStyle}}">

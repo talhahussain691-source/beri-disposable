@@ -43,6 +43,35 @@
     });
   }
 
+  // Subtrees with no {{holes}}, <sc-for> or <sc-if> never change between renders. They are cloned once and
+  // skipped on every later render, so a scroll frame only rebuilds the parts of the page that can change.
+  const STATIC = new WeakMap();
+  function isStatic(node) {
+    if (STATIC.has(node)) return STATIC.get(node);
+    let ok;
+    if (node.nodeType === 3) ok = node.nodeValue.indexOf('{{') < 0;
+    else if (node.nodeType !== 1) ok = true;
+    else if (node.localName === 'sc-for' || node.localName === 'sc-if') ok = false;
+    else {
+      ok = !Array.from(node.attributes).some((a) => a.value.indexOf('{{') >= 0);
+      if (ok) for (const c of node.childNodes) { if (!isStatic(c)) { ok = false; break; } }
+    }
+    STATIC.set(node, ok);
+    return ok;
+  }
+
+  function cloneStatic(node) {
+    const el = node.cloneNode(true);
+    const all = [el].concat(Array.from(el.querySelectorAll('*')));
+    all.forEach((e) => {
+      Array.from(e.attributes).forEach((a) => { if (a.name.startsWith('hint-')) e.removeAttribute(a.name); });
+      if (e.hasAttribute('href')) e.setAttribute('href', fixHref(e.getAttribute('href')));
+      if (e.localName === 'video' && e.hasAttribute('muted')) e.muted = true;
+    });
+    el.__dcStat = node;
+    return el;
+  }
+
   // Template -> virtual nodes: { text } or { tag, ns, attrs: [[name, value]], on: {event: fn}, kids }.
   function build(node, scope, out) {
     if (node.nodeType === 3) {
@@ -50,6 +79,10 @@
       return;
     }
     if (node.nodeType !== 1) return;
+    if (node.parentNode && isStatic(node)) {
+      out.push({ stat: node });
+      return;
+    }
     const tag = node.localName;
     if (tag === 'sc-for') {
       const list = lookup(scope, soleHole(node.getAttribute('list')) || '') || [];
@@ -103,6 +136,7 @@
   }
 
   function create(v) {
+    if (v.stat) return cloneStatic(v.stat);
     if ('text' in v) return document.createTextNode(v.text);
     const el = v.ns && v.ns !== 'http://www.w3.org/1999/xhtml' ? document.createElementNS(v.ns, v.tag) : document.createElement(v.tag);
     v.attrs.forEach(([n, val]) => el.setAttribute(n, val));
@@ -114,11 +148,13 @@
   }
 
   function sameKind(el, v) {
+    if (v.stat) return el.__dcStat === v.stat;
     if ('text' in v) return el.nodeType === 3;
     return el.nodeType === 1 && el.localName === v.tag && el.namespaceURI === (v.ns || 'http://www.w3.org/1999/xhtml');
   }
 
   function patch(el, v) {
+    if (v.stat) return;
     if ('text' in v) {
       if (el.nodeValue !== v.text) el.nodeValue = v.text;
       return;
@@ -192,6 +228,27 @@
     mounted = true;
     if (inst.componentDidMount) inst.componentDidMount();
   }
+
+  // iPhones block autoplay in Low Power Mode and only load a video's frames once it has played. On the first
+  // touch, start the looping videos that should be playing and briefly play/pause the scroll-driven ones.
+  function unlockVideos() {
+    document.removeEventListener('touchstart', unlockVideos, true);
+    document.removeEventListener('click', unlockVideos, true);
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    document.querySelectorAll('video').forEach((v) => {
+      const mode = v.getAttribute('data-mode');
+      const r = v.getBoundingClientRect();
+      const onScreen = r.bottom > 0 && r.top < (window.innerHeight || 800);
+      if (mode === 'play' || (v.loop && onScreen)) {
+        if (v.paused) { const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+      } else if ((mode === 'scrub' || v.id === 'hero-video') && v.readyState < 2) {
+        const p = v.play();
+        if (p && p.then) p.then(() => v.pause(), () => {});
+      }
+    });
+  }
+  document.addEventListener('touchstart', unlockVideos, { capture: true, passive: true });
+  document.addEventListener('click', unlockVideos, true);
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
   else start();
