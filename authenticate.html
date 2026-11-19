@@ -56,6 +56,10 @@ header{padding:6px 0 !important}
 .top-nav .pill-link{padding:0 9px !important;min-height:44px}
 .top-nav .pill-cta{margin-left:4px !important;padding:0 14px !important;min-height:44px}
 .nav-menu{left:-60px !important}
+
+/* Nicotine warning on phones: fixed 54px tall and scrolls away with the page; the logo and menu row stays at the top */
+div[style*="position: sticky; top: 0; z-index: 50"]{top:-54px !important}
+div[style*="position: sticky; top: 0; z-index: 50"] > div:first-child{box-sizing:border-box;height:54px;display:flex;align-items:center;justify-content:center;padding:4px 12px !important;font-size:13.5px !important;line-height:1.3 !important}
 /* Footer: bigger tap areas */
 footer .beri-link{display:inline-block;padding:10px 0}
 footer div:has(> .beri-link){gap:2px 26px !important}
