@@ -735,7 +735,15 @@ class Component extends DCLogic {
       const vw = window.innerWidth || 1440;
       const scrolled = (window.scrollY || 0) > 24;
       const p = progressOf(document.getElementById('video-hero'), vh);
-      const rp = progressOf(document.getElementById('reveal-hero'), vh);
+      const rpT = progressOf(document.getElementById('reveal-hero'), vh);
+      let rp = rpT;
+      if (vw < 900) {
+        const prev = this.rpS == null ? rpT : this.rpS;
+        rp = prev + (rpT - prev) * 0.12;
+        if (Math.abs(rpT - rp) < 0.002) rp = rpT;
+        this.rpS = rp;
+        if (rp !== rpT && !this.rpLoop) this.rpLoop = requestAnimationFrame(() => { this.rpLoop = null; this.measure(); });
+      }
       const video = document.getElementById('product-video');
       if (video && video.duration && this.pinOn() && !this.videoPlay) {
         const t = p * (video.duration - 0.05);
@@ -1279,7 +1287,7 @@ class Component extends DCLogic {
           style: 'flex: 0 0 auto; width: 140px; margin: 0; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 6px 6px 12px; border-radius: 18px; background: #F5F5F5; border-top: 4px solid ' + f.color
         }));
       })(),
-      rTrackStyle: 'position: relative; height: ' + (rPinned ? '2800px' : 'auto'),
+      rTrackStyle: 'position: relative; height: ' + (rPinned ? ((this.state.vw || 1440) < 900 ? '3600px' : '2800px') : 'auto'),
       revealDevices: revealDevices,
       revealNames: revealNames,
       fmtCards: formats.map((f, i) => {
