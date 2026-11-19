@@ -262,6 +262,64 @@ a{color:#111113}a:hover{color:#7A5F14}
 #cliq-spotlight h2,#cliq-spotlight p{text-shadow:0 2px 18px rgba(0,0,0,.55)}
 #cliq-teaser + div{background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.4) 38%,rgba(0,0,0,0) 62%) !important}
 @media (max-width:899px){#cliq-teaser + div{background:linear-gradient(90deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.4) 55%,rgba(0,0,0,.1) 100%) !important}}
+/* MOBILE-FIX START */
+@media (max-width:899px){
+/* Mobile header: logo and links share one pill row, so the logo never floats over the page. */
+header{padding:6px 0 !important}
+.top-nav{display:flex !important;align-items:center;justify-content:space-between;gap:6px;min-height:0 !important;margin:0 10px;padding:6px 6px 6px 14px !important;border-radius:999px;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(16px) saturate(160%);backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,.75);box-shadow:0 10px 26px rgba(17,17,19,.16)}
+.top-nav>a:first-child img{height:30px !important;width:auto}
+.top-nav .nav-pill{padding:0 !important;background:none !important;border:none !important;box-shadow:none !important;-webkit-backdrop-filter:none !important;backdrop-filter:none !important;gap:0 !important}
+.top-nav .nav-pill>a.pill-link:first-child{display:none}
+.top-nav .pill-link{padding:0 9px !important;min-height:44px}
+.top-nav .pill-cta{margin-left:4px !important;padding:0 14px !important;min-height:44px}
+.nav-menu{left:-60px !important}
+/* Footer: bigger tap areas */
+footer .beri-link{display:inline-block;padding:10px 0}
+footer div:has(> .beri-link){gap:2px 26px !important}
+footer a[href^="mailto"]{display:inline-block;padding:9px 0}
+.top-nav>a:first-child{padding:7px 0}
+
+/* Less empty space between sections */
+section[style*="padding: 0 32px 120px"],section[style*="padding: 0 32px 140px"],section[style*="padding: 0 0 120px"],section[style*="padding: 0 32px 100px"],section[style*="padding: 48px 32px 100px"]{padding-bottom:64px !important}
+[style*="padding: 140px 32px"],[style*="padding: 120px 32px"]:not([style*="padding: 120px 32px 0"]){padding-top:72px !important;padding-bottom:72px !important}
+section[style*="padding: 120px 32px 0"]{padding-top:72px !important}
+footer > div[style*="56px 32px 140px"]{padding-bottom:56px !important}
+[style*="padding: 170px 32px 120px"],[style*="padding: 180px 32px 110px"]{padding-top:116px !important;padding-bottom:64px !important}
+/* Wholesale buttons keep their arrow on the same line */
+a[href*="holesale"]{white-space:nowrap}
+/* Breadcrumb and contact links: bigger tap areas without moving the layout */
+a[style="color: var(--mute); text-decoration: none"]{display:inline-block;padding:14px 6px;margin:-14px -6px}
+a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
+/* Product heroes: chapter lines fit the screen */
+.v-title{width:auto !important;max-width:100%}
+#video-hero span[style*="letter-spacing: 0.32em"]{width:auto !important;max-width:100%;letter-spacing:.18em !important;font-size:12px !important}
+/* Flavor tabs on one swipeable line */
+[aria-label="Flavor collections"]{flex-wrap:nowrap !important;overflow-x:auto;scrollbar-width:none;margin-right:-20px;padding-right:20px;-webkit-overflow-scrolling:touch}
+[aria-label="Flavor collections"]::-webkit-scrollbar{display:none}
+[aria-label="Flavor collections"] > button{flex:0 0 auto;white-space:nowrap}
+/* Flavor grid: two rows that swipe sideways instead of one long list */
+.fx-grid{display:grid !important;grid-auto-flow:column;grid-template-rows:repeat(2,auto);grid-template-columns:none !important;grid-auto-columns:42%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px;margin-right:-20px;padding-right:20px}
+.fx-grid::-webkit-scrollbar{display:none}
+.fx-grid > *{scroll-snap-align:start}
+.au-lfoot,.au-ltitle,.lu-badge,.nl-eyebrow,.pw-tag,.ws-chip,.ws-count,.ws-kind{font-size:12px !important}
+[style*="font-size: 11px"],[style*="font-size: 10px"]{font-size:12px !important}
+
+/* Hero on phones: logo on top, the product clip in the middle, headline and button at the bottom, all centred. */
+.hero-copy{bottom:64px !important;align-items:center;text-align:center}
+.hero-copy>span:first-child{letter-spacing:.16em !important;font-size:12px !important}
+.hero-logo{margin:0 auto}
+.hero-tag{margin-top:auto !important;text-shadow:0 0 18px rgba(255,255,255,.8)}
+.hero-cta{align-self:center !important}
+#hero-video{top:calc(var(--hv-top,290px)) !important;height:calc(100% - 290px - 205px) !important;object-position:var(--hv-x,68%) 50% !important;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%) !important;mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%) !important}
+#hero-video + div{display:none}
+div[style*="left: 50%; bottom: 110px"]{display:none !important}
+.au-code{font-size:13px !important;letter-spacing:.06em !important}
+.au-stage{height:360px !important}
+.au-ok{bottom:2px !important;right:4% !important}
+}
+
+@media (max-width:380px){.top-nav{margin:0 6px;padding-left:10px !important}.top-nav .pill-link{padding:0 6px !important;font-size:12.5px}.top-nav .pill-cta{padding:0 11px !important}.top-nav>a:first-child img{height:26px !important}}
+/* MOBILE-FIX END */
 </style>
 
 </head>
@@ -635,6 +693,19 @@ class Component extends DCLogic {
         else if (!hv.seeking && hv.readyState >= 2) vp = Math.min(1, Math.max(0, hv.currentTime / span));
         // One seek at a time: a new target waits for "seeked", so a fast scroll never queues up stale seeks.
         if (!hv.seeking && Math.abs(hv.currentTime - ht) > 0.01) hv.currentTime = ht;
+        // Phones: each product sits at a different spot in the clip (Cliq 62%, Crush 69%, Cirql 71% across),
+        // so slide the clip to keep the frame's product centred. Only the phone stylesheet reads --hv-x.
+        if (vw < 900 && hv.videoWidth && hv.clientHeight) {
+          const keys = [[0, 0.625], [5.4, 0.625], [6.0, 0.69], [10.9, 0.69], [11.5, 0.71], [17, 0.70]];
+          const tNow = hv.currentTime || 0;
+          let fx = keys[keys.length - 1][1];
+          for (let k = 1; k < keys.length; k++) {
+            if (tNow <= keys[k][0]) { const a = keys[k - 1], b = keys[k]; fx = a[1] + (b[1] - a[1]) * ((tNow - a[0]) / (b[0] - a[0])); break; }
+          }
+          const shownW = hv.clientHeight * hv.videoWidth / hv.videoHeight;
+          const spare = shownW - hv.clientWidth;
+          if (spare > 0) document.documentElement.style.setProperty('--hv-x', Math.min(100, Math.max(0, (fx * shownW - hv.clientWidth / 2) / spare * 100)).toFixed(2) + '%');
+        }
       } else if (!hv || !hv.duration) {
         vp = 0;
       }

@@ -137,7 +137,7 @@ a{color:#111113}a:hover{color:#7A5F14}
 .pill-cta{display:inline-flex;align-items:center;min-height:44px;margin-left:8px;padding:0 22px;border-radius:999px;background:#111113;color:#FFFFFF !important;font-weight:600;text-decoration:none;transition:background .2s ease}
 .pill-cta:hover{background:#C81E64;color:#FFFFFF}
 #video-hero{margin-top:-80px}
-@media (max-width:899px){#video-hero{margin-top:-132px}.top-nav{grid-template-columns:minmax(0,1fr);row-gap:10px;padding:10px 12px 12px !important}.top-nav>span{display:none}.nav-pill{justify-self:center;font-size:13px;padding:5px 5px 5px 8px}.pill-link{padding:0 8px;gap:4px}.pill-cta{margin-left:4px;padding:0 14px;min-height:40px}}
+@media (max-width:899px){#video-hero{margin-top:-68px}.top-nav{grid-template-columns:minmax(0,1fr);row-gap:10px;padding:10px 12px 12px !important}.top-nav>span{display:none}.nav-pill{justify-self:center;font-size:13px;padding:5px 5px 5px 8px}.pill-link{padding:0 8px;gap:4px}.pill-cta{margin-left:4px;padding:0 14px;min-height:40px}}
 
 /* Flavor showcase: packaging shot of the picked flavor, then every flavor as a card */
 .fx-feature{position:relative;isolation:isolate;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);align-items:center;gap:40px;min-height:500px;box-sizing:border-box;padding:48px 64px;border-radius:32px;background:linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.015));border:1px solid rgba(255,255,255,.1)}
@@ -225,6 +225,66 @@ a{color:#111113}a:hover{color:#7A5F14}
 .t-crush .wh-card{background:linear-gradient(90deg,rgba(255,212,0,.7) 0%,rgba(255,212,0,.7) 46%,rgba(255,212,0,0) 62%),url("assets/blob/a3007b0e52e20d1e7d123c144d72789b.webp") right center/cover no-repeat,#FFD400 !important}
 .t-crush .wh-glow{opacity:.35}
 @media (max-width:899px){.t-crush .fx-feature{background:linear-gradient(180deg,rgba(11,11,13,0) 38%,rgba(11,11,13,.82) 58%,rgba(11,11,13,.92) 100%),url("assets/blob/c4f663b078e0cdcc5c3f5bb2b97931cd.webp") 15% top/auto 62% no-repeat,#0B0B0D !important}.t-crush .wh-card{background:linear-gradient(180deg,#FFD400 0%,rgba(255,212,0,.9) 46%,rgba(255,212,0,0) 68%),url("assets/blob/a3007b0e52e20d1e7d123c144d72789b.webp") 88% bottom/auto 58% no-repeat,#FFD400 !important}}
+/* MOBILE-FIX START */
+@media (max-width:899px){
+/* Mobile header: logo and links share one pill row, so the logo never floats over the page. */
+header{padding:6px 0 !important}
+.top-nav{display:flex !important;align-items:center;justify-content:space-between;gap:6px;min-height:0 !important;margin:0 10px;padding:6px 6px 6px 14px !important;border-radius:999px;background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(16px) saturate(160%);backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,.75);box-shadow:0 10px 26px rgba(17,17,19,.16)}
+.top-nav>a:first-child img{height:30px !important;width:auto}
+.top-nav .nav-pill{padding:0 !important;background:none !important;border:none !important;box-shadow:none !important;-webkit-backdrop-filter:none !important;backdrop-filter:none !important;gap:0 !important}
+.top-nav .nav-pill>a.pill-link:first-child{display:none}
+.top-nav .pill-link{padding:0 9px !important;min-height:44px}
+.top-nav .pill-cta{margin-left:4px !important;padding:0 14px !important;min-height:44px}
+.nav-menu{left:-60px !important}
+/* Footer: bigger tap areas */
+footer .beri-link{display:inline-block;padding:10px 0}
+footer div:has(> .beri-link){gap:2px 26px !important}
+footer a[href^="mailto"]{display:inline-block;padding:9px 0}
+.top-nav>a:first-child{padding:7px 0}
+
+/* Less empty space between sections */
+section[style*="padding: 0 32px 120px"],section[style*="padding: 0 32px 140px"],section[style*="padding: 0 0 120px"],section[style*="padding: 0 32px 100px"],section[style*="padding: 48px 32px 100px"]{padding-bottom:64px !important}
+[style*="padding: 140px 32px"],[style*="padding: 120px 32px"]:not([style*="padding: 120px 32px 0"]):not([style*="sticky"]){padding-top:72px !important;padding-bottom:72px !important}
+section[style*="padding: 120px 32px 0"]{padding-top:72px !important}
+footer > div[style*="56px 32px 140px"]{padding-bottom:56px !important}
+[style*="padding: 170px 32px 120px"],[style*="padding: 180px 32px 110px"]{padding-top:116px !important;padding-bottom:64px !important}
+/* Wholesale buttons keep their arrow on the same line */
+a[href*="holesale"]{white-space:nowrap}
+/* Breadcrumb and contact links: bigger tap areas without moving the layout */
+a[style="color: var(--mute); text-decoration: none"]{display:inline-block;padding:14px 6px;margin:-14px -6px}
+a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
+/* Product heroes: chapter lines fit the screen */
+.v-title{width:auto !important;max-width:100%}
+#video-hero span[style*="letter-spacing: 0.32em"]{width:auto !important;max-width:100%;letter-spacing:.18em !important;font-size:12px !important}
+
+/* Product heroes: headline and buttons sit at the bottom so the clip shows clearly above them */
+#video-hero div[style*="bottom: 210px"]{bottom:124px !important}
+#video-hero div[style*="bottom: 140px"]{bottom:48px !important}
+#video-hero div[style*="right: 6vw; bottom: 150px"]{display:none !important}
+#product-video + div{background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.55) 68%,rgba(0,0,0,.82) 100%) !important}
+
+/* Product reveal: content starts under the header so the product logo is never cut; the breadcrumb, badge and
+   intro paragraph are left out on phones so the logo, stats, buttons and the devices fit one screen. */
+#reveal-hero > div{align-items:flex-start !important;padding-top:136px !important}
+#reveal-hero > div > div > div:first-child{gap:16px !important}
+#reveal-hero > div > div > div:nth-child(2){margin-top:-110px !important}
+#reveal-hero > div > div > div:first-child > nav,#reveal-hero > div > div > div:first-child > span,#reveal-hero > div > div > div:first-child > p{display:none !important}
+/* Flavor tabs on one swipeable line */
+[aria-label="Flavor collections"]{flex-wrap:nowrap !important;overflow-x:auto;scrollbar-width:none;margin-right:-20px;padding-right:20px;-webkit-overflow-scrolling:touch}
+[aria-label="Flavor collections"]::-webkit-scrollbar{display:none}
+[aria-label="Flavor collections"] > button{flex:0 0 auto;white-space:nowrap}
+/* Flavor grid: two rows that swipe sideways instead of one long list */
+.fx-grid{display:grid !important;grid-auto-flow:column;grid-template-rows:repeat(2,auto);grid-template-columns:none !important;grid-auto-columns:42%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px;margin-right:-20px;padding-right:20px}
+.fx-grid::-webkit-scrollbar{display:none}
+.fx-grid > *{scroll-snap-align:start}
+.xl-kicker{font-size:12px !important}
+[style*="font-size: 11px"],[style*="font-size: 10px"]{font-size:12px !important}
+
+#reveal-hero > div > div > div:nth-child(2){margin-top:-50px !important}
+}
+
+@media (max-width:380px){.top-nav{margin:0 6px;padding-left:10px !important}.top-nav .pill-link{padding:0 6px !important;font-size:12.5px}.top-nav .pill-cta{padding:0 11px !important}.top-nav>a:first-child img{height:26px !important}}
+/* MOBILE-FIX END */
 </style>
 
 </head>
@@ -1143,7 +1203,7 @@ class Component extends DCLogic {
       const s1 = slots[i][1];
       const w = weights[i] * spot;
       const x = lerp(s0[0], s1[0], fanT) * kx;
-      const y = lerp(s0[1], s1[1], fanT) - 26 * w;
+      const y = lerp(s0[1], s1[1], fanT) - 26 * w - (narrow ? 70 : 0);
       const r = lerp(s0[2], s1[2], fanT) * (1 - 0.6 * w);
       const sc = lerp(s0[3], s1[3], fanT) + 0.14 * w - 0.05 * spot * (1 - weights[i]);
       const op = lerp(s0[4], s1[4], fanT) * (1 - 0.4 * spot * (1 - weights[i]));
