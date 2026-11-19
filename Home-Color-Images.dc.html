@@ -266,6 +266,8 @@ a{color:#111113}a:hover{color:#7A5F14}
 #cliq-teaser + div{background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.4) 38%,rgba(0,0,0,0) 62%) !important}
 @media (max-width:899px){#cliq-teaser + div{background:linear-gradient(90deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.4) 55%,rgba(0,0,0,.1) 100%) !important}}
 /* MOBILE-FIX START */
+.nl-lede-m{display:none}
+.nl-photo img.nl-photo-m{display:none}
 @media (max-width:899px){
 /* Mobile header: logo and links share one pill row, so the logo never floats over the page. */
 header{padding:6px 0 !important}
@@ -284,7 +286,7 @@ footer a[href^="mailto"]{display:inline-block;padding:9px 0}
 
 /* Less empty space between sections */
 section[style*="padding: 0 32px 120px"],section[style*="padding: 0 32px 140px"],section[style*="padding: 0 0 120px"],section[style*="padding: 0 32px 100px"],section[style*="padding: 48px 32px 100px"]{padding-bottom:64px !important}
-[style*="padding: 140px 32px"],[style*="padding: 120px 32px"]:not([style*="padding: 120px 32px 0"]){padding-top:72px !important;padding-bottom:72px !important}
+[style*="padding: 140px 32px"],[style*="padding: 120px 32px"]:not([style*="padding: 120px 32px 0"]):not([style*="sticky"]){padding-top:72px !important;padding-bottom:72px !important}
 section[style*="padding: 120px 32px 0"]{padding-top:72px !important}
 footer > div[style*="56px 32px 140px"]{padding-bottom:56px !important}
 [style*="padding: 170px 32px 120px"],[style*="padding: 180px 32px 110px"]{padding-top:116px !important;padding-bottom:64px !important}
@@ -296,6 +298,27 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 /* Product heroes: chapter lines fit the screen */
 .v-title{width:auto !important;max-width:100%}
 #video-hero span[style*="letter-spacing: 0.32em"]{width:auto !important;max-width:100%;letter-spacing:.18em !important;font-size:12px !important}
+
+/* Product heroes: headline and buttons sit at the bottom so the clip shows clearly above them */
+#video-hero div[style*="bottom: 210px"]{bottom:124px !important}
+#video-hero div[style*="bottom: 140px"]{bottom:48px !important}
+#video-hero div[style*="right: 6vw; bottom: 150px"]{display:none !important}
+#product-video + div{background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.55) 68%,rgba(0,0,0,.82) 100%) !important}
+
+/* Product reveal: content starts under the header so the product logo is never cut; the breadcrumb, badge and
+   intro paragraph are left out on phones so the logo, stats, buttons and the devices fit one screen. */
+#reveal-hero > div{align-items:flex-start !important;padding-top:136px !important}
+#reveal-hero > div > div > div:first-child{gap:16px !important}
+#reveal-hero > div > div > div:nth-child(2){margin-top:-70px !important}
+#reveal-hero > div > div > div:first-child > nav,#reveal-hero > div > div > div:first-child > span,#reveal-hero > div > div > div:first-child > p{display:none !important}
+
+/* Product reveal, compact so the devices show on small phones too */
+#reveal-hero .p-logo{max-height:96px;width:auto !important;max-width:100% !important}
+#reveal-hero img[alt^="Normal Mode"]{width:70% !important}
+#reveal-hero div[style*="repeat(4, minmax(0, 1fr))"] > div{padding-top:10px !important}
+#reveal-hero div[style*="repeat(4, minmax(0, 1fr))"] span[style*="font-size: 30px"]{font-size:clamp(18px,5.6vw,24px) !important}
+#reveal-hero .btn-alt{display:none !important}
+#reveal-hero .btn-main{min-height:50px !important}
 /* Flavor tabs on one swipeable line */
 [aria-label="Flavor collections"]{flex-wrap:nowrap !important;overflow-x:auto;scrollbar-width:none;margin-right:-20px;padding-right:20px;-webkit-overflow-scrolling:touch}
 [aria-label="Flavor collections"]::-webkit-scrollbar{display:none}
@@ -307,6 +330,39 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 .au-lfoot,.au-ltitle,.lu-badge,.nl-eyebrow,.pw-tag,.ws-chip,.ws-count,.ws-kind{font-size:12px !important}
 [style*="font-size: 11px"],[style*="font-size: 10px"]{font-size:12px !important}
 
+/* New launch card on phones */
+.nl-eb-more{display:none}
+.nl-eyebrow{font-size:11px !important;top:auto !important;bottom:44px !important;left:20px !important}
+.nl-photo{aspect-ratio:3/4 !important}
+.nl-photo img.nl-photo-d{display:none}
+.nl-photo img.nl-photo-m{display:block;object-position:50% 50%}
+.nl-info{gap:18px !important;padding:0 20px 26px !important}
+.nl-title{font-size:48px !important}
+.nl-lede{display:none}
+.nl-lede-m{display:block;margin:0;font-size:15px;line-height:1.5;color:rgba(255,255,255,.84)}
+.nl-side{gap:14px !important}
+.nl-stats{grid-template-columns:repeat(4,minmax(0,1fr)) !important}
+.nl-stats li{padding:12px 6px 12px 0 !important;gap:4px !important}
+.nl-stats li+li{padding-left:8px !important;border-left:1px solid rgba(242,194,48,.25) !important}
+.nl-stats li:nth-child(n+3){border-top:0 !important}
+.nl-sv{font-size:22px !important}
+.nl-sk{font-size:11px !important;line-height:1.3}
+.nl-ctas{flex-direction:column;align-items:flex-start;gap:4px !important}
+.nl-btn{min-height:52px !important}
+.nl-ghost{min-height:40px !important;padding:0 4px !important;border:0 !important;text-decoration:underline;text-underline-offset:4px}
+/* The lineup cards: shorter on phones */
+.lu-card{padding:20px !important}
+.lu-num{white-space:nowrap}
+.lu-media{height:198px !important;margin:0 0 6px !important}
+.lu-media .lu-dev{zoom:.66}
+.lu-media::before{width:200px !important;height:200px !important}
+.lu-link{min-height:38px !important}
+.lu-name{font-size:44px !important}
+.lu-tag{min-height:0 !important;margin-top:8px !important;font-size:14px !important}
+.lu-specs{margin-top:12px !important}
+.lu-specs li{padding:7px 0 !important}
+.lu-foot{padding-top:14px !important;gap:0 !important}
+.lu-btn{min-height:46px !important}
 /* Hero on phones: logo on top, the product clip in the middle, headline and button at the bottom, all centred. */
 .hero-copy{bottom:64px !important;align-items:center;text-align:center}
 .hero-copy>span:first-child{letter-spacing:.16em !important;font-size:12px !important}
@@ -428,8 +484,9 @@ div[style*="left: 50%; bottom: 110px"]{display:none !important}
 <section id="new-launch" aria-label="New launch: BERI Cirql" style="padding: 0 32px 120px">
 <div class="nl-card" data-reveal="up">
 <div class="nl-photo">
-<img src="/_blob/f212e0000e23b0c4c76ff5739b8bf337" alt="BERI Cirql electronic hookah in Blueberry Ice, Lady Killer and orange, on a stone table with blueberries, strawberries, mango, watermelon, smoke and a lantern">
-<span class="nl-eyebrow"><span class="nl-dot"></span>NEW LAUNCH · E-HOOKAH SERIES</span>
+<img class="nl-photo-m" src="/_blob/566d736032d8362618d2f283ea7058d9" alt="BERI Cirql electronic hookah: three devices on a stone table with fruit, smoke and a lantern" loading="lazy">
+<img class="nl-photo-d" src="/_blob/f212e0000e23b0c4c76ff5739b8bf337" alt="BERI Cirql electronic hookah in Blueberry Ice, Lady Killer and orange, on a stone table with blueberries, strawberries, mango, watermelon, smoke and a lantern">
+<span class="nl-eyebrow"><span class="nl-dot"></span><span>NEW LAUNCH<span class="nl-eb-more"> · E-HOOKAH SERIES</span></span></span>
 </div>
 <div class="nl-info">
 <div class="nl-spin" aria-hidden="true">
@@ -439,6 +496,7 @@ div[style*="left: 50%; bottom: 110px"]{display:none !important}
 <div class="nl-copy">
 <h2 class="nl-title">Shisha,<br><span>reimagined.</span></h2>
 <p class="nl-lede">Meet BERI Cirql. Hookah-style flavor without the setup: up to 150,000 puffs through a quad-mesh coil, with Regular and Boost modes. Built for after hours.</p>
+<p class="nl-lede-m">Hookah flavor, no setup. Up to 150,000 puffs.</p>
 </div>
 <div class="nl-side">
 <ul class="nl-stats">
