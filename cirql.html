@@ -302,8 +302,16 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
    intro paragraph are left out on phones so the logo, stats, buttons and the devices fit one screen. */
 #reveal-hero > div{align-items:flex-start !important;padding-top:136px !important}
 #reveal-hero > div > div > div:first-child{gap:16px !important}
-#reveal-hero > div > div > div:nth-child(2){margin-top:-110px !important}
+#reveal-hero > div > div > div:nth-child(2){margin-top:-70px !important}
 #reveal-hero > div > div > div:first-child > nav,#reveal-hero > div > div > div:first-child > span,#reveal-hero > div > div > div:first-child > p{display:none !important}
+
+/* Product reveal, compact so the devices show on small phones too */
+#reveal-hero .p-logo{max-height:96px;width:auto !important;max-width:100% !important}
+#reveal-hero img[alt^="Normal Mode"]{width:70% !important}
+#reveal-hero div[style*="repeat(4, minmax(0, 1fr))"] > div{padding-top:10px !important}
+#reveal-hero div[style*="repeat(4, minmax(0, 1fr))"] span[style*="font-size: 30px"]{font-size:clamp(18px,5.6vw,24px) !important}
+#reveal-hero .btn-alt{display:none !important}
+#reveal-hero .btn-main{min-height:50px !important}
 /* Flavor tabs on one swipeable line */
 [aria-label="Flavor collections"]{flex-wrap:nowrap !important;overflow-x:auto;scrollbar-width:none;margin-right:-20px;padding-right:20px;-webkit-overflow-scrolling:touch}
 [aria-label="Flavor collections"]::-webkit-scrollbar{display:none}
