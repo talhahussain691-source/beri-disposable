@@ -285,9 +285,9 @@ footer a[href^="mailto"]{display:inline-block;padding:9px 0}
 .top-nav>a:first-child{padding:7px 0}
 
 /* Less empty space between sections */
-section[style*="padding: 0 32px 120px"],section[style*="padding: 0 32px 140px"],section[style*="padding: 0 0 120px"],section[style*="padding: 0 32px 100px"],section[style*="padding: 48px 32px 100px"]{padding-bottom:64px !important}
-[style*="padding: 140px 32px"],[style*="padding: 120px 32px"]:not([style*="padding: 120px 32px 0"]):not([style*="sticky"]){padding-top:72px !important;padding-bottom:72px !important}
-section[style*="padding: 120px 32px 0"]{padding-top:72px !important}
+section[style*="padding: 0 32px 120px"],section[style*="padding: 0 32px 140px"],section[style*="padding: 0 0 120px"],section[style*="padding: 0 32px 100px"],section[style*="padding: 48px 32px 100px"]{padding-bottom:48px !important}
+[style*="padding: 140px 32px"],[style*="padding: 120px 32px"]:not([style*="padding: 120px 32px 0"]):not([style*="sticky"]){padding-top:52px !important;padding-bottom:52px !important}
+section[style*="padding: 120px 32px 0"]{padding-top:52px !important}
 footer > div[style*="56px 32px 140px"]{padding-bottom:56px !important}
 [style*="padding: 170px 32px 120px"],[style*="padding: 180px 32px 110px"]{padding-top:116px !important;padding-bottom:64px !important}
 /* Wholesale buttons keep their arrow on the same line */
@@ -319,16 +319,62 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 #reveal-hero div[style*="repeat(4, minmax(0, 1fr))"] span[style*="font-size: 30px"]{font-size:clamp(18px,5.6vw,24px) !important}
 #reveal-hero .btn-alt{display:none !important}
 #reveal-hero .btn-main{min-height:50px !important}
+
+/* Technical specifications: smaller heading, short padding, and every row as an even label | value grid */
+#specs h2{font-size:clamp(40px,13vw,56px) !important;line-height:.95 !important}
+#specs p{font-size:15px !important;line-height:1.5 !important}
+#specs > div > div:last-child{padding:8px 20px !important;box-sizing:border-box;width:100% !important}
+#specs > div > div:last-child > div{display:grid !important;grid-template-columns:minmax(0,44%) minmax(0,1fr);align-items:baseline;gap:4px 12px !important;padding:12px 0 !important;font-size:14px !important;line-height:1.35}
+#specs > div > div:last-child > div > span:first-child{font-size:13px !important}
+#specs > div > div:last-child > div > span:last-child{text-align:right}
+
+/* Highlight tiles: two columns instead of one tall column; an odd last tile spans the row */
+main section[aria-label$=" highlights"] ul.feat-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n){grid-column:auto !important;flex-direction:column !important;align-items:center !important;justify-content:center !important;text-align:center;gap:8px !important;padding:14px 10px !important;min-height:0 !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n):last-child:nth-child(odd){grid-column:1/-1 !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)[data-kind=badge]:last-child:nth-child(odd){justify-self:center;width:calc(50% - 5px)}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) img{height:44px !important;width:auto !important;max-width:100% !important;margin:0 !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl{padding:0 !important;border:0 !important;align-items:center !important;text-align:center}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl::before,main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl::after{display:none !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl b{font-size:19px !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl > span{font-size:10.5px !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n):has(> img[style^="display: block; width: 100%"]),main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)[data-kind=badge]{padding:6px !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) > img[style^="display: block; width: 100%"],main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)[data-kind=badge] img{height:auto !important;width:100% !important;max-width:100% !important}
+
+/* Product wholesale card on phones: same look, tighter */
+.wh-card{padding:28px 20px 22px !important;gap:18px !important}
+.wh-copy{gap:14px !important}
+.wh-title{font-size:clamp(36px,11.5vw,48px) !important}
+.wh-text{font-size:15px !important;line-height:1.5 !important}
+.wh-points{flex-direction:column;gap:8px !important;font-size:14px !important}
+.wh-btns{flex-direction:column;gap:8px !important;padding-top:4px !important}
+.wh-btn{width:100%;justify-content:center;min-height:52px !important;white-space:nowrap}
+.wh-btn2{justify-content:center;min-height:40px !important;border:0 !important;text-decoration:underline;text-underline-offset:4px}
+.wh-visual{gap:14px !important}
+.wh-img{height:220px !important}
+.wh-stat{min-width:0 !important;flex:1 1 0;padding:8px 6px !important}
+.wh-stat b{font-size:19px !important}
+.wh-stat span{font-size:11px !important}
+.wh-stats{width:100%;flex-wrap:nowrap !important;gap:8px !important}
+
+/* Explore the lineup: kicker on one line, even card heights, less space before the footer */
+.xl-sec{padding-bottom:36px !important}
+.xl-kicker{letter-spacing:.08em !important;font-size:10.5px !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.xl-card{min-height:116px}
 /* Flavor tabs on one swipeable line */
 [aria-label="Flavor collections"]{flex-wrap:nowrap !important;overflow-x:auto;scrollbar-width:none;margin-right:-20px;padding-right:20px;-webkit-overflow-scrolling:touch}
 [aria-label="Flavor collections"]::-webkit-scrollbar{display:none}
 [aria-label="Flavor collections"] > button{flex:0 0 auto;white-space:nowrap}
-/* Flavor grid: two rows that swipe sideways instead of one long list */
-.fx-grid{display:grid !important;grid-auto-flow:column;grid-template-rows:repeat(2,auto);grid-template-columns:none !important;grid-auto-columns:42%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px;margin-right:-20px;padding-right:20px}
-.fx-grid::-webkit-scrollbar{display:none}
-.fx-grid > *{scroll-snap-align:start}
+/* Flavor grid: three columns, every flavor shown going down */
+.fx-grid{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important;grid-auto-flow:row !important;gap:8px !important}
+.fx-grid .fx-card{padding:10px 4px 10px !important;gap:8px !important;border-radius:14px !important}
+.fx-grid .fx-card img{height:clamp(70px,22vw,96px) !important}
+.fx-grid .fx-card span{font-size:10.5px !important;letter-spacing:.02em !important;line-height:1.2 !important}
 .xl-kicker{font-size:12px !important}
 [style*="font-size: 11px"],[style*="font-size: 10px"]{font-size:12px !important}
+
+/* Spec banner left out on phones */
+section[aria-label$=" features"],div[aria-hidden="true"][style^="height: 120px"]{display:none !important}
 }
 
 @media (max-width:380px){.top-nav{margin:0 6px;padding-left:10px !important}.top-nav .pill-link{padding:0 6px !important;font-size:12.5px}.top-nav .pill-cta{padding:0 11px !important}.top-nav>a:first-child img{height:26px !important}}
@@ -1205,7 +1251,7 @@ class Component extends DCLogic {
     const reveal = base.reveal || [];
     const hasReveal = reveal.length > 0;
     const rPinned = hasReveal && this.pinOn();
-    const rp = rPinned ? this.state.rp : 0.5;
+    const rp = rPinned ? ((this.state.vw || 1440) < 900 ? Math.min(0.5, this.state.rp * 0.56) : this.state.rp) : 0.5;
     const ease = (v) => (v < 0.5 ? 4 * v * v * v : 1 - Math.pow(-2 * v + 2, 3) / 2);
     const lerp = (a, b, t) => a + (b - a) * t;
     const fanT = ease(clamp01((rp - 0.05) / 0.45));
@@ -1287,7 +1333,7 @@ class Component extends DCLogic {
           style: 'flex: 0 0 auto; width: 140px; margin: 0; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 6px 6px 12px; border-radius: 18px; background: #F5F5F5; border-top: 4px solid ' + f.color
         }));
       })(),
-      rTrackStyle: 'position: relative; height: ' + (rPinned ? ((this.state.vw || 1440) < 900 ? '3600px' : '2800px') : 'auto'),
+      rTrackStyle: 'position: relative; height: ' + (rPinned ? ((this.state.vw || 1440) < 900 ? 'calc(100vh + 1400px)' : '2800px') : 'auto'),
       revealDevices: revealDevices,
       revealNames: revealNames,
       fmtCards: formats.map((f, i) => {

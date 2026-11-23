@@ -99,9 +99,9 @@ footer a[href^="mailto"]{display:inline-block;padding:9px 0}
 .top-nav>a:first-child{padding:7px 0}
 
 /* Less empty space between sections */
-section[style*="padding: 0 32px 120px"],section[style*="padding: 0 32px 140px"],section[style*="padding: 0 0 120px"],section[style*="padding: 0 32px 100px"],section[style*="padding: 48px 32px 100px"]{padding-bottom:64px !important}
-[style*="padding: 140px 32px"],[style*="padding: 120px 32px"]:not([style*="padding: 120px 32px 0"]):not([style*="sticky"]){padding-top:72px !important;padding-bottom:72px !important}
-section[style*="padding: 120px 32px 0"]{padding-top:72px !important}
+section[style*="padding: 0 32px 120px"],section[style*="padding: 0 32px 140px"],section[style*="padding: 0 0 120px"],section[style*="padding: 0 32px 100px"],section[style*="padding: 48px 32px 100px"]{padding-bottom:48px !important}
+[style*="padding: 140px 32px"],[style*="padding: 120px 32px"]:not([style*="padding: 120px 32px 0"]):not([style*="sticky"]){padding-top:52px !important;padding-bottom:52px !important}
+section[style*="padding: 120px 32px 0"]{padding-top:52px !important}
 footer > div[style*="56px 32px 140px"]{padding-bottom:56px !important}
 [style*="padding: 170px 32px 120px"],[style*="padding: 180px 32px 110px"]{padding-top:116px !important;padding-bottom:64px !important}
 /* Wholesale buttons keep their arrow on the same line */
@@ -133,16 +133,110 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 #reveal-hero div[style*="repeat(4, minmax(0, 1fr))"] span[style*="font-size: 30px"]{font-size:clamp(18px,5.6vw,24px) !important}
 #reveal-hero .btn-alt{display:none !important}
 #reveal-hero .btn-main{min-height:50px !important}
+
+/* Technical specifications: smaller heading, short padding, and every row as an even label | value grid */
+#specs h2{font-size:clamp(40px,13vw,56px) !important;line-height:.95 !important}
+#specs p{font-size:15px !important;line-height:1.5 !important}
+#specs > div > div:last-child{padding:8px 20px !important;box-sizing:border-box;width:100% !important}
+#specs > div > div:last-child > div{display:grid !important;grid-template-columns:minmax(0,44%) minmax(0,1fr);align-items:baseline;gap:4px 12px !important;padding:12px 0 !important;font-size:14px !important;line-height:1.35}
+#specs > div > div:last-child > div > span:first-child{font-size:13px !important}
+#specs > div > div:last-child > div > span:last-child{text-align:right}
+
+/* Highlight tiles: two columns instead of one tall column; an odd last tile spans the row */
+main section[aria-label$=" highlights"] ul.feat-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n){grid-column:auto !important;flex-direction:column !important;align-items:center !important;justify-content:center !important;text-align:center;gap:8px !important;padding:14px 10px !important;min-height:0 !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n):last-child:nth-child(odd){grid-column:1/-1 !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)[data-kind=badge]:last-child:nth-child(odd){justify-self:center;width:calc(50% - 5px)}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) img{height:44px !important;width:auto !important;max-width:100% !important;margin:0 !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl{padding:0 !important;border:0 !important;align-items:center !important;text-align:center}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl::before,main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl::after{display:none !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl b{font-size:19px !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl > span{font-size:10.5px !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n):has(> img[style^="display: block; width: 100%"]),main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)[data-kind=badge]{padding:6px !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) > img[style^="display: block; width: 100%"],main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)[data-kind=badge] img{height:auto !important;width:100% !important;max-width:100% !important}
+
+/* Product wholesale card on phones: same look, tighter */
+.wh-card{padding:28px 20px 22px !important;gap:18px !important}
+.wh-copy{gap:14px !important}
+.wh-title{font-size:clamp(36px,11.5vw,48px) !important}
+.wh-text{font-size:15px !important;line-height:1.5 !important}
+.wh-points{flex-direction:column;gap:8px !important;font-size:14px !important}
+.wh-btns{flex-direction:column;gap:8px !important;padding-top:4px !important}
+.wh-btn{width:100%;justify-content:center;min-height:52px !important;white-space:nowrap}
+.wh-btn2{justify-content:center;min-height:40px !important;border:0 !important;text-decoration:underline;text-underline-offset:4px}
+.wh-visual{gap:14px !important}
+.wh-img{height:220px !important}
+.wh-stat{min-width:0 !important;flex:1 1 0;padding:8px 6px !important}
+.wh-stat b{font-size:19px !important}
+.wh-stat span{font-size:11px !important}
+.wh-stats{width:100%;flex-wrap:nowrap !important;gap:8px !important}
+
+/* Explore the lineup: kicker on one line, even card heights, less space before the footer */
+.xl-sec{padding-bottom:36px !important}
+.xl-kicker{letter-spacing:.08em !important;font-size:10.5px !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.xl-card{min-height:116px}
 /* Flavor tabs on one swipeable line */
 [aria-label="Flavor collections"]{flex-wrap:nowrap !important;overflow-x:auto;scrollbar-width:none;margin-right:-20px;padding-right:20px;-webkit-overflow-scrolling:touch}
 [aria-label="Flavor collections"]::-webkit-scrollbar{display:none}
 [aria-label="Flavor collections"] > button{flex:0 0 auto;white-space:nowrap}
-/* Flavor grid: two rows that swipe sideways instead of one long list */
-.fx-grid{display:grid !important;grid-auto-flow:column;grid-template-rows:repeat(2,auto);grid-template-columns:none !important;grid-auto-columns:42%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px;margin-right:-20px;padding-right:20px}
-.fx-grid::-webkit-scrollbar{display:none}
-.fx-grid > *{scroll-snap-align:start}
+/* Flavor grid: three columns, every flavor shown going down */
+.fx-grid{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important;grid-auto-flow:row !important;gap:8px !important}
+.fx-grid .fx-card{padding:10px 4px 10px !important;gap:8px !important;border-radius:14px !important}
+.fx-grid .fx-card img{height:clamp(70px,22vw,96px) !important}
+.fx-grid .fx-card span{font-size:10.5px !important;letter-spacing:.02em !important;line-height:1.2 !important}
 .wl-kind,.wl-stat span{font-size:12px !important}
 [style*="font-size: 11px"],[style*="font-size: 10px"]{font-size:12px !important}
+
+/* Wholesale hero on phones: shorter copy block, buttons full width, product art smaller and closer */
+.ws-hero > div{padding:104px 20px 28px !important;gap:20px !important}
+.ws-hero > div > div:first-child{gap:14px !important}
+.ws-hero h1{font-size:76px !important}
+.ws-hero p{font-size:16px !important;line-height:1.5}
+.ws-hero > div > div:first-child > div{flex-direction:column;gap:10px !important}
+.ws-hero > div > div:first-child > div a{width:100%;box-sizing:border-box;justify-content:center;min-height:52px !important;white-space:nowrap}
+.ws-hero .ws-art{zoom:1 !important;height:230px !important;gap:2px !important;margin-top:4px}
+.ws-hero .ws-art img:nth-child(1){height:150px !important}
+.ws-hero .ws-art img:nth-child(2){height:186px !important}
+.ws-hero .ws-art img:nth-child(3){height:200px !important}
+.ws-hero .ws-art img:nth-child(4){height:118px !important;margin-left:-10px !important}
+/* The lineup on phones: two compact cards per row */
+.wl-sec > div{gap:22px !important}
+.wl-sec h2{font-size:52px !important}
+.wl-sec p{font-size:15px !important}
+.wl-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px !important}
+.wl-card{padding:14px 12px 12px !important;gap:6px !important;border-radius:20px !important}
+.wl-kind{font-size:9.5px !important;letter-spacing:.14em !important;padding:4px 8px !important}
+.wl-imgbox{height:118px !important;margin:2px 0 !important}
+.wl-glow{height:110px !important}
+.wl-name{font-size:22px !important}
+.wl-line,.wl-stats{display:none !important}
+.wl-foot{padding-top:6px !important;font-size:12px !important;gap:6px !important}
+.wl-go{font-size:0 !important}
+.wl-go span{font-size:16px !important}
+.wl-flav{font-size:11px !important;padding:4px 9px !important}
+.wl-cta{flex-direction:column;align-items:stretch !important;text-align:center;gap:12px !important;padding:18px !important}
+.wl-cta a{justify-content:center;white-space:nowrap}
+/* Let's talk on phones: tighter copy, form and product chips */
+.wi-wrap{gap:24px !important}
+.wi-copy{gap:12px !important}
+.wi-copy h2{font-size:52px !important}
+.wi-copy p{font-size:15px !important}
+.wi-copy a[href^="mailto"]{font-size:17px !important}
+.wi-card{padding:20px 16px !important;border-radius:24px !important}
+.wi-card form{gap:14px !important}
+.wi-card label{font-size:14px !important}
+.wi-card .wf-field{height:48px;font-size:15px}
+.wi-card textarea.wf-field{height:110px}
+.wi-prods{display:grid !important;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px !important}
+.wi-prods > label{min-height:44px !important;padding:0 12px !important;font-size:14px !important}
+.wi-card button[type=submit]{height:54px !important}
+/* Why partner with BERI on phones: compact list, check icon left of title and text */
+.ws-perks-h{font-size:52px !important}
+.ws-perks{grid-template-columns:minmax(0,1fr) !important;gap:10px !important}
+.ws-perks > div{display:grid !important;grid-template-columns:40px minmax(0,1fr);column-gap:14px;row-gap:2px !important;align-items:center;padding:16px 18px !important;border-radius:18px !important}
+.ws-perks > div > span:nth-child(1){grid-row:1 / span 2;width:40px !important;height:40px !important;border-radius:12px !important;align-self:center}
+.ws-perks > div > span:nth-child(2){font-size:17px !important}
+.ws-perks > div > span:nth-child(3){grid-column:2;font-size:14px !important;line-height:1.45}
 }
 
 @media (max-width:380px){.top-nav{margin:0 6px;padding-left:10px !important}.top-nav .pill-link{padding:0 6px !important;font-size:12.5px}.top-nav .pill-cta{padding:0 11px !important}.top-nav>a:first-child img{height:26px !important}}
@@ -184,7 +278,7 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 </div>
 
 <main id="top">
-<section class="hero-under" style="position: relative; overflow: hidden; margin-top: -80px; background: #3B1478; color: #FFFFFF">
+<section class="hero-under ws-hero" style="position: relative; overflow: hidden; margin-top: -80px; background: #3B1478; color: #FFFFFF">
 <img src="assets/blob/bd8d6ee885cd447f39d73ea5ec4478b3.png" alt="" aria-hidden="true" style="position: absolute; right: -80px; bottom: -120px; width: 760px; height: auto; opacity: 0.07; pointer-events: none">
 <div style="position: relative; max-width: 1320px; margin: 0 auto; padding: 180px 32px 110px; display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 48px">
 <div style="flex: 1 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
@@ -206,8 +300,8 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 </section>
 
 <section style="max-width: 1320px; margin: 0 auto; padding: 120px 32px; display: flex; flex-direction: column; gap: 40px">
-<h2 class="big-head" data-reveal="up" style="margin: 0; font-family: var(--display); font-weight: 400; font-size: 96px; line-height: 0.9; text-transform: uppercase">Why partner<br>with BERI</h2>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px">
+<h2 class="big-head ws-perks-h" data-reveal="up" style="margin: 0; font-family: var(--display); font-weight: 400; font-size: 96px; line-height: 0.9; text-transform: uppercase">Why partner<br>with BERI</h2>
+<div class="ws-perks" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px">
 <sc-for list="{{perks}}" as="k" hint-placeholder-count="4">
 <div data-reveal="up" style="{{k.style}}">
 <span style="display: inline-flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 16px; background: #EFE9FF">
@@ -251,8 +345,8 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 </section>
 
 <section id="inquiry" style="scroll-margin-top: 120px; padding: 120px 32px 140px">
-<div style="max-width: 1320px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
-<div style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div class="wi-wrap" style="max-width: 1320px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 56px; align-items: flex-start">
+<div class="wi-copy" style="flex: 1 1 360px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
 <span data-reveal="left" style="font-size: 13px; font-weight: 600; letter-spacing: 0.32em; color: #3B1478">WHOLESALE INQUIRY</span>
 <h2 class="big-head" data-reveal="left" style="margin: 0; font-family: var(--display); font-weight: 400; font-size: 96px; line-height: 0.9; text-transform: uppercase">Let’s talk</h2>
 <p data-reveal="left" style="margin: 0; max-width: 400px; font-size: 17px; color: var(--mute)">Tell us about your business and our team will get back to you with pricing and availability.</p>
@@ -262,7 +356,7 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 </div>
 </div>
 
-<div data-reveal="scale" style="flex: 1 1 620px; min-width: 0; box-sizing: border-box; border-radius: 32px; background: #FFFFFF; border: 1px solid var(--line); padding: 40px">
+<div class="wi-card" data-reveal="scale" style="flex: 1 1 620px; min-width: 0; box-sizing: border-box; border-radius: 32px; background: #FFFFFF; border: 1px solid var(--line); padding: 40px">
 <sc-if value="{{notSent}}" hint-placeholder-val="{{true}}">
 <form class="wf-grid" onSubmit="{{submit}}" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px">
 <div style="display: flex; flex-direction: column; gap: 8px">
@@ -296,7 +390,7 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 </div>
 <fieldset style="grid-column: 1 / -1; margin: 0; padding: 0; border: none; display: flex; flex-direction: column; gap: 10px">
 <legend style="font-weight: 600; font-size: 15px; padding: 0; margin-bottom: 10px">Products you’re interested in</legend>
-<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<div class="wi-prods" style="display: flex; flex-wrap: wrap; gap: 10px">
 <label style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #DDD6CA; font-weight: 600; cursor: pointer"><input type="checkbox" style="width: 18px; height: 18px; accent-color: #0F7A42">BERI Cliq</label>
 <label style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #DDD6CA; font-weight: 600; cursor: pointer"><input type="checkbox" style="width: 18px; height: 18px; accent-color: #C81E64">BERI Crush</label>
 <label style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #DDD6CA; font-weight: 600; cursor: pointer"><input type="checkbox" style="width: 18px; height: 18px; accent-color: #7A1626">BERI Cirql</label>
