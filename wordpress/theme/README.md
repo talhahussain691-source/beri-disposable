@@ -1,7 +1,7 @@
 # BERI WordPress theme: setup guide
 
 This theme contains the full BERI website: Home, BERI Cliq, BERI Crush, BERI Cirql, BERI E-liquid,
-Authenticate and Wholesale, with all scroll animations, images and videos.
+Authenticate, Wholesale and Support, with all scroll animations, images and videos.
 
 Online preview of the same design: https://talhahussain691-source.github.io/beri-disposable/
 
@@ -30,7 +30,7 @@ or ask the host to raise the upload limit (`upload_max_filesize` / `post_max_siz
 
 The theme sets itself up when it is activated:
 
-- It creates any missing page with these slugs: `home`, `cliq`, `crush`, `cirql`, `e-liquid`, `authenticate`, `wholesale`.
+- It creates any missing page with these slugs: `home`, `cliq`, `crush`, `cirql`, `e-liquid`, `authenticate`, `wholesale`, `support`.
   Existing pages with those slugs are kept and simply use the new design.
 - It sets **Home** as the front page (Settings → Reading).
 - If permalinks are "Plain", it switches them to **Post name** (Settings → Permalinks).
@@ -112,7 +112,7 @@ define( 'BERI_VERIFY_TEST_CODES', true );
 
 | File | What it is |
 | --- | --- |
-| `front-page.php`, `page-*.php` | The seven page designs |
+| `front-page.php`, `page-*.php` | The eight page designs |
 | `inc/verify-bridge.php` | **Connect the verify plugin here** |
 | `inc/verify-endpoint.php` | The verification endpoint used by the Authenticate page |
 | `inc/setup.php` | Creates the pages on activation |

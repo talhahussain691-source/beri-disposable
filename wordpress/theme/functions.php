@@ -32,6 +32,7 @@ function beri_pages() {
 		'eliquid'           => array( 'slug' => 'e-liquid', 'title' => 'BERI E-liquid' ),
 		'authenticate'      => array( 'slug' => 'authenticate', 'title' => 'Authenticate' ),
 		'wholesale'         => array( 'slug' => 'wholesale', 'title' => 'Wholesale' ),
+		'support'           => array( 'slug' => 'support', 'title' => 'Support' ),
 	);
 }
 

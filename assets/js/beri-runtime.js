@@ -7,7 +7,7 @@
 
   const HOLE = /\{\{\s*([^}]+?)\s*\}\}/g;
   // Page links in the designs point at canvas file names; map them to the published files.
-  const PAGES = { 'home-color-images': 'index.html', 'beri-premium': 'index.html', cliq: 'cliq.html', 'crush-v2': 'crush.html', crush: 'crush.html', 'cirql-v2': 'cirql.html', cirql: 'cirql.html', eliquid: 'eliquid.html', authenticate: 'authenticate.html', wholesale: 'wholesale.html' };
+  const PAGES = { 'home-color-images': 'index.html', 'beri-premium': 'index.html', cliq: 'cliq.html', 'crush-v2': 'crush.html', crush: 'crush.html', 'cirql-v2': 'cirql.html', cirql: 'cirql.html', eliquid: 'eliquid.html', authenticate: 'authenticate.html', wholesale: 'wholesale.html', support: 'support.html' };
 
   function lookup(scope, path) {
     if (path === 'true') return true;

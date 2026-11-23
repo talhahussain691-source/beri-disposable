@@ -231,6 +231,7 @@ a{color:#111113}a:hover{color:#7A5F14}
 /* MOBILE-FIX START */
 .fx-swipe{display:none}
 .lu-dots,.lu-lede-m{display:none}
+.nav-support-m{display:none}
 @media (max-width:899px){
 /* Mobile header: logo and links share one pill row, so the logo never floats over the page. */
 header{padding:6px 0 !important}
@@ -241,6 +242,10 @@ header{padding:6px 0 !important}
 .top-nav .pill-link{padding:0 9px !important;min-height:44px}
 .top-nav .pill-cta{margin-left:4px !important;padding:0 14px !important;min-height:44px}
 .nav-menu{left:-60px !important}
+
+/* Support: in the Products menu on phones (the header pill has no room) */
+.top-nav .pill-support{display:none !important}
+.nav-support-m{display:flex !important}
 
 /* Nicotine warning on phones: fixed 54px tall and scrolls away with the page; the logo and menu row stays at the top */
 div[style*="position: sticky; top: 0; z-index: 50"]{top:-54px !important}
@@ -390,9 +395,11 @@ section[aria-label$=" features"],div[aria-hidden="true"][style^="height: 120px"]
 <a class="nav-item" href="Crush-v2.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #C81E64"></span>BERI CRUSH</a>
 <a class="nav-item" href="Cirql-v2.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #7A1626"></span>BERI CIRQL</a>
 <a class="nav-item" href="Eliquid.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #8A6A12"></span>BERI E-LIQUID</a>
+<a class="nav-item nav-support-m" href="Support.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #D9C38A"></span>SUPPORT</a>
 </div>
 </div>
 <a class="pill-link" href="Authenticate.dc.html">Authenticate</a>
+<a class="pill-link pill-support" href="Support.dc.html">Support</a>
 <a class="pill-cta" href="Wholesale.dc.html">Wholesale</a>
 </div>
 <span aria-hidden="true"></span>
@@ -741,10 +748,12 @@ section[aria-label$=" features"],div[aria-hidden="true"][style^="height: 120px"]
 <a class="beri-link" href="Cirql-v2.dc.html" style="color: var(--fg); text-decoration: none">BERI CIRQL</a>
 <a class="beri-link" href="Eliquid.dc.html" style="color: var(--fg); text-decoration: none">BERI E-LIQUID</a>
 <a class="beri-link" href="Authenticate.dc.html" style="color: var(--fg); text-decoration: none">AUTHENTICATE</a>
+<a class="beri-link" href="Support.dc.html" style="color: var(--fg); text-decoration: none">SUPPORT</a>
 <a class="beri-link" href="Wholesale.dc.html" style="color: var(--fg); text-decoration: none">WHOLESALE</a>
 </div>
 </div>
 <a href="mailto:wholesale@beridisposable.com" style="align-self: flex-start; color: var(--fg); font-weight: 600">wholesale@beridisposable.com</a>
+<a href="mailto:support@beridisposable.com" style="align-self: flex-start; margin-top: -12px; color: var(--fg); font-weight: 600">support@beridisposable.com</a>
 <p style="margin: 0; font-size: 14px; color: var(--mute)">Sale of these products is restricted to adults 21 and over. WARNING: This product contains nicotine. Nicotine is an addictive chemical.</p>
 <p style="margin: 0; font-size: 14px; color: var(--mute)">Copyright © 2025 BERIdisposable.com – All Rights Reserved.</p>
 </div>
@@ -1107,7 +1116,7 @@ class Component extends DCLogic {
       },
       ELIQUID: {
         name: 'E-LIQUID', page: 'Eliquid.dc.html', color: '#8A6A12', soft: '#F2C94C', tint: '#FBF3DC', badge: 'BOTTLED E-LIQUID', heroH: 560,
-        img: '/_blob/1a6e959e6fbe802d98e56b00f8beba80', imgAlt: 'BERI E-liquid Blue Frost 30 mL bottle and box',
+        img: '/_blob/4d8d2d6df896858a736b223fc48ce0e4', imgAlt: 'BERI E-liquid Blue Frost 30 mL bottle and box',
         logo: '/_blob/bbc52b1f7a19e7e64a5e50854eed55ee', logoW: 420,
         tagline: 'The best damn disposable flavors in a bottle. 30 mL nicotine salt in 25 mg or 50 mg.',
         summary: 'The signature flavor profiles behind BERI, now in bottled form for your own device. Each 30 mL nicotine salt e-liquid comes with a child-resistant cap, in 25 mg and 50 mg strengths across 12 flavors, bottled in California.',
@@ -1183,15 +1192,15 @@ class Component extends DCLogic {
         text: 'Retailers and distributors: stock BERI CLIQ pods, kits and devices at wholesale pricing, with authentic supply and 5-pack retail displays.',
         points: [{ t: 'Wholesale pricing' }, { t: 'Pods, kits & devices' }, { t: 'Retail display packs' }],
         stats: [{ v: '25', l: 'flavors' }, { v: '50K', l: 'puffs' }, { v: '2.5×', l: 'charging' }] },
-      CRUSH: { img: '/_blob/98de8943c95bc88c1c871334365c5bdd', alt: 'BERI Crush device in orange',
+      CRUSH: { img: '/_blob/83968a9d0e5da88f09d47d928f2ad983', alt: 'BERI Crush device in icy blue',
         text: 'Retailers and distributors: stock BERI CRUSH at wholesale pricing. 35 flavors, a 40W Crush Mode and authentic supply your customers can verify.',
         points: [{ t: 'Wholesale pricing' }, { t: 'Full 35-flavor range' }, { t: 'Authenticity verification' }],
         stats: [{ v: '35', l: 'flavors' }, { v: '50K', l: 'puffs' }, { v: '40W', l: 'Crush Mode' }] },
-      CIRQL: { img: '/_blob/51c7b95a93b728bbf7aa71c4b86a11ef', alt: 'BERI Cirql e-hookah in Lady Killer',
+      CIRQL: { img: '/_blob/307e87a5a0c8db4483886c3914d7cd66', alt: 'BERI Cirql e-hookahs in Blue Razz, Grape Ice, Lady Killer, Peach Ice and Double Apple',
         text: 'Retailers, lounges and distributors: bring the shisha flavor experience to your shelves with BERI CIRQL at wholesale pricing.',
         points: [{ t: 'Wholesale pricing' }, { t: 'Shisha-inspired range' }, { t: 'Authenticity verification' }],
         stats: [{ v: '13', l: 'flavors' }, { v: '150K', l: 'puffs' }, { v: 'Quad', l: 'mesh coil' }] },
-      ELIQUID: { img: '/_blob/1a6e959e6fbe802d98e56b00f8beba80', alt: 'BERI E-liquid Blue Frost 30 mL bottle and box',
+      ELIQUID: { img: '/_blob/4d8d2d6df896858a736b223fc48ce0e4', alt: 'BERI E-liquid Blue Frost 30 mL bottle and box',
         text: 'Retailers and distributors: stock BERI E-LIQUID 30 mL bottles in 25 mg and 50 mg, bottled in California, at wholesale pricing.',
         points: [{ t: 'Wholesale pricing' }, { t: '12 flavors · 2 strengths' }, { t: 'Bottled in California' }],
         stats: [{ v: '12', l: 'flavors' }, { v: '30 mL', l: 'bottles' }, { v: '25/50', l: 'mg salt nic' }] }
