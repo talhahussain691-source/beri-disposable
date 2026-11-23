@@ -226,17 +226,17 @@ section[aria-label$=" highlights"]::before{content:"";position:absolute;top:0;bo
 .age-gate{display:none;position:fixed;inset:0;z-index:1000;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;background:rgba(8,8,10,.72);-webkit-backdrop-filter:blur(14px) saturate(120%);backdrop-filter:blur(14px) saturate(120%);font-family:var(--body)}
 html.ag-on .age-gate,.age-gate.ag-show{display:flex}
 html.ag-on,html.ag-on body{overflow:hidden}
-.ag-card{position:relative;isolation:isolate;overflow:hidden;box-sizing:border-box;width:min(560px,100%);padding:44px 44px 30px;border-radius:32px;background:#111113;color:#F3F0E9;text-align:center;border:1px solid rgba(217,195,138,.35);box-shadow:0 40px 100px rgba(0,0,0,.55);animation:agIn .5s cubic-bezier(.2,.7,.2,1) both}
+.ag-card{position:relative;isolation:isolate;overflow:hidden;box-sizing:border-box;width:min(560px,100%);padding:44px 44px 30px;border-radius:32px;background:linear-gradient(#111113,#111113) padding-box,linear-gradient(135deg,#FFE58F 0%,#F2C230 38%,#C8960C 68%,#FFD95A 100%) border-box;color:#F3F0E9;text-align:center;border:2px solid transparent;box-shadow:0 40px 100px rgba(0,0,0,.55);animation:agIn .5s cubic-bezier(.2,.7,.2,1) both}
 .ag-card::before{content:"";position:absolute;inset:-50%;z-index:-1;background-image:url("assets/blob/2cffc67c998d9d4fcfa45c0105a151bb.png");background-size:220px 140px;transform:rotate(-24deg);opacity:.06;pointer-events:none}
 @keyframes agIn{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
 .ag-logo{display:block;height:64px;width:auto;margin:0 auto 22px}
-.ag-eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.32em;color:#D9C38A}
+.ag-eyebrow{display:inline-block;font-size:12px;font-weight:800;letter-spacing:.32em;color:#F2C230;background:linear-gradient(135deg,#FFE58F 0%,#F2C230 38%,#C8960C 68%,#FFD95A 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
 .ag-title{margin:12px 0 0;font-family:var(--display);font-weight:400;font-size:64px;line-height:.92;text-transform:uppercase;color:#F3F0E9}
 .ag-text{margin:16px auto 0;max-width:400px;font-size:16px;line-height:1.55;color:#B0ACA5}
 .ag-btns{display:flex;gap:12px;justify-content:center;margin-top:28px}
 .ag-btns button{flex:1 1 0;min-height:56px;padding:0 20px;border-radius:999px;font:inherit;font-size:16px;font-weight:700;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
-.ag-yes{border:none;background:#D9C38A;color:#111113}
-.ag-yes:hover{background:#F3F0E9}
+.ag-yes{border:none;background:linear-gradient(135deg,#FFE58F 0%,#F2C230 38%,#C8960C 68%,#FFD95A 100%);color:#2A1606;font-weight:800 !important;box-shadow:0 14px 34px rgba(242,194,48,.28);transition:transform .3s ease,box-shadow .3s ease !important}
+.ag-yes:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(242,194,48,.4)}
 .ag-no{border:1.5px solid rgba(243,240,233,.35);background:none;color:#F3F0E9}
 .ag-no:hover{border-color:#F3F0E9}
 .ag-btns button:focus-visible{outline:3px solid #D9C38A;outline-offset:3px}
