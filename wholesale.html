@@ -80,6 +80,16 @@ textarea.wf-field{height:140px;padding:14px 18px;resize:vertical}
 /* MOBILE-FIX START */
 .fx-swipe{display:none}
 .lu-dots,.lu-lede-m{display:none}
+.nav-support-m{display:none}
+.ws-hero{background:#3B1478 url("assets/blob/ad65d311178a40379e40a852b258a019.webp") center/cover no-repeat !important}
+main:has(.ws-perks){overflow-x:clip}
+section:has(> .ws-perks-h){position:relative;isolation:isolate}
+section:has(> .ws-perks-h)::before{content:"";position:absolute;z-index:-1;top:0;bottom:0;left:calc(50% - 50vw);right:calc(50% - 50vw);background:#F6F3EE url("assets/blob/58bddcfc52b1c65b7295c825798fd8e1.webp") center/cover no-repeat}
+.wl-sec{background:#000000 url("assets/blob/36099176392dec3d07d1a4d81b7e2ab1.webp") center bottom/cover no-repeat !important}
+.wi-photo{margin-top:14px;max-width:380px;aspect-ratio:4/5;border-radius:28px;overflow:hidden;box-shadow:0 30px 60px rgba(17,17,19,.14)}
+.wi-photo img{display:block;width:100%;height:100%;object-fit:cover}
+@media (min-width:900px){.ws-hero .ws-art{scale:1.14;translate:0 92px;transform-origin:50% 100%}}
+@media (min-width:1200px){.ws-hero .ws-art{scale:1.26;translate:-36px 132px;transform-origin:50% 100%}}
 @media (max-width:899px){
 /* Mobile header: logo and links share one pill row, so the logo never floats over the page. */
 header{padding:6px 0 !important}
@@ -90,6 +100,10 @@ header{padding:6px 0 !important}
 .top-nav .pill-link{padding:0 9px !important;min-height:44px}
 .top-nav .pill-cta{margin-left:4px !important;padding:0 14px !important;min-height:44px}
 .nav-menu{left:-60px !important}
+
+/* Support: in the Products menu on phones (the header pill has no room) */
+.top-nav .pill-support{display:none !important}
+.nav-support-m{display:flex !important}
 
 /* Nicotine warning on phones: fixed 54px tall and scrolls away with the page; the logo and menu row stays at the top */
 div[style*="position: sticky; top: 0; z-index: 50"]{top:-54px !important}
@@ -207,6 +221,13 @@ main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)
 .wl-kind,.wl-stat span{font-size:12px !important}
 [style*="font-size: 11px"],[style*="font-size: 10px"]{font-size:12px !important}
 
+/* Background photos on phones: the tall hero cut, the counter photo as a wide strip */
+.ws-hero{background-image:url("assets/blob/c47af76888a915a03d7c40a94499775a.webp") !important;background-position:center bottom !important}
+.wi-photo{max-width:none !important;aspect-ratio:16/10 !important;margin-top:6px !important;border-radius:22px !important}
+.wi-photo img{object-position:center 62%}
+/* Hero products bigger, their bottom running behind the next section */
+.ws-hero .ws-art{scale:1.24;translate:-6px 58px;transform-origin:50% 100%}
+
 /* Wholesale hero on phones: shorter copy block, buttons full width, product art smaller and closer */
 .ws-hero > div{padding:104px 20px 28px !important;gap:20px !important}
 .ws-hero > div > div:first-child{gap:14px !important}
@@ -287,9 +308,11 @@ main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)
 <a class="nav-item" href="Crush-v2.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #C81E64"></span>BERI CRUSH</a>
 <a class="nav-item" href="Cirql-v2.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #7A1626"></span>BERI CIRQL</a>
 <a class="nav-item" href="Eliquid.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #8A6A12"></span>BERI E-LIQUID</a>
+<a class="nav-item nav-support-m" href="Support.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #D9C38A"></span>SUPPORT</a>
 </div>
 </div>
 <a class="pill-link" href="Authenticate.dc.html">Authenticate</a>
+<a class="pill-link pill-support" href="Support.dc.html">Support</a>
 <a class="pill-cta" href="Wholesale.dc.html" aria-current="page">Wholesale</a>
 </div>
 <span aria-hidden="true"></span>
@@ -314,7 +337,7 @@ main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)
 <img src="assets/blob/38e90c83b18e5f9b193d4e2806393e55.webp" alt="BERI Cliq device in Blue Rancher" style="display: block; height: 260px; width: auto; transform: rotate(-10deg); filter: drop-shadow(0 30px 40px rgba(0,0,0,0.45))">
 <img src="assets/blob/0cd95d0e72d332cb0c13ffe953a14a5f.webp" alt="BERI Crush device in green with HD screen" style="display: block; height: 320px; width: auto; filter: drop-shadow(0 30px 40px rgba(0,0,0,0.45))">
 <img src="assets/blob/c43367147c58d259a2d0d61aa5fc2440.webp" alt="BERI Cirql device in red with gold pattern" style="display: block; height: 340px; width: auto; transform: rotate(8deg); filter: drop-shadow(0 30px 40px rgba(0,0,0,0.45))">
-<img src="assets/blob/1a6e959e6fbe802d98e56b00f8beba80.webp" alt="BERI E-liquid Blue Frost 30 mL bottle and box" style="display: block; height: 200px; width: auto; margin-left: -18px; transform: rotate(6deg); filter: drop-shadow(0 30px 40px rgba(0,0,0,0.45))">
+<img src="assets/blob/4d8d2d6df896858a736b223fc48ce0e4.webp" alt="BERI E-liquid Blue Frost 30 mL bottle and box" style="display: block; height: 200px; width: auto; margin-left: -18px; transform: rotate(6deg); filter: drop-shadow(0 30px 40px rgba(0,0,0,0.45))">
 </div>
 </div>
 </section>
@@ -374,6 +397,7 @@ main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)
 <span style="font-size: 13px; font-weight: 700; letter-spacing: 0.2em; color: var(--mute)">PREFER EMAIL?</span>
 <a href="mailto:wholesale@beridisposable.com" style="font-size: 20px; font-weight: 700; color: #3B1478">wholesale@beridisposable.com</a>
 </div>
+<div class="wi-photo" data-reveal="left"><img src="assets/blob/b477c0554c5dfd2b9596002e8c3cd407.webp" alt="A shop counter with wholesale boxes in front of warm-lit shelves" loading="lazy"></div>
 </div>
 
 <div class="wi-card" data-reveal="scale" style="flex: 1 1 620px; min-width: 0; box-sizing: border-box; border-radius: 32px; background: #FFFFFF; border: 1px solid var(--line); padding: 40px">
@@ -454,10 +478,12 @@ main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)
 <a class="beri-link" href="Cirql-v2.dc.html" style="color: var(--fg); text-decoration: none">BERI CIRQL</a>
 <a class="beri-link" href="Eliquid.dc.html" style="color: var(--fg); text-decoration: none">BERI E-LIQUID</a>
 <a class="beri-link" href="Authenticate.dc.html" style="color: var(--fg); text-decoration: none">AUTHENTICATE</a>
+<a class="beri-link" href="Support.dc.html" style="color: var(--fg); text-decoration: none">SUPPORT</a>
 <a class="beri-link" href="Wholesale.dc.html" style="color: var(--fg); text-decoration: none">WHOLESALE</a>
 </div>
 </div>
 <a href="mailto:wholesale@beridisposable.com" style="align-self: flex-start; color: var(--fg); font-weight: 600">wholesale@beridisposable.com</a>
+<a href="mailto:support@beridisposable.com" style="align-self: flex-start; margin-top: -12px; color: var(--fg); font-weight: 600">support@beridisposable.com</a>
 <p style="margin: 0; font-size: 14px; color: var(--mute)">Sale of these products is restricted to adults 21 and over. WARNING: This product contains nicotine. Nicotine is an addictive chemical.</p>
 <p style="margin: 0; font-size: 14px; color: var(--mute)">Copyright © 2025 BERIdisposable.com – All Rights Reserved.</p>
 </div>
@@ -536,7 +562,7 @@ class Component extends DCLogic {
       { key: 'cirql', name: 'CIRQL', href: 'Cirql-v2.dc.html', kind: 'E-HOOKAH', img: 'assets/blob/51c7b95a93b728bbf7aa71c4b86a11ef.webp', imgAlt: 'BERI Cirql e-hookah in Lady Killer',
         line: 'Shisha-inspired flavor with Regular and Boost modes.', flavors: 13,
         stats: [{ v: '150K', l: 'puffs' }, { v: 'Quad', l: 'mesh coil' }, { v: '2', l: 'modes' }] },
-      { key: 'eliquid', name: 'E-LIQUID', href: 'Eliquid.dc.html', kind: 'BOTTLED E-LIQUID', img: 'assets/blob/1a6e959e6fbe802d98e56b00f8beba80.webp', imgAlt: 'BERI E-liquid Blue Frost 30 mL bottle and box',
+      { key: 'eliquid', name: 'E-LIQUID', href: 'Eliquid.dc.html', kind: 'BOTTLED E-LIQUID', img: 'assets/blob/4d8d2d6df896858a736b223fc48ce0e4.webp', imgAlt: 'BERI E-liquid Blue Frost 30 mL bottle and box',
         line: 'Nicotine salt in 30 mL bottles, bottled in California.', flavors: 12,
         stats: [{ v: '30 mL', l: 'bottle' }, { v: '25/50', l: 'mg' }, { v: 'CA', l: 'bottled' }] }
     ];

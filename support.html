@@ -1,0 +1,507 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>BERI Support page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&amp;family=Inter:wght@400;500;600;700&amp;display=swap">
+<style>
+:root{--bg:#F6F3EE;--bg-2:#EDE8DF;--bg-3:#FFFFFF;--line:#DDD6CA;--fg:#111113;--mute:#5E5A53;--gold:#D9C38A;--gold-ink:#7A5F14;--dark:#111113;--display:'Anton',Impact,sans-serif;--body:'Inter',system-ui,sans-serif;--ease:cubic-bezier(.2,.7,.2,1)}
+.beri-dark{--bg:#111113;--bg-2:#17171A;--bg-3:#1E1E22;--line:#2C2C31;--fg:#F3F0E9;--mute:#B0ACA5;--gold-ink:#D9C38A;background-color:#111113;color:#F3F0E9}
+.beri-pattern{position:relative;isolation:isolate;overflow:clip}
+.beri-pattern::before{content:"";position:absolute;inset:-50%;z-index:-1;background-image:url("assets/blob/2cffc67c998d9d4fcfa45c0105a151bb.png"),url("assets/blob/2cffc67c998d9d4fcfa45c0105a151bb.png");background-size:220px 140px,220px 140px;background-position:0 0,110px 70px;background-repeat:repeat;transform:rotate(-24deg);opacity:.07;pointer-events:none}
+html{scroll-behavior:smooth}
+body{margin:0;background:#F6F3EE}
+a{color:#111113}a:hover{color:#7A5F14}
+.rv-ready [data-reveal]{opacity:0;transition:opacity .9s var(--ease),transform .9s var(--ease)}
+.rv-ready [data-reveal="up"]{transform:translateY(56px)}
+.rv-ready [data-reveal="left"]{transform:translateX(-64px)}
+.rv-ready [data-reveal="right"]{transform:translateX(64px)}
+.rv-ready [data-reveal="scale"]{transform:scale(.92)}
+.rv-ready [data-reveal][data-in]{opacity:1;transform:none}
+.beri-link{position:relative}
+.beri-link::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:2px;background:#D9C38A;transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.beri-link:hover::after,.beri-link.is-current::after{transform:scaleX(1)}
+.nav-dd{position:relative}
+.nav-menu{position:absolute;top:100%;left:-24px;padding-top:18px;opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .2s ease,transform .2s ease,visibility .2s}
+.nav-dd:hover .nav-menu,.nav-dd:focus-within .nav-menu{opacity:1;visibility:visible;transform:none}
+.nav-item{display:flex;align-items:center;gap:12px;min-height:44px;padding:0 14px;border-radius:12px;color:#111113;text-decoration:none}
+.nav-item:hover{background:#F6F3EE;color:#111113}
+.strip-link{transition:background .3s ease,color .3s ease;text-shadow:0 1px 3px rgba(0,0,0,.35)}
+.strip-link:hover{background:rgba(255,255,255,.2)}
+@media (max-width:899px){.big-head{font-size:72px !important}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.rv-ready [data-reveal]{opacity:1;transform:none;transition:none}}
+
+/* Header: the Home pill navigation */
+.top-nav{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;gap:16px}
+.top-nav>a:first-child{justify-self:start}
+.nav-pill{display:flex;align-items:center;gap:2px;padding:6px 6px 6px 12px;border-radius:999px;background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(16px) saturate(160%);backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,.75);box-shadow:0 12px 30px rgba(17,17,19,.14),inset 0 1px 0 rgba(255,255,255,.85);font-family:'Inter',system-ui,sans-serif;font-size:15px;font-weight:500;letter-spacing:0;white-space:nowrap}
+.pill-link{display:inline-flex;align-items:center;gap:6px;min-height:40px;padding:0 14px;border:none;border-radius:999px;background:none;font:inherit;color:#2A2730;text-decoration:none;cursor:pointer;transition:background .2s ease,color .2s ease}
+.pill-link:hover{background:rgba(17,17,19,.08);color:#111113}
+.pill-link.is-current{color:#C81E64;font-weight:700}
+.pill-cta{display:inline-flex;align-items:center;min-height:44px;margin-left:8px;padding:0 22px;border-radius:999px;background:#111113;color:#FFFFFF !important;font-weight:600;text-decoration:none;transition:background .2s ease}
+.pill-cta:hover{background:#C81E64;color:#FFFFFF}
+@media (max-width:899px){.hero-under{margin-top:-68px !important}.top-nav{grid-template-columns:minmax(0,1fr);row-gap:10px;padding:10px 12px 12px !important}.top-nav>span{display:none}.nav-pill{justify-self:center;font-size:13px;padding:5px 5px 5px 8px}.pill-link{padding:0 8px;gap:4px}.pill-cta{margin-left:4px;padding:0 14px;min-height:40px}}
+
+/* Support page */
+.sp-hero-art{position:absolute;right:40px;top:120px;width:min(480px,36vw);height:auto;pointer-events:none;filter:drop-shadow(0 30px 50px rgba(0,0,0,.55));transition-delay:200ms}
+@media (max-width:899px){.sp-hero-art{display:none}}
+.sp-opt{display:flex;flex-direction:column;gap:14px;box-sizing:border-box;padding:32px;border-radius:28px;border:1.5px solid rgba(255,255,255,.16);background:rgba(255,255,255,.06);color:#F3F0E9;text-align:left;font:inherit;cursor:pointer;transition:background .25s ease,border-color .25s ease,transform .25s var(--ease)}
+.sp-opt:hover{background:rgba(255,255,255,.1);border-color:#D9C38A;transform:translateY(-3px)}
+.sp-opt[aria-pressed="true"]{border-color:#D9C38A;background:rgba(217,195,138,.12)}
+.sp-ico{display:flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:16px;background:#D9C38A;color:#111113}
+.sp-opt-t{font-family:var(--display);font-size:40px;line-height:1;text-transform:uppercase}
+.sp-opt-x{font-size:16px;line-height:1.5;color:#B0ACA5}
+.sp-opt-go{display:inline-flex;align-items:center;gap:8px;margin-top:auto;font-size:14px;font-weight:700;letter-spacing:.08em;color:#D9C38A}
+.sp-tabs{display:inline-flex;align-self:flex-start;gap:6px;padding:6px;border-radius:999px;background:#EDE8DF}
+.sp-tab{min-height:46px;padding:0 22px;white-space:nowrap;border:none;border-radius:999px;background:none;font:inherit;font-size:15px;font-weight:600;color:#5E5A53;cursor:pointer;transition:background .2s ease,color .2s ease}
+.sp-tab[aria-pressed="true"]{background:#111113;color:#F6F3EE}
+.sp-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.sp-f{display:flex;flex-direction:column;gap:8px;min-width:0}
+.sp-wide{grid-column:1 / -1}
+.sp-f label,.sp-l{font-size:14px;font-weight:600}
+.sp-f label span,.sp-l span{font-weight:500;color:#8A847A}
+.sp-in{box-sizing:border-box;width:100%;min-height:54px;padding:0 18px;border-radius:14px;border:1.5px solid #DDD6CA;background:#F6F3EE;color:#111113;font:inherit;font-size:16px}
+textarea.sp-in{min-height:140px;padding:14px 18px;resize:vertical;line-height:1.5}
+select.sp-in{appearance:none;-webkit-appearance:none;padding-right:44px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23111113' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 18px center}
+.sp-in:focus{outline:3px solid #D9C38A;outline-offset:2px}
+.sp-file{display:flex;align-items:center;gap:14px;min-height:64px;padding:12px 18px;border-radius:14px;border:1.5px dashed #C9C0B1;background:#F6F3EE;cursor:pointer}
+.sp-file input{position:absolute;width:1px;height:1px;opacity:0}
+.sp-file:focus-within{outline:3px solid #D9C38A;outline-offset:2px}
+.sp-check{display:flex;gap:12px;align-items:flex-start;font-size:14px;line-height:1.5;color:#5E5A53}
+.sp-check input{width:20px;height:20px;margin:1px 0 0;accent-color:#111113;flex:0 0 auto}
+.sp-send{min-height:58px;padding:0 32px;border:none;border-radius:999px;background:#111113;color:#F6F3EE;font:inherit;font-size:16px;font-weight:700;letter-spacing:.08em;cursor:pointer;transition:background .2s ease}
+.sp-send:hover{background:#C81E64}
+.sp-send[disabled]{opacity:.6;cursor:default}
+.sp-err{margin:0;padding:12px 16px;border-radius:14px;background:#FDEDEC;border:1.5px solid #F1A9A3;color:#912018;font-size:14px}
+/* MOBILE-FIX START */
+.fx-swipe{display:none}
+.lu-dots,.lu-lede-m{display:none}
+.nav-support-m{display:none}
+@media (max-width:899px){
+/* Mobile header: logo and links share one pill row, so the logo never floats over the page. */
+header{padding:6px 0 !important}
+.top-nav{display:flex !important;align-items:center;justify-content:space-between;gap:6px;min-height:0 !important;margin:0 10px;padding:6px 6px 6px 14px !important;border-radius:999px;background:var(--pill-bg,rgba(255,255,255,.86));-webkit-backdrop-filter:blur(16px) saturate(160%);backdrop-filter:blur(16px) saturate(160%);border:1px solid rgba(255,255,255,.75);box-shadow:0 10px 26px rgba(17,17,19,.16)}
+.top-nav>a:first-child img{height:30px !important;width:auto}
+.top-nav .nav-pill{padding:0 !important;background:none !important;border:none !important;box-shadow:none !important;-webkit-backdrop-filter:none !important;backdrop-filter:none !important;gap:0 !important}
+.top-nav .nav-pill>a.pill-link:first-child{display:none}
+.top-nav .pill-link{padding:0 9px !important;min-height:44px}
+.top-nav .pill-cta{margin-left:4px !important;padding:0 14px !important;min-height:44px}
+.nav-menu{left:-60px !important}
+
+/* Support: in the Products menu on phones (the header pill has no room) */
+.top-nav .pill-support{display:none !important}
+.nav-support-m{display:flex !important}
+
+/* Nicotine warning on phones: fixed 54px tall and scrolls away with the page; the logo and menu row stays at the top */
+div[style*="position: sticky; top: 0; z-index: 50"]{top:-54px !important}
+div[style*="position: sticky; top: 0; z-index: 50"] > div:first-child{box-sizing:border-box;height:54px;display:flex;align-items:center;justify-content:center;padding:4px 12px !important;font-size:13.5px !important;line-height:1.3 !important}
+/* Footer: bigger tap areas */
+footer .beri-link{display:inline-block;padding:10px 0}
+footer div:has(> .beri-link){gap:2px 26px !important}
+footer a[href^="mailto"]{display:inline-block;padding:9px 0}
+.top-nav>a:first-child{padding:7px 0}
+
+/* Less empty space between sections */
+section[style*="padding: 0 32px 120px"],section[style*="padding: 0 32px 140px"],section[style*="padding: 0 0 120px"],section[style*="padding: 0 32px 100px"],section[style*="padding: 48px 32px 100px"]{padding-bottom:48px !important}
+[style*="padding: 140px 32px"],[style*="padding: 120px 32px"]:not([style*="padding: 120px 32px 0"]):not([style*="sticky"]){padding-top:52px !important;padding-bottom:52px !important}
+section[style*="padding: 120px 32px 0"]{padding-top:52px !important}
+footer > div[style*="56px 32px 140px"]{padding-bottom:56px !important}
+[style*="padding: 170px 32px 120px"],[style*="padding: 180px 32px 110px"]{padding-top:116px !important;padding-bottom:64px !important}
+/* Wholesale buttons keep their arrow on the same line */
+a[href*="holesale"]{white-space:nowrap}
+/* Breadcrumb and contact links: bigger tap areas without moving the layout */
+a[style="color: var(--mute); text-decoration: none"]{display:inline-block;padding:14px 6px;margin:-14px -6px}
+a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
+/* Product heroes: chapter lines fit the screen */
+.v-title{width:auto !important;max-width:100%}
+#video-hero span[style*="letter-spacing: 0.32em"]{width:auto !important;max-width:100%;letter-spacing:.18em !important;font-size:12px !important}
+
+/* Product heroes: headline and buttons sit at the bottom so the clip shows clearly above them */
+#video-hero div[style*="bottom: 210px"]{bottom:124px !important}
+#video-hero div[style*="bottom: 140px"]{bottom:48px !important}
+#video-hero div[style*="right: 6vw; bottom: 150px"]{display:none !important}
+#product-video + div{background:linear-gradient(180deg,rgba(0,0,0,0) 40%,rgba(0,0,0,.55) 68%,rgba(0,0,0,.82) 100%) !important}
+
+/* Product reveal: content starts under the header so the product logo is never cut; the breadcrumb, badge and
+   intro paragraph are left out on phones so the logo, stats, buttons and the devices fit one screen. */
+#reveal-hero > div{align-items:flex-start !important;padding-top:136px !important}
+#reveal-hero > div > div > div:first-child{gap:16px !important}
+#reveal-hero > div > div > div:nth-child(2){margin-top:-70px !important}
+#reveal-hero > div > div > div:first-child > nav,#reveal-hero > div > div > div:first-child > span,#reveal-hero > div > div > div:first-child > p{display:none !important}
+
+/* Product reveal, compact so the devices show on small phones too */
+#reveal-hero .p-logo{max-height:96px;width:auto !important;max-width:100% !important}
+#reveal-hero img[alt^="Normal Mode"]{width:70% !important}
+#reveal-hero div[style*="repeat(4, minmax(0, 1fr))"] > div{padding-top:10px !important}
+#reveal-hero div[style*="repeat(4, minmax(0, 1fr))"] span[style*="font-size: 30px"]{font-size:clamp(18px,5.6vw,24px) !important}
+#reveal-hero .btn-alt{display:none !important}
+#reveal-hero .btn-main{min-height:50px !important}
+/* Pinned stages fit the visible screen (browser bars shown), and the reveal devices sit at the stage bottom and scale with the height */
+#reveal-hero > div[style*="sticky"],#hero-scroll > div[style*="sticky"]{height:100svh !important;min-height:0 !important}
+#reveal-hero > div[style*="sticky"]{flex-direction:column !important;align-items:stretch !important;padding-bottom:20px !important}
+#reveal-hero > div[style*="sticky"] > div{flex:1 1 auto;min-height:0;display:flex !important;flex-direction:column !important;flex-wrap:nowrap !important;gap:0 !important;position:static !important}
+#reveal-hero > div[style*="sticky"] > div > div:first-child{flex:0 0 auto !important;position:relative;z-index:2}
+#reveal-hero > div[style*="sticky"] > div > div:nth-child(2){flex:1 1 auto !important;position:relative !important;z-index:1;min-height:170px !important;margin-top:0 !important;container-type:size}
+#reveal-hero > div[style*="sticky"] > div > div:nth-child(2) > img{top:calc(50% + 62px) !important;height:min(300px,86cqh) !important}
+@media (max-height:760px){
+#reveal-hero > div[style*="sticky"]{padding-top:100px !important}
+#reveal-hero > div > div > div:first-child{gap:12px !important}
+#reveal-hero .p-logo{max-height:76px}
+#reveal-hero img[alt^="Normal Mode"]{width:58% !important}
+}
+
+/* Technical specifications: smaller heading, short padding, and every row as an even label | value grid */
+#specs h2{font-size:clamp(40px,13vw,56px) !important;line-height:.95 !important}
+#specs p{font-size:15px !important;line-height:1.5 !important}
+#specs > div > div:last-child{padding:8px 20px !important;box-sizing:border-box;width:100% !important}
+#specs > div > div:last-child > div{display:grid !important;grid-template-columns:minmax(0,44%) minmax(0,1fr);align-items:baseline;gap:4px 12px !important;padding:12px 0 !important;font-size:14px !important;line-height:1.35}
+#specs > div > div:last-child > div > span:first-child{font-size:13px !important}
+#specs > div > div:last-child > div > span:last-child{text-align:right}
+
+/* Highlight tiles: two columns instead of one tall column; an odd last tile spans the row */
+main section[aria-label$=" highlights"] ul.feat-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n){grid-column:auto !important;flex-direction:column !important;align-items:center !important;justify-content:center !important;text-align:center;gap:8px !important;padding:14px 10px !important;min-height:0 !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n):last-child:nth-child(odd){grid-column:1/-1 !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)[data-kind=badge]:last-child:nth-child(odd){justify-self:center;width:calc(50% - 5px)}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) img{height:44px !important;width:auto !important;max-width:100% !important;margin:0 !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl{padding:0 !important;border:0 !important;align-items:center !important;text-align:center}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl::before,main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl::after{display:none !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl b{font-size:19px !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl > span{font-size:10.5px !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n):has(> img[style^="display: block; width: 100%"]),main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)[data-kind=badge]{padding:6px !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) > img[style^="display: block; width: 100%"],main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)[data-kind=badge] img{height:auto !important;width:100% !important;max-width:100% !important}
+
+/* Product wholesale card on phones: same look, tighter */
+.wh-card{padding:28px 20px 22px !important;gap:18px !important}
+.wh-copy{gap:14px !important}
+.wh-title{font-size:clamp(36px,11.5vw,48px) !important}
+.wh-text{font-size:15px !important;line-height:1.5 !important}
+.wh-points{flex-direction:column;gap:8px !important;font-size:14px !important}
+.wh-btns{flex-direction:column;gap:8px !important;padding-top:4px !important}
+.wh-btn{width:100%;justify-content:center;min-height:52px !important;white-space:nowrap}
+.wh-btn2{justify-content:center;min-height:40px !important;border:0 !important;text-decoration:underline;text-underline-offset:4px}
+.wh-visual{gap:14px !important}
+.wh-img{height:220px !important}
+.wh-stat{min-width:0 !important;flex:1 1 0;padding:8px 6px !important}
+.wh-stat b{font-size:19px !important}
+.wh-stat span{font-size:11px !important}
+.wh-stats{width:100%;flex-wrap:nowrap !important;gap:8px !important}
+
+/* Explore the lineup: kicker on one line, even card heights, less space before the footer */
+.xl-sec{padding-bottom:36px !important}
+.xl-kicker{letter-spacing:.08em !important;font-size:10.5px !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.xl-card{min-height:116px}
+/* Swipe cue above long collection tab rows, and a fade on the row's right edge */
+.fx-swipe[data-on="true"]{display:flex !important;align-self:flex-end;align-items:center;gap:6px;margin-bottom:-12px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.fx-swipe[data-on="true"] svg{animation:fxNudge 1.4s ease-in-out infinite}
+@keyframes fxNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+.fx-swipe[data-on="true"] + [aria-label="Flavor collections"]{-webkit-mask-image:linear-gradient(90deg,#000 78%,transparent);mask-image:linear-gradient(90deg,#000 78%,transparent)}
+/* Flavor tabs on one swipeable line */
+[aria-label="Flavor collections"]{flex-wrap:nowrap !important;overflow-x:auto;scrollbar-width:none;margin-right:-20px;padding-right:20px;-webkit-overflow-scrolling:touch}
+[aria-label="Flavor collections"]::-webkit-scrollbar{display:none}
+[aria-label="Flavor collections"] > button{flex:0 0 auto;white-space:nowrap}
+/* Flavor grid: three columns, every flavor shown going down */
+.fx-grid{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important;grid-auto-flow:row !important;gap:8px !important}
+.fx-grid .fx-card{padding:10px 4px 10px !important;gap:8px !important;border-radius:14px !important}
+.fx-grid .fx-card img{height:clamp(70px,22vw,96px) !important}
+.fx-grid .fx-card span{font-size:10.5px !important;letter-spacing:.02em !important;line-height:1.2 !important}
+[style*="font-size: 11px"],[style*="font-size: 10px"]{font-size:12px !important}
+
+/* Support on phones: options stacked and compact, the form in one column */
+.sp-opts{grid-template-columns:minmax(0,1fr) !important;gap:12px !important}
+.sp-opt{display:grid !important;grid-template-columns:44px minmax(0,1fr);column-gap:14px;row-gap:4px;padding:18px !important;border-radius:22px !important}
+.sp-ico{width:44px !important;height:44px !important;border-radius:12px !important;grid-row:span 3}
+.sp-ico svg{width:22px;height:22px}
+.sp-opt-t{font-size:28px !important}
+.sp-opt-x{font-size:14px !important}
+.sp-opt-go{font-size:12px !important;margin-top:4px !important}
+#support-form{padding-left:16px !important;padding-right:16px !important}
+.sp-card{padding:24px 18px !important;border-radius:28px !important;gap:24px !important}
+.sp-tabs{display:flex !important;align-self:stretch !important;width:100%;box-sizing:border-box}
+.sp-tab{flex:1 1 auto;padding:0 10px !important;font-size:13px !important}
+.sp-title{font-size:48px !important}
+.sp-info{margin-top:0 !important;padding-top:16px !important}
+.sp-form{grid-template-columns:minmax(0,1fr) !important;gap:14px !important}
+.sp-send{width:100%}
+.sp-main .sp-f[style*="flex-direction: row"] > span{width:100%;text-align:center}
+div[role="status"]:has(> .sp-send){padding:26px 20px !important}
+}
+
+@media (max-width:380px){.top-nav{margin:0 6px;padding-left:10px !important}.top-nav .pill-link{padding:0 6px !important;font-size:12.5px}.top-nav .pill-cta{padding:0 11px !important}.top-nav>a:first-child img{height:26px !important}}
+/* MOBILE-FIX END */
+</style>
+
+</head>
+<body>
+<div id="dc-root"></div>
+<template id="dc-template">
+
+<div style="background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 16px; line-height: 1.6">
+
+<div style="position: sticky; top: 0; z-index: 50">
+<div style="background: #FFFFFF; color: #000000; text-align: center; font-weight: 700; font-size: 15px; padding: 8px 16px; line-height: 1.35; border-bottom: 1px solid #DDD6CA">WARNING: This product contains nicotine. Nicotine is an addictive chemical.</div>
+<header style="{{navStyle}}">
+<nav class="top-nav" style="max-width: 1320px; margin: 0 auto; padding: 0 32px; min-height: 80px">
+<a href="Home-Color-Images.dc.html" aria-label="BERI home" style="display: flex; align-items: center; text-decoration: none">
+<img src="assets/blob/bd8d6ee885cd447f39d73ea5ec4478b3.png" alt="BERI" style="display: block; height: 46px; width: auto">
+</a>
+<div class="nav-pill">
+<a class="pill-link" href="Home-Color-Images.dc.html">Home</a>
+<div class="nav-dd">
+<button type="button" class="pill-link" aria-haspopup="true">Products<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg></button>
+<div class="nav-menu">
+<div style="min-width: 240px; padding: 10px; border-radius: 20px; background: #FFFFFF; border: 1px solid #DDD6CA; box-shadow: 0 20px 50px rgba(17,17,19,0.14); display: flex; flex-direction: column; gap: 2px; letter-spacing: 0.16em">
+<a class="nav-item" href="Cliq.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #0F7A42"></span>BERI CLIQ</a>
+<a class="nav-item" href="Crush-v2.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #C81E64"></span>BERI CRUSH</a>
+<a class="nav-item" href="Cirql-v2.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #7A1626"></span>BERI CIRQL</a>
+<a class="nav-item" href="Eliquid.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #8A6A12"></span>BERI E-LIQUID</a>
+<a class="nav-item nav-support-m" href="Support.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #D9C38A"></span>SUPPORT</a>
+</div>
+</div>
+<a class="pill-link" href="Authenticate.dc.html">Authenticate</a>
+<a class="pill-link pill-support is-current" aria-current="page" href="Support.dc.html">Support</a>
+<a class="pill-cta" href="Wholesale.dc.html">Wholesale</a>
+</div>
+<span aria-hidden="true"></span>
+</nav>
+</header>
+</div>
+
+<main id="top">
+<section class="beri-dark beri-pattern hero-under" style="margin-top: -80px; background-color: #000000">
+<div style="position: relative; max-width: 1320px; margin: 0 auto; padding: 170px 32px 120px; display: flex; flex-direction: column; gap: 56px">
+<img class="sp-hero-art" data-reveal="scale" src="assets/blob/32d7add1115f5d8a628b7f4579e1955e.webp" alt="" aria-hidden="true">
+<div style="display: flex; flex-direction: column; gap: 22px; max-width: 760px">
+<span data-reveal="up" style="font-size: 13px; font-weight: 600; letter-spacing: 0.32em; color: var(--gold-ink)">SUPPORT</span>
+<h1 class="big-head" data-reveal="up" style="margin: 0; font-family: var(--display); font-weight: 400; font-size: 128px; line-height: 0.88; text-transform: uppercase; transition-delay: 80ms">How can<br>we help?</h1>
+<p data-reveal="up" style="margin: 0; max-width: 520px; font-size: 19px; color: var(--mute); transition-delay: 160ms">Questions about a BERI product, a store or a device that doesn’t look right? Pick an option and our team will get back to you.</p>
+</div>
+<div class="sp-opts" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px">
+<button type="button" class="sp-opt" data-reveal="up" aria-pressed="{{contactOn}}" onClick="{{pickContact}}">
+<span class="sp-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"></path><path d="M8 9.5h8"></path><path d="M8 12.5h5"></path></svg></span>
+<span class="sp-opt-t">Contact us</span>
+<span class="sp-opt-x">Product questions, stores, device issues or anything else about BERI.</span>
+<span class="sp-opt-go">WRITE TO US<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</button>
+<button type="button" class="sp-opt" data-reveal="up" aria-pressed="{{reportOn}}" onClick="{{pickReport}}" style="transition-delay: 120ms">
+<span class="sp-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.3-7 10-4-1.7-7-5.5-7-10V6z"></path><path d="M12 8.5v4"></path><path d="M12 15.5v.5"></path></svg></span>
+<span class="sp-opt-t">Report a counterfeit</span>
+<span class="sp-opt-x">Found a fake BERI, or a store or website selling them? Tell us where.</span>
+<span class="sp-opt-go">REPORT IT<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
+</button>
+</div>
+</div>
+</section>
+
+<section id="support-form" style="scroll-margin-top: 100px; padding: 120px 32px 140px">
+<div class="sp-card" data-reveal="scale" style="max-width: 1320px; margin: 0 auto; box-sizing: border-box; border-radius: 40px; background: #FFFFFF; border: 1px solid var(--line); padding: 64px; display: flex; flex-wrap: wrap; gap: 56px">
+<div class="sp-side" style="flex: 1 1 340px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<div class="sp-tabs" role="group" aria-label="Support options">
+<button type="button" class="sp-tab" aria-pressed="{{contactOn}}" onClick="{{tabContact}}">Contact us</button>
+<button type="button" class="sp-tab" aria-pressed="{{reportOn}}" onClick="{{tabReport}}">Report a counterfeit</button>
+</div>
+<h2 class="big-head sp-title" style="margin: 8px 0 0; font-family: var(--display); font-weight: 400; font-size: 80px; line-height: 0.9; text-transform: uppercase">{{title}}</h2>
+<p style="margin: 0; max-width: 400px; font-size: 17px; color: var(--mute)">{{intro}}</p>
+<div class="sp-info" style="display: flex; flex-direction: column; gap: 14px; margin-top: 10px; padding-top: 22px; border-top: 1px solid var(--line)">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.24em; color: var(--gold-ink)">EMAIL</span><a href="mailto:support@beridisposable.com" style="font-size: 18px; font-weight: 600">support@beridisposable.com</a></div>
+<sc-if value="{{isReport}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.24em; color: var(--gold-ink)">NOT SURE IT’S FAKE?</span><a href="Authenticate.dc.html" style="font-size: 16px; font-weight: 600">Check the security code first →</a></div>
+</sc-if>
+<sc-if value="{{isContact}}" hint-placeholder-val="{{true}}">
+<div style="display: flex; flex-direction: column; gap: 2px"><span style="font-size: 12px; font-weight: 700; letter-spacing: 0.24em; color: var(--gold-ink)">WHOLESALE</span><a href="Wholesale.dc.html" style="font-size: 16px; font-weight: 600">Stock BERI in your store →</a></div>
+</sc-if>
+</div>
+</div>
+<div class="sp-main" style="flex: 1.4 1 520px; min-width: 0">
+<sc-if value="{{showSent}}" hint-placeholder-val="{{false}}">
+<div role="status" style="display: flex; flex-direction: column; align-items: flex-start; gap: 14px; padding: 40px; border-radius: 28px; background: #E9F7EF; border: 1.5px solid #8FD3AC">
+<svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#0F7A42" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9.5"></circle><path d="M7.5 12.5l3 3 6-6.5"></path></svg>
+<strong style="font-family: var(--display); font-weight: 400; font-size: 44px; line-height: 1; text-transform: uppercase; color: #0B5E33">{{sentTitle}}</strong>
+<span style="font-size: 17px; color: #3F5A4A">{{sentText}}</span>
+<button type="button" class="sp-send" onClick="{{again}}" style="margin-top: 6px">{{againLabel}}</button>
+</div>
+</sc-if>
+<sc-if value="{{showContact}}" hint-placeholder-val="{{true}}">
+<form class="sp-form" onSubmit="{{send}}" novalidate="">
+<div class="sp-f"><label for="c-name">Name</label><input id="c-name" name="name" class="sp-in" type="text" autocomplete="name" required=""></div>
+<div class="sp-f"><label for="c-email">Email</label><input id="c-email" name="email" class="sp-in" type="email" autocomplete="email" required=""></div>
+<div class="sp-f sp-wide"><label for="c-topic">Topic</label><select id="c-topic" name="topic" class="sp-in"><option>Product question</option><option>Where to buy</option><option>Device issue</option><option>Wholesale</option><option>Something else</option></select></div>
+<div class="sp-f sp-wide"><label for="c-msg">Message</label><textarea id="c-msg" name="message" class="sp-in" required="" placeholder="How can we help?"></textarea></div>
+<sc-if value="{{hasErr}}" hint-placeholder-val="{{false}}"><p class="sp-err sp-wide" role="alert">{{err}}</p></sc-if>
+<div class="sp-f sp-wide" style="flex-direction: row; flex-wrap: wrap; align-items: center; gap: 16px"><button type="submit" class="sp-send" disabled="{{sending}}">{{sendLabel}}</button><span style="font-size: 13px; color: #8A847A">Adults 21+ only.</span></div>
+</form>
+</sc-if>
+<sc-if value="{{showReport}}" hint-placeholder-val="{{false}}">
+<form class="sp-form" onSubmit="{{send}}" novalidate="">
+<div class="sp-f"><label for="r-name">Name <span>(optional)</span></label><input id="r-name" name="name" class="sp-in" type="text" autocomplete="name"></div>
+<div class="sp-f"><label for="r-email">Email</label><input id="r-email" name="email" class="sp-in" type="email" autocomplete="email" required=""></div>
+<div class="sp-f"><label for="r-product">Product</label><select id="r-product" name="product" class="sp-in"><option>BERI Cliq</option><option>BERI Crush</option><option>BERI Cirql</option><option>BERI E-liquid</option><option>Not sure</option></select></div>
+<div class="sp-f"><label for="r-code">Security code <span>(if any)</span></label><input id="r-code" name="code" class="sp-in" type="text" placeholder="XXXX-XXXX-XXXX" style="letter-spacing: 0.08em"></div>
+<div class="sp-f"><label for="r-store">Where did you buy it?</label><input id="r-store" name="store" class="sp-in" type="text" placeholder="Store name or website" required=""></div>
+<div class="sp-f"><label for="r-place">City and state</label><input id="r-place" name="place" class="sp-in" type="text" placeholder="e.g. Austin, TX"></div>
+<div class="sp-f"><label for="r-date">Date of purchase <span>(optional)</span></label><input id="r-date" name="date" class="sp-in" type="date"></div>
+<div class="sp-f"><span class="sp-l">Photos <span>(optional)</span></span><label class="sp-file"><input name="photos" type="file" accept="image/*" multiple="" onChange="{{onFiles}}"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#111113" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-2.5h6L17 7h3v12H4z"></path><circle cx="12" cy="13" r="3.5"></circle></svg><span style="font-size: 14px; font-weight: 600">{{filesLabel}}</span></label></div>
+<div class="sp-f sp-wide"><label for="r-msg">What looks wrong?</label><textarea id="r-msg" name="message" class="sp-in" required="" placeholder="Box, label, print, taste or price: anything that made you suspicious."></textarea></div>
+<label class="sp-check sp-wide"><input type="checkbox" name="contact_ok" value="yes" checked="">You can contact me about this report.</label>
+<sc-if value="{{hasErr}}" hint-placeholder-val="{{false}}"><p class="sp-err sp-wide" role="alert">{{err}}</p></sc-if>
+<div class="sp-f sp-wide" style="flex-direction: row; flex-wrap: wrap; align-items: center; gap: 16px"><button type="submit" class="sp-send" disabled="{{sending}}">{{sendLabel}}</button><span style="font-size: 13px; color: #8A847A">Reports are kept confidential.</span></div>
+</form>
+</sc-if>
+</div>
+</div>
+</section>
+</main>
+
+<footer class="beri-dark" style="border-top: 1px solid var(--line)">
+<div style="max-width: 1320px; margin: 0 auto; padding: 56px 32px 140px; display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px">
+<img src="assets/blob/bd8d6ee885cd447f39d73ea5ec4478b3.png" alt="BERI" style="display: block; height: 80px; width: auto">
+<div style="display: flex; flex-wrap: wrap; gap: 32px; font-size: 13px; font-weight: 600; letter-spacing: 0.22em">
+<a class="beri-link" href="Home-Color-Images.dc.html" style="color: var(--fg); text-decoration: none">HOME</a>
+<a class="beri-link" href="Cliq.dc.html" style="color: var(--fg); text-decoration: none">BERI CLIQ</a>
+<a class="beri-link" href="Crush-v2.dc.html" style="color: var(--fg); text-decoration: none">BERI CRUSH</a>
+<a class="beri-link" href="Cirql-v2.dc.html" style="color: var(--fg); text-decoration: none">BERI CIRQL</a>
+<a class="beri-link" href="Eliquid.dc.html" style="color: var(--fg); text-decoration: none">BERI E-LIQUID</a>
+<a class="beri-link" href="Authenticate.dc.html" style="color: var(--fg); text-decoration: none">AUTHENTICATE</a>
+<a class="beri-link" href="Support.dc.html" style="color: var(--fg); text-decoration: none">SUPPORT</a>
+<a class="beri-link" href="Wholesale.dc.html" style="color: var(--fg); text-decoration: none">WHOLESALE</a>
+</div>
+</div>
+<a href="mailto:wholesale@beridisposable.com" style="align-self: flex-start; color: var(--fg); font-weight: 600">wholesale@beridisposable.com</a>
+<a href="mailto:support@beridisposable.com" style="align-self: flex-start; margin-top: -12px; color: var(--fg); font-weight: 600">support@beridisposable.com</a>
+<p style="margin: 0; font-size: 14px; color: var(--mute)">Sale of these products is restricted to adults 21 and over. WARNING: This product contains nicotine. Nicotine is an addictive chemical.</p>
+<p style="margin: 0; font-size: 14px; color: var(--mute)">Copyright © 2025 BERIdisposable.com – All Rights Reserved.</p>
+</div>
+</footer>
+
+</div>
+</template>
+<script type="text/x-dc" data-dc-script data-props='{"animations":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":2320}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { scrolled: false, tab: 'contact', sent: '', sending: false, err: '', files: 0 };
+  }
+  componentDidMount() {
+    this.reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    this.onScroll = () => {
+      const scrolled = (window.scrollY || 0) > 24;
+      if (scrolled !== this.state.scrolled) this.setState({ scrolled: scrolled });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onScroll();
+    this.setupReveal();
+    // A link to support.html#report opens the counterfeit form.
+    if ((window.location.hash || '') === '#report') this.setState({ tab: 'report' });
+  }
+  componentDidUpdate() {
+    if (!this.io && this.motionOn()) this.setupReveal();
+    if (this.io && !this.motionOn()) this.teardownReveal();
+    this.scanReveal();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    this.teardownReveal();
+  }
+  motionOn() {
+    return (this.props.animations ?? true) && !this.reduce;
+  }
+  setupReveal() {
+    if (!this.motionOn() || !('IntersectionObserver' in window)) return;
+    document.documentElement.classList.add('rv-ready');
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) {
+          e.target.setAttribute('data-in', '');
+          this.io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    this.scanReveal();
+  }
+  scanReveal() {
+    if (!this.io) return;
+    document.querySelectorAll('[data-reveal]:not([data-in]):not([data-rv])').forEach((el) => {
+      el.setAttribute('data-rv', '');
+      this.io.observe(el);
+    });
+  }
+  teardownReveal() {
+    if (this.io) this.io.disconnect();
+    this.io = null;
+    document.documentElement.classList.remove('rv-ready');
+    document.querySelectorAll('[data-rv]').forEach((el) => el.removeAttribute('data-rv'));
+  }
+  // Sends a support message. On the WordPress site the theme defines window.BERI_SUPPORT(kind, formData), which posts
+  // it to the server and resolves to { ok: true }. Anywhere else (canvas, preview link) the form just shows the thank-you.
+  sendForm(kind, data) {
+    if (typeof window.BERI_SUPPORT === 'function') return Promise.resolve(window.BERI_SUPPORT(kind, data));
+    return new Promise((done) => setTimeout(() => done({ ok: true }), 600));
+  }
+  pick(tab, scroll) {
+    this.setState({ tab: tab, sent: '', err: '', files: 0 });
+    if (scroll) {
+      const f = document.getElementById('support-form');
+      if (f && f.scrollIntoView) f.scrollIntoView({ behavior: this.reduce ? 'auto' : 'smooth', block: 'start' });
+    }
+  }
+  renderVals() {
+    const tab = this.state.tab === 'report' ? 'report' : 'contact';
+    const sent = this.state.sent;
+    const report = tab === 'report';
+    return {
+      navStyle: 'background: transparent',
+      isReport: report,
+      isContact: !report,
+      contactOn: report ? 'false' : 'true',
+      reportOn: report ? 'true' : 'false',
+      pickContact: () => this.pick('contact', true),
+      pickReport: () => this.pick('report', true),
+      tabContact: () => this.pick('contact', false),
+      tabReport: () => this.pick('report', false),
+      title: report ? 'Report a counterfeit' : 'Contact us',
+      intro: report
+        ? 'Tell us where you found it and what looked wrong. Photos of the box, label and device help us act faster.'
+        : 'Send us a message and our team will reply by email.',
+      showSent: !!sent,
+      showContact: !sent && !report,
+      showReport: !sent && report,
+      sentTitle: sent === 'report' ? 'Report received' : 'Message sent',
+      sentText: sent === 'report'
+        ? 'Thank you for helping keep BERI genuine. Our team will look into it and may contact you for more details.'
+        : 'Thank you. We have your message and will reply by email.',
+      againLabel: sent === 'report' ? 'SEND ANOTHER REPORT' : 'SEND ANOTHER MESSAGE',
+      again: () => this.setState({ sent: '', err: '', files: 0 }),
+      hasErr: !!this.state.err,
+      err: this.state.err,
+      sending: this.state.sending,
+      sendLabel: this.state.sending ? 'SENDING…' : (report ? 'SEND REPORT' : 'SEND MESSAGE'),
+      filesLabel: this.state.files ? this.state.files + ' photo' + (this.state.files === 1 ? '' : 's') + ' added' : 'Add photos of the box, label and device',
+      onFiles: (e) => this.setState({ files: (e.target.files || []).length }),
+      send: (e) => {
+        e.preventDefault();
+        if (this.state.sending) return;
+        const form = e.target;
+        const bad = Array.from(form.querySelectorAll('[required]')).find((el) => !String(el.value || '').trim() || (el.type === 'email' && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(el.value.trim())));
+        if (bad) {
+          const name = (form.querySelector('label[for="' + bad.id + '"]') || {}).textContent || 'this field';
+          this.setState({ err: bad.type === 'email' && String(bad.value || '').trim() ? 'Please enter a valid email address.' : 'Please fill in ' + name.replace(/\(.*\)/, '').trim().toLowerCase() + '.' });
+          bad.focus();
+          return;
+        }
+        this.setState({ sending: true, err: '' });
+        this.sendForm(tab, new FormData(form)).then(
+          (r) => this.setState(r && r.ok ? { sending: false, sent: tab, files: 0 } : { sending: false, err: (r && r.message) || 'We couldn’t send this right now. Please try again or email support@beridisposable.com.' }),
+          () => this.setState({ sending: false, err: 'We couldn’t send this right now. Please try again or email support@beridisposable.com.' })
+        );
+      }
+    };
+  }
+}
+</script>
+<script src="assets/js/beri-runtime.js?v=5"></script>
+</body>
+</html>

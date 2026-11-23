@@ -24,6 +24,7 @@ PAGES = [
     ('eliquid.html', 'page-e-liquid.php', 'BERI E-liquid'),
     ('authenticate.html', 'page-authenticate.php', 'BERI Authenticate'),
     ('wholesale.html', 'page-wholesale.php', 'BERI Wholesale'),
+    ('support.html', 'page-support.php', 'BERI Support'),
 ]
 
 THEME_URL = '<?php echo esc_url( $beri ); ?>'

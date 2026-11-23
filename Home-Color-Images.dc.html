@@ -268,6 +268,7 @@ a{color:#111113}a:hover{color:#7A5F14}
 /* MOBILE-FIX START */
 .fx-swipe{display:none}
 .lu-dots,.lu-lede-m{display:none}
+.nav-support-m{display:none}
 .hm-hint{display:none}
 .nl-lede-m{display:none}
 .au-lede-m{display:none}
@@ -284,6 +285,10 @@ header{padding:6px 0 !important}
 .top-nav .pill-link{padding:0 9px !important;min-height:44px}
 .top-nav .pill-cta{margin-left:4px !important;padding:0 14px !important;min-height:44px}
 .nav-menu{left:-60px !important}
+
+/* Support: in the Products menu on phones (the header pill has no room) */
+.top-nav .pill-support{display:none !important}
+.nav-support-m{display:flex !important}
 
 /* Nicotine warning on phones: fixed 54px tall and scrolls away with the page; the logo and menu row stays at the top */
 div[style*="position: sticky; top: 0; z-index: 50"]{top:-54px !important}
@@ -551,10 +556,12 @@ div[style*="left: 50%; bottom: 110px"]{display:none !important}
 <a class="nav-item" href="Crush-v2.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #C81E64"></span>BERI CRUSH</a>
 <a class="nav-item" href="Cirql-v2.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #7A1626"></span>BERI CIRQL</a>
 <a class="nav-item" href="Eliquid.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #8A6A12"></span>BERI E-LIQUID</a>
+<a class="nav-item nav-support-m" href="Support.dc.html"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 999px; background: #D9C38A"></span>SUPPORT</a>
 </div>
 </div>
 </div>
 <a class="pill-link" href="Authenticate.dc.html">Authenticate</a>
+<a class="pill-link pill-support" href="Support.dc.html">Support</a>
 <a class="pill-cta" href="Wholesale.dc.html">Wholesale</a>
 </div>
 <span aria-hidden="true"></span>
@@ -766,7 +773,7 @@ div[style*="left: 50%; bottom: 110px"]{display:none !important}
 </a>
 <a class="ws-tile" href="Eliquid.dc.html" style="--c: #F2C94C">
 <span class="ws-glow" aria-hidden="true"></span>
-<img class="ws-img" src="/_blob/1a6e959e6fbe802d98e56b00f8beba80" alt="BERI E-liquid bottle and box">
+<img class="ws-img" src="/_blob/4d8d2d6df896858a736b223fc48ce0e4" alt="BERI E-liquid bottle and box">
 <span class="ws-kind">BOTTLED</span>
 <span class="ws-name">E-LIQUID</span>
 <span class="ws-spec"><b>30 mL</b> 25 / 50 mg nicotine salt</span>
@@ -857,10 +864,12 @@ div[style*="left: 50%; bottom: 110px"]{display:none !important}
 <a class="beri-link" href="Cirql-v2.dc.html" style="color: var(--fg); text-decoration: none">BERI CIRQL</a>
 <a class="beri-link" href="Eliquid.dc.html" style="color: var(--fg); text-decoration: none">BERI E-LIQUID</a>
 <a class="beri-link" href="Authenticate.dc.html" style="color: var(--fg); text-decoration: none">AUTHENTICATE</a>
+<a class="beri-link" href="Support.dc.html" style="color: var(--fg); text-decoration: none">SUPPORT</a>
 <a class="beri-link" href="Wholesale.dc.html" style="color: var(--fg); text-decoration: none">WHOLESALE</a>
 </div>
 </div>
 <a href="mailto:wholesale@beridisposable.com" style="align-self: flex-start; color: var(--fg); font-weight: 600">wholesale@beridisposable.com</a>
+<a href="mailto:support@beridisposable.com" style="align-self: flex-start; margin-top: -12px; color: var(--fg); font-weight: 600">support@beridisposable.com</a>
 <p style="margin: 0; font-size: 14px; color: var(--mute)">Sale of these products is restricted to adults 21 and over. WARNING: This product contains nicotine. Nicotine is an addictive chemical.</p>
 <p style="margin: 0; font-size: 14px; color: var(--mute)">Copyright © 2025 BERIdisposable.com – All Rights Reserved.</p>
 </div>
