@@ -266,6 +266,8 @@ a{color:#111113}a:hover{color:#7A5F14}
 #cliq-teaser + div{background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.4) 38%,rgba(0,0,0,0) 62%) !important}
 @media (max-width:899px){#cliq-teaser + div{background:linear-gradient(90deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.4) 55%,rgba(0,0,0,.1) 100%) !important}}
 /* MOBILE-FIX START */
+.fx-swipe{display:none}
+.lu-dots,.lu-lede-m{display:none}
 .hm-hint{display:none}
 .nl-lede-m{display:none}
 .au-lede-m{display:none}
@@ -327,6 +329,18 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 #reveal-hero div[style*="repeat(4, minmax(0, 1fr))"] span[style*="font-size: 30px"]{font-size:clamp(18px,5.6vw,24px) !important}
 #reveal-hero .btn-alt{display:none !important}
 #reveal-hero .btn-main{min-height:50px !important}
+/* Pinned stages fit the visible screen (browser bars shown), and the reveal devices sit at the stage bottom and scale with the height */
+#reveal-hero > div[style*="sticky"],#hero-scroll > div[style*="sticky"]{height:100svh !important;min-height:0 !important}
+#reveal-hero > div[style*="sticky"] > div{position:static !important}
+#reveal-hero > div[style*="sticky"] > div > div:first-child{position:relative;z-index:2}
+#reveal-hero > div[style*="sticky"] > div > div:nth-child(2){position:absolute !important;z-index:1;left:0;right:0;bottom:0;height:max(240px,calc(100svh - 420px));min-height:0 !important;margin-top:0 !important}
+#reveal-hero > div[style*="sticky"] > div > div:nth-child(2) > img{top:calc(50% + 40px) !important;height:clamp(190px,calc(100svh - 460px),300px) !important}
+@media (max-height:760px){
+#reveal-hero > div[style*="sticky"]{padding-top:100px !important}
+#reveal-hero > div > div > div:first-child{gap:12px !important}
+#reveal-hero .p-logo{max-height:76px}
+#reveal-hero img[alt^="Normal Mode"]{width:58% !important}
+}
 
 /* Technical specifications: smaller heading, short padding, and every row as an even label | value grid */
 #specs h2{font-size:clamp(40px,13vw,56px) !important;line-height:.95 !important}
@@ -369,6 +383,11 @@ main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)
 .xl-sec{padding-bottom:36px !important}
 .xl-kicker{letter-spacing:.08em !important;font-size:10.5px !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .xl-card{min-height:116px}
+/* Swipe cue above long collection tab rows, and a fade on the row's right edge */
+.fx-swipe[data-on="true"]{display:flex !important;align-self:flex-end;align-items:center;gap:6px;margin-bottom:-12px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.fx-swipe[data-on="true"] svg{animation:fxNudge 1.4s ease-in-out infinite}
+@keyframes fxNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+.fx-swipe[data-on="true"] + [aria-label="Flavor collections"]{-webkit-mask-image:linear-gradient(90deg,#000 78%,transparent);mask-image:linear-gradient(90deg,#000 78%,transparent)}
 /* Flavor tabs on one swipeable line */
 [aria-label="Flavor collections"]{flex-wrap:nowrap !important;overflow-x:auto;scrollbar-width:none;margin-right:-20px;padding-right:20px;-webkit-overflow-scrolling:touch}
 [aria-label="Flavor collections"]::-webkit-scrollbar{display:none}
@@ -446,6 +465,25 @@ main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)
 .lu-specs li{padding:7px 0 !important}
 .lu-foot{padding-top:14px !important;gap:0 !important}
 .lu-btn{min-height:46px !important}
+/* The lineup heading block: one-line title, short intro, less space before the cards */
+#products{gap:24px !important}
+#products .lu-h2{font-size:clamp(52px,16.5vw,68px) !important;white-space:nowrap}
+#products .lu-h2 br{display:none}
+#products > div:first-child{gap:12px !important}
+#products > div:first-child > div{gap:8px !important}
+#products > div:first-child > p[data-reveal]{display:none}
+.lu-lede-m{display:block;margin:0;font-size:16px;line-height:1.45;color:var(--mute)}
+/* Swipe row: no scrollbar, dots show which card is in view */
+.lu-grid{scrollbar-width:none}
+.lu-grid::-webkit-scrollbar{display:none}
+@media (max-width:640px){.lu-dots{display:flex !important;justify-content:center;gap:6px;margin-top:-6px}}
+.lu-dots i{display:block;height:7px;border-radius:7px;transition:width .3s ease,background .3s ease}
+/* Card text area a little tighter (images keep their size) */
+.lu-name{font-size:40px !important}
+.lu-specs{margin-top:8px !important}
+.lu-specs li{padding:5px 0 !important}
+.lu-foot{padding-top:12px !important}
+.lu-media{margin:0 0 4px !important}
 /* Hero on phones: logo on top, the product clip in the middle, headline and button at the bottom, all centred. */
 .hero-copy{bottom:64px !important;align-items:center;text-align:center}
 .hero-copy>span:first-child{letter-spacing:.16em !important;font-size:12px !important}
@@ -561,9 +599,10 @@ div[style*="left: 50%; bottom: 110px"]{display:none !important}
 <div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px">
 <div style="display: flex; flex-direction: column; gap: 16px">
 <span data-reveal="up" style="font-size: 13px; font-weight: 600; letter-spacing: 0.32em; color: var(--gold-ink)">THE PRODUCTS</span>
-<h2 data-reveal="up" style="margin: 0; font-family: var(--display); font-weight: 400; font-size: 120px; line-height: 0.9; text-transform: uppercase">The<br>lineup</h2>
+<h2 class="lu-h2" data-reveal="up" style="margin: 0; font-family: var(--display); font-weight: 400; font-size: 120px; line-height: 0.9; text-transform: uppercase">The <br>lineup</h2>
 </div>
 <p data-reveal="up" style="margin: 0; max-width: 420px; font-size: 18px; color: var(--mute); transition-delay: 120ms">Three devices and a bottled e-liquid, built to one standard. Pick the format that fits how you vape.</p>
+<p class="lu-lede-m">Three devices and a bottled e-liquid.</p>
 </div>
 <div class="lu-grid">
 <sc-for list="{{cards}}" as="c" hint-placeholder-count="4">
@@ -592,6 +631,7 @@ div[style*="left: 50%; bottom: 110px"]{display:none !important}
 </article>
 </sc-for>
 </div>
+<div class="lu-dots" aria-hidden="true"><i style="{{luDot0}}"></i><i style="{{luDot1}}"></i><i style="{{luDot2}}"></i><i style="{{luDot3}}"></i></div>
 </section>
 
 <section id="new-launch" aria-label="New launch: BERI Cirql" style="padding: 0 32px 120px">
@@ -917,6 +957,16 @@ class Component extends DCLogic {
     this.setupReveal();
     this.setupTeaser();
     this.setupHeroVideo();
+    // Phones: the lineup dots follow the card that is in view.
+    const lg = document.querySelector('.lu-grid');
+    if (lg) lg.addEventListener('scroll', () => {
+      const c = lg.children[0];
+      if (!c) return;
+      const step = c.getBoundingClientRect().width + (parseFloat(getComputedStyle(lg).columnGap) || 0);
+      const atEnd = lg.scrollLeft + lg.clientWidth >= lg.scrollWidth - 4;
+      const i = atEnd ? 3 : Math.min(3, Math.max(0, Math.round(lg.scrollLeft / step)));
+      if (i !== (this.state.luI || 0)) this.setState({ luI: i });
+    }, { passive: true });
   }
   // The lineup clip (Cliq, Crush, Cirql) follows scroll frame by frame while the hero is pinned; it never plays on its own.
   setupHeroVideo() {
@@ -1209,6 +1259,7 @@ class Component extends DCLogic {
           ? 'right: 0; width: auto; max-width: none; transform: translateX(8%); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 22%); mask-image: linear-gradient(90deg, transparent 0%, #000 22%)'
           : 'left: 0; width: 100%; object-fit: cover; object-position: 62% 50%');
       })(),
+      ...[0, 1, 2, 3].reduce((o, i) => { o['luDot' + i] = i === (this.state.luI || 0) ? 'width: 22px; background: #111113' : 'width: 7px; background: rgba(17,17,19,0.25)'; return o; }, {}),
       // Phones: which of the three products the clip is on (Cliq, Crush, Cirql), from the stage colour's progress.
       ...(() => {
         const vp = pinned ? (this.state.vp || 0) : 0;
