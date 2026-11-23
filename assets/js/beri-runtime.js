@@ -227,6 +227,7 @@
     render();
     mounted = true;
     if (inst.componentDidMount) inst.componentDidMount();
+    setTimeout(ageFocus, 60);
   }
 
   // iPhones block autoplay in Low Power Mode and only load a video's frames once it has played. On the first
@@ -249,6 +250,52 @@
   }
   document.addEventListener('touchstart', unlockVideos, { capture: true, passive: true });
   document.addEventListener('click', unlockVideos, true);
+
+  // Age gate: every page carries the markup (.age-gate). On a visitor's first visit it shows over the page until
+  // they confirm they are 21+; the answer is remembered in this browser for 30 days. Search engine crawlers and
+  // visitors without storage still see it, since nothing is saved for them.
+  const AGE_KEY = 'beri-age-ok';
+  const AGE_DAYS = 30;
+  function ageOk() {
+    try {
+      const t = parseInt(localStorage.getItem(AGE_KEY) || '0', 10);
+      return t > 0 && Date.now() - t < AGE_DAYS * 864e5;
+    } catch (e) {
+      return false;
+    }
+  }
+  if (!ageOk()) document.documentElement.classList.add('ag-on');
+  function ageFocus() {
+    const b = document.querySelector('.age-gate:not(.ag-denied) .ag-yes, .age-gate.ag-denied .ag-deny button');
+    if (b && document.documentElement.classList.contains('ag-on')) b.focus();
+  }
+  document.addEventListener('click', (e) => {
+    const b = e.target.closest && e.target.closest('.age-gate [data-age]');
+    if (!b) return;
+    const gate = b.closest('.age-gate');
+    const a = b.getAttribute('data-age');
+    if (a === 'yes') {
+      try { localStorage.setItem(AGE_KEY, String(Date.now())); } catch (err) { /* private mode: ask again next visit */ }
+      document.documentElement.classList.remove('ag-on');
+    } else if (a === 'no') {
+      gate.classList.add('ag-denied');
+      ageFocus();
+    } else if (a === 'back') {
+      gate.classList.remove('ag-denied');
+      ageFocus();
+    }
+  });
+  // Keep keyboard focus inside the gate while it is open.
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Tab' || !document.documentElement.classList.contains('ag-on')) return;
+    const gate = document.querySelector('.age-gate');
+    if (!gate) return;
+    const btns = Array.from(gate.querySelectorAll('button')).filter((x) => x.offsetParent);
+    if (!btns.length) return;
+    const i = btns.indexOf(document.activeElement);
+    e.preventDefault();
+    btns[(i + (e.shiftKey ? btns.length - 1 : 1)) % btns.length].focus();
+  });
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
   else start();

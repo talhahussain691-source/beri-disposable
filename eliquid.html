@@ -222,6 +222,30 @@ section[aria-label$=" highlights"]::before{content:"";position:absolute;top:0;bo
 .fx-swipe{display:none}
 .lu-dots,.lu-lede-m{display:none}
 .nav-support-m{display:none}
+/* Age gate */
+.age-gate{display:none;position:fixed;inset:0;z-index:1000;align-items:center;justify-content:center;padding:20px;box-sizing:border-box;background:rgba(8,8,10,.72);-webkit-backdrop-filter:blur(14px) saturate(120%);backdrop-filter:blur(14px) saturate(120%);font-family:var(--body)}
+html.ag-on .age-gate,.age-gate.ag-show{display:flex}
+html.ag-on,html.ag-on body{overflow:hidden}
+.ag-card{position:relative;isolation:isolate;overflow:hidden;box-sizing:border-box;width:min(560px,100%);padding:44px 44px 30px;border-radius:32px;background:#111113;color:#F3F0E9;text-align:center;border:1px solid rgba(217,195,138,.35);box-shadow:0 40px 100px rgba(0,0,0,.55);animation:agIn .5s cubic-bezier(.2,.7,.2,1) both}
+.ag-card::before{content:"";position:absolute;inset:-50%;z-index:-1;background-image:url("assets/blob/2cffc67c998d9d4fcfa45c0105a151bb.png");background-size:220px 140px;transform:rotate(-24deg);opacity:.06;pointer-events:none}
+@keyframes agIn{from{opacity:0;transform:translateY(24px) scale(.97)}to{opacity:1;transform:none}}
+.ag-logo{display:block;height:64px;width:auto;margin:0 auto 22px}
+.ag-eyebrow{display:block;font-size:12px;font-weight:700;letter-spacing:.32em;color:#D9C38A}
+.ag-title{margin:12px 0 0;font-family:var(--display);font-weight:400;font-size:64px;line-height:.92;text-transform:uppercase;color:#F3F0E9}
+.ag-text{margin:16px auto 0;max-width:400px;font-size:16px;line-height:1.55;color:#B0ACA5}
+.ag-btns{display:flex;gap:12px;justify-content:center;margin-top:28px}
+.ag-btns button{flex:1 1 0;min-height:56px;padding:0 20px;border-radius:999px;font:inherit;font-size:16px;font-weight:700;cursor:pointer;transition:background .2s ease,color .2s ease,border-color .2s ease}
+.ag-yes{border:none;background:#D9C38A;color:#111113}
+.ag-yes:hover{background:#F3F0E9}
+.ag-no{border:1.5px solid rgba(243,240,233,.35);background:none;color:#F3F0E9}
+.ag-no:hover{border-color:#F3F0E9}
+.ag-btns button:focus-visible{outline:3px solid #D9C38A;outline-offset:3px}
+.ag-deny{display:none}
+.age-gate.ag-denied .ag-ask{display:none}
+.age-gate.ag-denied .ag-deny{display:block}
+.ag-warn{margin:28px 0 0;padding-top:18px;border-top:1px solid rgba(243,240,233,.12);font-size:12px;line-height:1.5;color:#8A847A}
+@media (max-width:520px){.ag-card{padding:34px 22px 22px;border-radius:26px}.ag-logo{height:50px;margin-bottom:18px}.ag-title{font-size:48px}.ag-text{font-size:15px}.ag-btns{flex-direction:column;gap:10px;margin-top:24px}.ag-warn{margin-top:22px}}
+@media (prefers-reduced-motion:reduce){.ag-card{animation:none}}
 @media (max-width:899px){
 /* Mobile header: logo and links share one pill row, so the logo never floats over the page. */
 header{padding:6px 0 !important}
@@ -775,6 +799,25 @@ section[aria-label$=" features"]{display:none !important}
 </div>
 </footer>
 
+
+<div class="age-gate" role="dialog" aria-modal="true" aria-labelledby="ag-title" aria-describedby="ag-text">
+<div class="ag-card">
+<img class="ag-logo" src="assets/blob/bd8d6ee885cd447f39d73ea5ec4478b3.png" alt="BERI">
+<div class="ag-ask">
+<span class="ag-eyebrow">AGE VERIFICATION</span>
+<h2 id="ag-title" class="ag-title">Are you 21<br>or older?</h2>
+<p id="ag-text" class="ag-text">This website contains nicotine products and is intended for adults 21 and over. Please confirm your age to enter.</p>
+<div class="ag-btns"><button type="button" class="ag-yes" data-age="yes">Yes, I’m 21+</button><button type="button" class="ag-no" data-age="no">No, I’m not</button></div>
+</div>
+<div class="ag-deny" role="alert">
+<span class="ag-eyebrow">SORRY</span>
+<h2 class="ag-title">You must be 21<br>to enter</h2>
+<p class="ag-text">BERI products are for adults 21 and over only. Come back when you’re of legal age.</p>
+<div class="ag-btns"><button type="button" class="ag-no" data-age="back">I made a mistake</button></div>
+</div>
+<p class="ag-warn">WARNING: This product contains nicotine. Nicotine is an addictive chemical.</p>
+</div>
+</div>
 </div>
 </template>
 <script type="text/x-dc" data-dc-script data-props='{"animations":{"editor":"boolean","default":true},"$preview":{"width":1440,"height":4200}}'>
@@ -1505,6 +1548,6 @@ class Component extends DCLogic {
   }
 }
 </script>
-<script src="assets/js/beri-runtime.js?v=5"></script>
+<script src="assets/js/beri-runtime.js?v=6"></script>
 </body>
 </html>
