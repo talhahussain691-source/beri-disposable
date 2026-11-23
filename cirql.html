@@ -263,6 +263,7 @@ a{color:#111113}a:hover{color:#7A5F14}
 /* MOBILE-FIX START */
 .fx-swipe{display:none}
 .lu-dots,.lu-lede-m{display:none}
+@media (min-width:900px){.t-cirql section[aria-label$=" highlights"] .feat-tile:nth-child(4):last-child{grid-column:1 / -1 !important;justify-content:center !important}}
 @media (max-width:899px){
 /* Mobile header: logo and links share one pill row, so the logo never floats over the page. */
 header{padding:6px 0 !important}
@@ -320,10 +321,11 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 #reveal-hero .btn-main{min-height:50px !important}
 /* Pinned stages fit the visible screen (browser bars shown), and the reveal devices sit at the stage bottom and scale with the height */
 #reveal-hero > div[style*="sticky"],#hero-scroll > div[style*="sticky"]{height:100svh !important;min-height:0 !important}
-#reveal-hero > div[style*="sticky"] > div{position:static !important}
-#reveal-hero > div[style*="sticky"] > div > div:first-child{position:relative;z-index:2}
-#reveal-hero > div[style*="sticky"] > div > div:nth-child(2){position:absolute !important;z-index:1;left:0;right:0;bottom:0;height:max(240px,calc(100svh - 420px));min-height:0 !important;margin-top:0 !important}
-#reveal-hero > div[style*="sticky"] > div > div:nth-child(2) > img{top:calc(50% + 40px) !important;height:clamp(190px,calc(100svh - 460px),300px) !important}
+#reveal-hero > div[style*="sticky"]{flex-direction:column !important;align-items:stretch !important;padding-bottom:20px !important}
+#reveal-hero > div[style*="sticky"] > div{flex:1 1 auto;min-height:0;display:flex !important;flex-direction:column !important;flex-wrap:nowrap !important;gap:0 !important;position:static !important}
+#reveal-hero > div[style*="sticky"] > div > div:first-child{flex:0 0 auto !important;position:relative;z-index:2}
+#reveal-hero > div[style*="sticky"] > div > div:nth-child(2){flex:1 1 auto !important;position:relative !important;z-index:1;min-height:170px !important;margin-top:0 !important;container-type:size}
+#reveal-hero > div[style*="sticky"] > div > div:nth-child(2) > img{top:calc(50% + 62px) !important;height:min(300px,86cqh) !important}
 @media (max-height:760px){
 #reveal-hero > div[style*="sticky"]{padding-top:100px !important}
 #reveal-hero > div > div > div:first-child{gap:12px !important}
@@ -978,13 +980,13 @@ class Component extends DCLogic {
         ]
       },
       CLIQ: {
-        name: 'CLIQ', page: 'Cliq.dc.html', color: '#0F7A42', soft: '#5BE39A', tint: '#E4F2EA', badge: 'REFILLABLE POD SYSTEM', heroH: 520,
+        name: 'CLIQ', page: 'Cliq.dc.html', color: '#0F7A42', soft: '#5BE39A', tint: '#E4F2EA', badge: 'PRE-FILLED POD SYSTEM', heroH: 520,
         img: 'assets/blob/38e90c83b18e5f9b193d4e2806393e55.webp', imgAlt: 'BERI Cliq device in Blue Rancher',
         logo: 'assets/blob/e64e8c7902539b056561386143d17f3e.webp', logoW: 560,
         // videoMode 'play': the hero video plays on its own in a loop; leave it out to scrub the video with scroll.
         video: 'assets/blob/270ba552549053fd0565c7e76f6dbeaf.mp4', poster: 'assets/blob/6737ac19476cfc667432a34be003a22e.webp', videoMode: 'play',
         specBanner: 'assets/blob/a0379a66f1c66bf53840606c6603637e.webp',
-        specBannerAlt: 'BERI Cliq: Find your Cliq. Cliq Mode 25K puffs, Normal Mode 50K puffs. 360° crystal tank, 2.5x charging speed, LED display, refillable pod, dual mesh coil',
+        specBannerAlt: 'BERI Cliq: Find your Cliq. Cliq Mode 25K puffs, Normal Mode 50K puffs. 360° crystal tank, 2.5x charging speed, LED display, pre-filled pod, dual mesh coil',
         // Infinite flavor slider: one entry per flavor photo (all 25).
         slider: [
           { name: 'Alaskan Mint', img: 'assets/blob/958393619da0898a35d58c44c31317f8.webp', color: '#7CB518' },
@@ -1025,22 +1027,22 @@ class Component extends DCLogic {
         ],
         // Captions over the reveal video; s and e are the share of the scroll where each one shows.
         chapters: [
-          { s: -1, e: 0.22, eyebrow: 'BERI CLIQ', title: 'Up to 50,000 puffs', text: 'A refillable pod system wrapped in a 360° crystal tank.' },
+          { s: -1, e: 0.22, eyebrow: 'BERI CLIQ', title: 'Up to 50,000 puffs', text: 'A pre-filled pod system wrapped in a 360° crystal tank.' },
           { s: 0.31, e: 0.45, eyebrow: 'LED DISPLAY', title: 'Always in the know', text: 'An integrated LED screen keeps your device status in view.' },
-          { s: 0.45, e: 0.6, eyebrow: '360° CRYSTAL TANK', title: 'See every drop', text: 'A transparent tank around the pre-filled, refillable 18 mL pod.' },
+          { s: 0.45, e: 0.6, eyebrow: '360° CRYSTAL TANK', title: 'See every drop', text: 'A transparent tank around the pre-filled 18 mL pod.' },
           { s: 0.6, e: 0.76, eyebrow: 'DUAL MESH COILS', title: 'Full flavor', text: 'Two mesh coils heat evenly, puff after puff.' },
           { s: 0.78, e: 2, eyebrow: 'THE LINEUP', title: '25 flavors', text: 'From Miami Mint to Blue Rancher. Pick yours.' }
         ],
-        tagline: '360° crystal tank, dual mesh coils and a pre-filled, refillable 18 mL pod. Up to 50,000 puffs.',
+        tagline: '360° crystal tank, dual mesh coils and a pre-filled 18 mL pod. Up to 50,000 puffs.',
         summary: 'A kit-and-pod system with two modes: up to 50,000 puffs in ECO Mode or 25,000 in CLIQ Mode, with a see-through tank and fast Type-C charging.',
         highlights: [{ value: '18 mL', label: 'E-liquid' }, { value: '900', label: 'mAh battery' }, { value: '2.5×', label: 'Charging speed' }, { value: 'Dual', label: 'Mesh coil' }],
         specs: [
           { k: 'Device model', v: 'CLIQ (on packaging)' }, { k: 'Battery capacity', v: '900 mAh' }, { k: 'Charging port', v: 'Type-C (2.5× charging speed)' },
           { k: 'Tank', v: '360° Crystal Tank' }, { k: 'Display', v: 'LED Display' }, { k: 'Coil', v: 'Dual Mesh Coil' },
-          { k: 'Pod', v: 'Pre-filled, refillable pod' }, { k: 'Capacity', v: '18 mL' }, { k: 'Nicotine strength', v: '5%' },
+          { k: 'Pod', v: 'Pre-filled pod' }, { k: 'Capacity', v: '18 mL' }, { k: 'Nicotine strength', v: '5%' },
           { k: 'ECO Mode', v: 'Up to 50,000 puffs' }, { k: 'CLIQ Mode', v: 'Up to 25,000 puffs' }
         ],
-        marquee: ['Up to 50,000 puffs', '360° crystal tank', 'Dual mesh coil', 'Refillable pod', 'Type-C fast charging'],
+        marquee: ['Up to 50,000 puffs', '360° crystal tank', 'Dual mesh coil', 'Pre-filled pod', 'Type-C fast charging'],
         hasBanners: false,
         // Background video behind the specifications, muted; with specScrub, scroll moves it frame by frame (an every-frame-keyframe encode keeps that smooth).
         specVideo: 'assets/blob/720b3fec6ed6e07f36f3dc7914adf919.mp4', specPoster: 'assets/blob/5ec1a170ab23e1abd924772d0f4a9cae.webp', specRate: 0.73,
@@ -1050,14 +1052,14 @@ class Component extends DCLogic {
         features: [
           { size: 'sm', top: '2.5×', main: 'Charging Speed', img: 'assets/blob/d9ba51d854f58340b786dfdfefe04774.svg' },
           { size: 'sm', top: 'LED', main: 'Display', img: 'assets/blob/feee2b9fbdc34355771b93e31b52c5f7.svg' },
-          { size: 'sm', top: 'Refillable', main: 'Pod', img: 'assets/blob/03f0576ffdf61ceaf7e9b42b304c1dd2.svg' },
+          { size: 'sm', top: 'Pre-filled', main: 'Pod', img: 'assets/blob/03f0576ffdf61ceaf7e9b42b304c1dd2.svg' },
           { size: 'lg', top: 'Dual Mesh', main: 'Coil', img: 'assets/blob/97e18fec4ad29f7a35e08dcda4646dec.svg' },
           { size: 'lg', top: '360°', main: 'Crystal Tank', img: 'assets/blob/01b0a01bd020f19905c4e90f5f607542.svg' }
         ],
         // Pod / Kit / Device section. Pods reuse the slider photos; kits and devices show a placeholder until their photos arrive (img: '/_blob/<id>').
         formats: [
           { title: 'Pod', heading: 'Pods', sub: 'Pre-filled · no battery', unit: 'flavors', box: '1 pre-filled pod',
-            text: 'A pre-filled, refillable 18 mL pod. It has no battery: pair it with a CLIQ Device.', useSlider: true },
+            text: 'A pre-filled 18 mL pod. It has no battery: pair it with a CLIQ Device.', useSlider: true },
           { title: 'Kit', heading: 'Kits', sub: 'Pod + Device', unit: 'flavors', box: '1 CLIQ Device + 1 pre-filled pod',
             text: 'Everything to start: a CLIQ Device with a pre-filled pod, ready to use out of the box.',
             items: ['Super Mint', 'Watermelon Ice', 'Grape Ice', 'Peach Ice', 'Blue Razz Ice', 'Tobacco', 'Clear', 'White Strawberry', 'White Gami', 'Miami Mint'].map((n) => ({ name: n, img: kitImg[n] })) },
@@ -1088,9 +1090,9 @@ class Component extends DCLogic {
         highlights: [{ value: '150K', label: 'Puffs (up to)' }, { value: 'Quad', label: 'Mesh coil' }, { value: '2', label: 'Modes: Regular / Boost' }, { value: '13', label: 'Shisha flavors' }],
         specs: [
           { k: 'Max puffs', v: 'Up to 150,000' }, { k: 'Coil', v: 'Quad-mesh' }, { k: 'Modes', v: 'Regular + Boost' },
-          { k: 'Flavor profile', v: 'Shisha-inspired' }, { k: 'Format', v: 'Disposable e-hookah' }, { k: 'Origin', v: 'Made in USA' }
+          { k: 'Flavor profile', v: 'Shisha-inspired' }, { k: 'Format', v: 'Disposable e-hookah' }
         ],
-        marquee: ['Up to 150,000 puffs', 'Shisha-inspired flavor', 'Quad-mesh coil', 'Regular + Boost modes', 'Made in USA'],
+        marquee: ['Up to 150,000 puffs', 'Shisha-inspired flavor', 'Quad-mesh coil', 'Regular + Boost modes'],
         hasBanners: false,
         flavorTotal: '13',
         pack: {
@@ -1183,8 +1185,7 @@ class Component extends DCLogic {
         { size: 'sm', top: '150K', main: 'Puffs (up to)', img: 'assets/blob/35c0a25353e80b337ebd6f4d4d50888b.webp' },
         { size: 'sm', top: 'Quad', main: 'Mesh coil', img: 'assets/blob/062f68c8ac6ddf91d6d5e01c9c6a3be4.webp' },
         { size: 'sm', top: '2 Modes', main: 'Regular + Boost', img: 'assets/blob/988c024517ef0407fb47c313050a3d0d.webp' },
-        { size: 'lg', top: 'Authentic', main: 'Shisha-inspired flavor', img: 'assets/blob/5e981caffebed1b10a8c9a7cb38229ba.webp' },
-        { size: 'lg', top: 'Made in USA', main: 'Origin', img: 'assets/blob/8e518a1942391dbfabfd03fddf0c04c2.webp' }
+        { size: 'lg', top: 'Authentic', main: 'Shisha-inspired flavor', img: 'assets/blob/5e981caffebed1b10a8c9a7cb38229ba.webp' }
       ]
     });
     products.CLIQ.theme = 'cliq';
@@ -1548,7 +1549,7 @@ class Component extends DCLogic {
       others: order.filter((k) => k !== PRODUCT_KEY).map((k) => {
         const o = products[k];
         const xl = {
-          CLIQ: ['Refillable pod', 'Up to 50K puffs · 360° crystal tank', '#0F7A42'],
+          CLIQ: ['Pre-filled pod', 'Up to 50K puffs · 360° crystal tank', '#0F7A42'],
           CRUSH: ['Disposable', 'Up to 50K puffs · 40W Crush Mode', '#C81E64'],
           CIRQL: ['E-hookah', 'Up to 150K puffs · Shisha flavor', '#B23A48'],
           ELIQUID: ['Bottled e-liquid', '30 mL salt nic · 12 flavors', '#B8892B']

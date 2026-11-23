@@ -137,10 +137,11 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 #reveal-hero .btn-main{min-height:50px !important}
 /* Pinned stages fit the visible screen (browser bars shown), and the reveal devices sit at the stage bottom and scale with the height */
 #reveal-hero > div[style*="sticky"],#hero-scroll > div[style*="sticky"]{height:100svh !important;min-height:0 !important}
-#reveal-hero > div[style*="sticky"] > div{position:static !important}
-#reveal-hero > div[style*="sticky"] > div > div:first-child{position:relative;z-index:2}
-#reveal-hero > div[style*="sticky"] > div > div:nth-child(2){position:absolute !important;z-index:1;left:0;right:0;bottom:0;height:max(240px,calc(100svh - 420px));min-height:0 !important;margin-top:0 !important}
-#reveal-hero > div[style*="sticky"] > div > div:nth-child(2) > img{top:calc(50% + 40px) !important;height:clamp(190px,calc(100svh - 460px),300px) !important}
+#reveal-hero > div[style*="sticky"]{flex-direction:column !important;align-items:stretch !important;padding-bottom:20px !important}
+#reveal-hero > div[style*="sticky"] > div{flex:1 1 auto;min-height:0;display:flex !important;flex-direction:column !important;flex-wrap:nowrap !important;gap:0 !important;position:static !important}
+#reveal-hero > div[style*="sticky"] > div > div:first-child{flex:0 0 auto !important;position:relative;z-index:2}
+#reveal-hero > div[style*="sticky"] > div > div:nth-child(2){flex:1 1 auto !important;position:relative !important;z-index:1;min-height:170px !important;margin-top:0 !important;container-type:size}
+#reveal-hero > div[style*="sticky"] > div > div:nth-child(2) > img{top:calc(50% + 62px) !important;height:min(300px,86cqh) !important}
 @media (max-height:760px){
 #reveal-hero > div[style*="sticky"]{padding-top:100px !important}
 #reveal-hero > div > div > div:first-child{gap:12px !important}
@@ -526,8 +527,8 @@ class Component extends DCLogic {
       { title: 'Dedicated support', text: 'A wholesale contact for orders, restocks and questions. [Confirm.]' }
     ];
     const lineup = [
-      { key: 'cliq', name: 'CLIQ', href: 'Cliq.dc.html', kind: 'REFILLABLE POD', img: 'assets/blob/38e90c83b18e5f9b193d4e2806393e55.webp', imgAlt: 'BERI Cliq device in Blue Rancher',
-        line: 'Pods, kits and devices. 18 mL pre-filled, refillable pod.', flavors: 25,
+      { key: 'cliq', name: 'CLIQ', href: 'Cliq.dc.html', kind: 'PRE-FILLED POD', img: 'assets/blob/38e90c83b18e5f9b193d4e2806393e55.webp', imgAlt: 'BERI Cliq device in Blue Rancher',
+        line: 'Pods, kits and devices. 18 mL pre-filled pod.', flavors: 25,
         stats: [{ v: '50K', l: 'puffs' }, { v: '2.5×', l: 'charging' }, { v: 'LED', l: 'display' }] },
       { key: 'crush', name: 'CRUSH', href: 'Crush-v2.dc.html', kind: 'DISPOSABLE', img: 'assets/blob/98de8943c95bc88c1c871334365c5bdd.webp', imgAlt: 'BERI Crush device in orange',
         line: '20 mL disposable with a 1.77 inch HD screen.', flavors: 35,
