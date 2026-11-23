@@ -604,8 +604,8 @@ div[style*="left: 50%; bottom: 110px"]{display:none !important}
 <span data-reveal="up" style="font-size: 13px; font-weight: 600; letter-spacing: 0.32em; color: var(--gold-ink)">THE PRODUCTS</span>
 <h2 class="lu-h2" data-reveal="up" style="margin: 0; font-family: var(--display); font-weight: 400; font-size: 120px; line-height: 0.9; text-transform: uppercase">The <br>lineup</h2>
 </div>
-<p data-reveal="up" style="margin: 0; max-width: 420px; font-size: 18px; color: var(--mute); transition-delay: 120ms">Three devices and a bottled e-liquid, built to one standard. Pick the format that fits how you vape.</p>
-<p class="lu-lede-m">Three devices and a bottled e-liquid.</p>
+<p data-reveal="up" style="margin: 0; max-width: 420px; font-size: 18px; color: var(--mute); transition-delay: 120ms">With three of the best vapes devices on the market and E-Liquid, Beri has you covered. Pick up the full line to give your customers everything they could want.</p>
+<p class="lu-lede-m">With three of the best vapes devices on the market and E-Liquid, Beri has you covered. Pick up the full line to give your customers everything they could want.</p>
 </div>
 <div class="lu-grid">
 <sc-for list="{{cards}}" as="c" hint-placeholder-count="4">
@@ -677,7 +677,7 @@ div[style*="left: 50%; bottom: 110px"]{display:none !important}
 <div style="position: relative; box-sizing: border-box; max-width: 600px; padding: 64px; display: flex; flex-direction: column; gap: 20px">
 <span style="align-self: flex-start; font-size: 12px; font-weight: 700; letter-spacing: 0.32em; color: #062A16; background: #5BE39A; padding: 8px 14px; border-radius: 999px">NEW · BERI CLIQ</span>
 <h2 style="margin: 0; font-family: var(--display); font-weight: 400; font-size: 120px; line-height: 0.88; text-transform: uppercase">Find your<br><span style="color: #5BE39A">Cliq.</span></h2>
-<p style="margin: 0; max-width: 440px; font-size: 18px; color: rgba(255,255,255,0.86)">Up to 50,000 puffs, a 360° crystal tank and a refillable pod, in 25 flavors.</p>
+<p style="margin: 0; max-width: 440px; font-size: 18px; color: rgba(255,255,255,0.86)">Up to 50,000 puffs, a 360° crystal tank and a pre‑filled pod, in 25 flavors.</p>
 <p class="cs-lede-m">50,000 puffs. 360° crystal tank. 25 flavors.</p>
 <div style="display: flex; flex-wrap: wrap; gap: 12px; padding-top: 8px">
 <a class="lu-cta" href="Cliq.dc.html" style="min-height: 56px; padding: 0 28px; background: #FFFFFF; color: #0F7A42">Explore BERI Cliq →</a>
@@ -745,7 +745,7 @@ div[style*="left: 50%; bottom: 110px"]{display:none !important}
 <a class="ws-tile" href="Cliq.dc.html" style="--c: #5BE39A">
 <span class="ws-glow" aria-hidden="true"></span>
 <img class="ws-img" src="assets/blob/38e90c83b18e5f9b193d4e2806393e55.webp" alt="BERI Cliq">
-<span class="ws-kind">REFILLABLE POD</span>
+<span class="ws-kind">PRE-FILLED POD</span>
 <span class="ws-name">CLIQ</span>
 <span class="ws-spec"><b>50K</b> puffs · 18 mL pod</span>
 <span class="ws-foot"><span class="ws-chip">25 flavors</span><span class="ws-arrow" aria-hidden="true">→</span></span>
@@ -1072,11 +1072,11 @@ class Component extends DCLogic {
   renderVals() {
     const products = [
       {
-        name: 'CLIQ', color: '#0F7A42', surface: '#3FB876', h: 340, badge: 'REFILLABLE POD', kind: 'REFILLABLE POD', fan: [204, 252, 46],
-        lineTag: '360° crystal tank, dual mesh coils and a refillable pod system.',
+        name: 'CLIQ', color: '#0F7A42', surface: '#3FB876', h: 340, badge: 'PRE-FILLED POD', kind: 'PRE-FILLED POD', fan: [204, 252, 46],
+        lineTag: '360° crystal tank, dual mesh coils in a small sleek form factor.',
         cardBg: 'radial-gradient(120% 70% at 50% 24%, #3FB876 0%, #0F7A42 52%, #073D21 100%)',
         img: 'assets/blob/38e90c83b18e5f9b193d4e2806393e55.webp', imgAlt: 'BERI Cliq device in Blue Rancher', heroH: 440,
-        tagline: '360° crystal tank, dual mesh coils and a refillable pod system.',
+        tagline: '360° crystal tank, dual mesh coils in a small sleek form factor.',
         stats: [{ v: '50K', k: 'Puffs, ECO mode' }, { v: '18 mL', k: 'E-liquid' }],
         flavorLabel: 'See all 25 flavors',
         // Lineup card shows three flavors; the middle one sits in front.
@@ -1161,7 +1161,7 @@ class Component extends DCLogic {
       { name: 'White Strawberry', img: 'assets/blob/c897eabec665fc76436422ae0c2dd1b2.webp', color: '#F0524F' }
     ];
     const techBanners = [
-      { name: 'CLIQ', color: '#0F7A42', tint: 'rgba(91,227,154,0.12)', soft: '#5BE39A', img: 'assets/blob/a0379a66f1c66bf53840606c6603637e.webp', alt: 'BERI Cliq: Find your Cliq. Cliq Mode 25K puffs, Normal Mode 50K puffs', chips: ['Refillable pod', 'Up to 50K puffs', '360° crystal tank'] },
+      { name: 'CLIQ', color: '#0F7A42', tint: 'rgba(91,227,154,0.12)', soft: '#5BE39A', img: 'assets/blob/a0379a66f1c66bf53840606c6603637e.webp', alt: 'BERI Cliq: Find your Cliq. Cliq Mode 25K puffs, Normal Mode 50K puffs', chips: ['Pre-filled pod', 'Up to 50K puffs', '360° crystal tank'] },
       { name: 'CRUSH', color: '#C81E64', tint: 'rgba(255,125,176,0.12)', soft: '#FF7DB0', img: 'assets/blob/0a2532abcfdd671f02c321ad6f8258e5.webp', alt: 'BERI Crush: up to 40W power', chips: ['Disposable', '40W Crush Mode', '1.77" HD screen'] },
       { name: 'CIRQL', color: '#7A1626', tint: 'rgba(242,161,172,0.12)', soft: '#F2A1AC', img: 'assets/blob/0f9b20cdbf809de2a74caca0cba9a190.webp', alt: 'BERI Cirql: 150K puffs, shown in Mixed Berries and blue with their boxes', chips: ['E-hookah', 'Up to 150K puffs', 'Regular + Boost'] }
     ];
@@ -1368,9 +1368,9 @@ class Component extends DCLogic {
         { big: 'MESH', title: 'Mesh in every device', text: 'Dual-mesh on Cliq, quad-mesh on Crush and Cirql, for even heat and consistent flavor to the last puff.' },
         { big: '2', title: 'Power modes on every device', text: 'ECO and CLIQ Mode on Cliq, auto-adaptive power with a 40W Crush Mode, and Regular or Boost on Cirql.' },
         { big: '150K', title: 'Puffs at the top end', text: 'Cirql runs up to 150,000 puffs, and Cliq and Crush go up to 50,000, so you replace less often.' },
-        { big: '85', title: 'Flavors across 4 formats', text: 'Refillable pod, disposable, e-hookah and bottled e-liquid: 25 on Cliq, 35 on Crush, 13 on Cirql and 12 in e-liquid.' },
+        { big: '85', title: 'Flavors across 4 formats', text: 'Pre-filled pod, disposable, e-hookah and bottled e-liquid: 25 on Cliq, 35 on Crush, 13 on Cirql and 12 in e-liquid.' },
         { big: '0–5%', title: 'Your strength, your call', text: '5% on Cliq and Crush, 0% nicotine in five Crush flavors, and 25 or 50 mg nicotine salt in e-liquid.' },
-        { big: 'USA', title: 'Rooted in the USA', text: 'Crush is designed in the USA, Cirql is made in the USA and our e-liquid is bottled in California.' },
+        { big: 'USA', title: 'Rooted in the USA', text: 'Crush is designed in the USA and our e-liquid is bottled in California.' },
         { big: '100%', title: 'Verifiable authenticity', text: 'Every genuine box carries a scratch-off security label you can check on our site in seconds.' }
       ].map((row, i) => Object.assign({}, row, {
         zoomStyle: 'display: flex; flex-wrap: wrap; align-items: center; gap: 8px 32px; transform-origin: center center; transition: transform .5s cubic-bezier(.2,.7,.2,1); transform: scale(' + (this.state.tf < 0 ? 1 : i === this.state.tf ? (this.state.vw > 899 ? 1.14 : 1.06) : (this.state.vw > 899 ? 0.92 : 0.95)) + ')'
