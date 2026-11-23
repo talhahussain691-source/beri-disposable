@@ -229,6 +229,8 @@ a{color:#111113}a:hover{color:#7A5F14}
 .t-crush .wh-glow{opacity:.35}
 @media (max-width:899px){.t-crush .fx-feature{background:linear-gradient(180deg,rgba(11,11,13,0) 38%,rgba(11,11,13,.82) 58%,rgba(11,11,13,.92) 100%),url("/_blob/c4f663b078e0cdcc5c3f5bb2b97931cd") 15% top/auto 62% no-repeat,#0B0B0D !important}.t-crush .wh-card{background:linear-gradient(180deg,#FFD400 0%,rgba(255,212,0,.9) 46%,rgba(255,212,0,0) 68%),url("/_blob/a3007b0e52e20d1e7d123c144d72789b") 88% bottom/auto 58% no-repeat,#FFD400 !important}}
 /* MOBILE-FIX START */
+.fx-swipe{display:none}
+.lu-dots,.lu-lede-m{display:none}
 @media (max-width:899px){
 /* Mobile header: logo and links share one pill row, so the logo never floats over the page. */
 header{padding:6px 0 !important}
@@ -284,6 +286,18 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 #reveal-hero div[style*="repeat(4, minmax(0, 1fr))"] span[style*="font-size: 30px"]{font-size:clamp(18px,5.6vw,24px) !important}
 #reveal-hero .btn-alt{display:none !important}
 #reveal-hero .btn-main{min-height:50px !important}
+/* Pinned stages fit the visible screen (browser bars shown), and the reveal devices sit at the stage bottom and scale with the height */
+#reveal-hero > div[style*="sticky"],#hero-scroll > div[style*="sticky"]{height:100svh !important;min-height:0 !important}
+#reveal-hero > div[style*="sticky"] > div{position:static !important}
+#reveal-hero > div[style*="sticky"] > div > div:first-child{position:relative;z-index:2}
+#reveal-hero > div[style*="sticky"] > div > div:nth-child(2){position:absolute !important;z-index:1;left:0;right:0;bottom:0;height:max(240px,calc(100svh - 420px));min-height:0 !important;margin-top:0 !important}
+#reveal-hero > div[style*="sticky"] > div > div:nth-child(2) > img{top:calc(50% + 40px) !important;height:clamp(190px,calc(100svh - 460px),300px) !important}
+@media (max-height:760px){
+#reveal-hero > div[style*="sticky"]{padding-top:100px !important}
+#reveal-hero > div > div > div:first-child{gap:12px !important}
+#reveal-hero .p-logo{max-height:76px}
+#reveal-hero img[alt^="Normal Mode"]{width:58% !important}
+}
 
 /* Technical specifications: smaller heading, short padding, and every row as an even label | value grid */
 #specs h2{font-size:clamp(40px,13vw,56px) !important;line-height:.95 !important}
@@ -326,6 +340,11 @@ main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)
 .xl-sec{padding-bottom:36px !important}
 .xl-kicker{letter-spacing:.08em !important;font-size:10.5px !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .xl-card{min-height:116px}
+/* Swipe cue above long collection tab rows, and a fade on the row's right edge */
+.fx-swipe[data-on="true"]{display:flex !important;align-self:flex-end;align-items:center;gap:6px;margin-bottom:-12px;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.fx-swipe[data-on="true"] svg{animation:fxNudge 1.4s ease-in-out infinite}
+@keyframes fxNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+.fx-swipe[data-on="true"] + [aria-label="Flavor collections"]{-webkit-mask-image:linear-gradient(90deg,#000 78%,transparent);mask-image:linear-gradient(90deg,#000 78%,transparent)}
 /* Flavor tabs on one swipeable line */
 [aria-label="Flavor collections"]{flex-wrap:nowrap !important;overflow-x:auto;scrollbar-width:none;margin-right:-20px;padding-right:20px;-webkit-overflow-scrolling:touch}
 [aria-label="Flavor collections"]::-webkit-scrollbar{display:none}
@@ -499,6 +518,7 @@ section[aria-label$=" features"],div[aria-hidden="true"][style^="height: 120px"]
 </sc-if>
 <sc-if value="{{p.hasGroups}}" hint-placeholder-val="{{true}}">
 <div style="display: flex; flex-direction: column; gap: 24px">
+<span class="fx-swipe" aria-hidden="true" data-on="{{p.swipeOn}}">Swipe for more<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"></path><path d="M13 6l6 6-6 6"></path></svg></span>
 <div role="group" aria-label="Flavor collections" style="display: flex; flex-wrap: wrap; gap: 10px">
 <sc-for list="{{p.groupTabs}}" as="gt" hint-placeholder-count="4">
 <button type="button" aria-pressed="{{gt.sel}}" onClick="{{gt.pick}}" style="{{gt.style}}">{{gt.name}} <span style="opacity: 0.6">{{gt.count}}</span></button>
@@ -1462,6 +1482,7 @@ class Component extends DCLogic {
         noPack: !base.pack,
         noGroups: fGroups.length === 0,
         soft: base.soft,
+        swipeOn: fGroups.length >= 4 ? 'true' : 'false',
         groupTabs: fGroups.map((g, i) => ({
           name: g.name, count: String(g.items.length), sel: i === fIdx ? 'true' : 'false',
           pick: () => this.setState({ fTab: i, fPick: '' }),
