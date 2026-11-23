@@ -263,6 +263,7 @@ a{color:#111113}a:hover{color:#7A5F14}
 #cliq-teaser + div{background:linear-gradient(90deg,rgba(0,0,0,.72) 0%,rgba(0,0,0,.4) 38%,rgba(0,0,0,0) 62%) !important}
 @media (max-width:899px){#cliq-teaser + div{background:linear-gradient(90deg,rgba(0,0,0,.6) 0%,rgba(0,0,0,.4) 55%,rgba(0,0,0,.1) 100%) !important}}
 /* MOBILE-FIX START */
+.hm-hint{display:none}
 .nl-lede-m{display:none}
 .au-lede-m{display:none}
 .ws-lede-m,.ws-line-m{display:none}
@@ -289,9 +290,9 @@ footer a[href^="mailto"]{display:inline-block;padding:9px 0}
 .top-nav>a:first-child{padding:7px 0}
 
 /* Less empty space between sections */
-section[style*="padding: 0 32px 120px"],section[style*="padding: 0 32px 140px"],section[style*="padding: 0 0 120px"],section[style*="padding: 0 32px 100px"],section[style*="padding: 48px 32px 100px"]{padding-bottom:64px !important}
-[style*="padding: 140px 32px"],[style*="padding: 120px 32px"]:not([style*="padding: 120px 32px 0"]):not([style*="sticky"]){padding-top:72px !important;padding-bottom:72px !important}
-section[style*="padding: 120px 32px 0"]{padding-top:72px !important}
+section[style*="padding: 0 32px 120px"],section[style*="padding: 0 32px 140px"],section[style*="padding: 0 0 120px"],section[style*="padding: 0 32px 100px"],section[style*="padding: 48px 32px 100px"]{padding-bottom:48px !important}
+[style*="padding: 140px 32px"],[style*="padding: 120px 32px"]:not([style*="padding: 120px 32px 0"]):not([style*="sticky"]){padding-top:52px !important;padding-bottom:52px !important}
+section[style*="padding: 120px 32px 0"]{padding-top:52px !important}
 footer > div[style*="56px 32px 140px"]{padding-bottom:56px !important}
 [style*="padding: 170px 32px 120px"],[style*="padding: 180px 32px 110px"]{padding-top:116px !important;padding-bottom:64px !important}
 /* Wholesale buttons keep their arrow on the same line */
@@ -323,14 +324,57 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 #reveal-hero div[style*="repeat(4, minmax(0, 1fr))"] span[style*="font-size: 30px"]{font-size:clamp(18px,5.6vw,24px) !important}
 #reveal-hero .btn-alt{display:none !important}
 #reveal-hero .btn-main{min-height:50px !important}
+
+/* Technical specifications: smaller heading, short padding, and every row as an even label | value grid */
+#specs h2{font-size:clamp(40px,13vw,56px) !important;line-height:.95 !important}
+#specs p{font-size:15px !important;line-height:1.5 !important}
+#specs > div > div:last-child{padding:8px 20px !important;box-sizing:border-box;width:100% !important}
+#specs > div > div:last-child > div{display:grid !important;grid-template-columns:minmax(0,44%) minmax(0,1fr);align-items:baseline;gap:4px 12px !important;padding:12px 0 !important;font-size:14px !important;line-height:1.35}
+#specs > div > div:last-child > div > span:first-child{font-size:13px !important}
+#specs > div > div:last-child > div > span:last-child{text-align:right}
+
+/* Highlight tiles: two columns instead of one tall column; an odd last tile spans the row */
+main section[aria-label$=" highlights"] ul.feat-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:10px !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n){grid-column:auto !important;flex-direction:column !important;align-items:center !important;justify-content:center !important;text-align:center;gap:8px !important;padding:14px 10px !important;min-height:0 !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n):last-child:nth-child(odd){grid-column:1/-1 !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)[data-kind=badge]:last-child:nth-child(odd){justify-self:center;width:calc(50% - 5px)}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) img{height:44px !important;width:auto !important;max-width:100% !important;margin:0 !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl{padding:0 !important;border:0 !important;align-items:center !important;text-align:center}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl::before,main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl::after{display:none !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl b{font-size:19px !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) .feat-lbl > span{font-size:10.5px !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n):has(> img[style^="display: block; width: 100%"]),main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)[data-kind=badge]{padding:6px !important}
+main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n) > img[style^="display: block; width: 100%"],main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)[data-kind=badge] img{height:auto !important;width:100% !important;max-width:100% !important}
+
+/* Product wholesale card on phones: same look, tighter */
+.wh-card{padding:28px 20px 22px !important;gap:18px !important}
+.wh-copy{gap:14px !important}
+.wh-title{font-size:clamp(36px,11.5vw,48px) !important}
+.wh-text{font-size:15px !important;line-height:1.5 !important}
+.wh-points{flex-direction:column;gap:8px !important;font-size:14px !important}
+.wh-btns{flex-direction:column;gap:8px !important;padding-top:4px !important}
+.wh-btn{width:100%;justify-content:center;min-height:52px !important;white-space:nowrap}
+.wh-btn2{justify-content:center;min-height:40px !important;border:0 !important;text-decoration:underline;text-underline-offset:4px}
+.wh-visual{gap:14px !important}
+.wh-img{height:220px !important}
+.wh-stat{min-width:0 !important;flex:1 1 0;padding:8px 6px !important}
+.wh-stat b{font-size:19px !important}
+.wh-stat span{font-size:11px !important}
+.wh-stats{width:100%;flex-wrap:nowrap !important;gap:8px !important}
+
+/* Explore the lineup: kicker on one line, even card heights, less space before the footer */
+.xl-sec{padding-bottom:36px !important}
+.xl-kicker{letter-spacing:.08em !important;font-size:10.5px !important;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.xl-card{min-height:116px}
 /* Flavor tabs on one swipeable line */
 [aria-label="Flavor collections"]{flex-wrap:nowrap !important;overflow-x:auto;scrollbar-width:none;margin-right:-20px;padding-right:20px;-webkit-overflow-scrolling:touch}
 [aria-label="Flavor collections"]::-webkit-scrollbar{display:none}
 [aria-label="Flavor collections"] > button{flex:0 0 auto;white-space:nowrap}
-/* Flavor grid: two rows that swipe sideways instead of one long list */
-.fx-grid{display:grid !important;grid-auto-flow:column;grid-template-rows:repeat(2,auto);grid-template-columns:none !important;grid-auto-columns:42%;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:6px;margin-right:-20px;padding-right:20px}
-.fx-grid::-webkit-scrollbar{display:none}
-.fx-grid > *{scroll-snap-align:start}
+/* Flavor grid: three columns, every flavor shown going down */
+.fx-grid{display:grid !important;grid-template-columns:repeat(3,minmax(0,1fr)) !important;grid-auto-flow:row !important;gap:8px !important}
+.fx-grid .fx-card{padding:10px 4px 10px !important;gap:8px !important;border-radius:14px !important}
+.fx-grid .fx-card img{height:clamp(70px,22vw,96px) !important}
+.fx-grid .fx-card span{font-size:10.5px !important;letter-spacing:.02em !important;line-height:1.2 !important}
 .au-lfoot,.au-ltitle,.lu-badge,.nl-eyebrow,.pw-tag,.ws-chip,.ws-count,.ws-kind{font-size:12px !important}
 [style*="font-size: 11px"],[style*="font-size: 10px"]{font-size:12px !important}
 
@@ -408,6 +452,19 @@ a[href^="mailto"][style*="font-size: 20px"]{display:inline-block;padding:6px 0}
 #hero-video{top:calc(var(--hv-top,290px)) !important;height:calc(100% - 290px - 205px) !important;object-position:var(--hv-x,68%) 50% !important;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%) !important;mask-image:linear-gradient(180deg,transparent 0%,#000 14%,#000 86%,transparent 100%) !important}
 #hero-video + div{display:none}
 div[style*="left: 50%; bottom: 110px"]{display:none !important}
+/* Hero step indicator: three dots (Cliq, Crush, Cirql) and a scroll cue that fades on the first scroll */
+.hm-hint{display:flex !important;position:absolute;z-index:3;left:0;right:0;bottom:40px;justify-content:center;align-items:center;gap:14px;pointer-events:none}
+.hm-dots{display:flex;gap:6px;align-items:center}
+.hm-dots i{display:block;height:7px;border-radius:7px;transition:width .35s ease,background .35s ease}
+.hm-scroll{font-size:10px;font-weight:700;letter-spacing:.28em;color:#111113;opacity:.7}
+.hero-copy{bottom:72px !important}
+/* Short phones: smaller logo and headline so the product gets more room */
+@media (max-height:780px){
+.hero-copy{gap:12px !important}
+.hero-logo{max-width:180px !important}
+.hero-tag{font-size:26px !important}
+#hero-video{top:232px !important;height:calc(100% - 232px - 190px) !important}
+}
 /* Is your BERI real? on phones: smaller label, short intro, steps as one compact list */
 .au-card{padding:28px 20px !important;gap:20px !important}
 .au-stage{height:250px !important;overflow:visible}
@@ -477,6 +534,7 @@ div[style*="left: 50%; bottom: 110px"]{display:none !important}
 <span>SCROLL</span>
 <span style="display: block; width: 2px; height: 40px; background: var(--fg); opacity: 0.4"></span>
 </div>
+<div class="hm-hint" aria-hidden="true"><span class="hm-dots"><i style="{{hmDot0}}"></i><i style="{{hmDot1}}"></i><i style="{{hmDot2}}"></i></span><span class="hm-scroll" style="{{hmScrollStyle}}">SCROLL ↓</span></div>
 <div aria-hidden="true" style="position: absolute; z-index: 3; left: 32px; right: 32px; bottom: 28px; height: 3px; border-radius: 3px; background: rgba(17,17,19,0.12)">
 <div style="{{heroBarStyle}}"></div>
 </div>
@@ -485,7 +543,7 @@ div[style*="left: 50%; bottom: 110px"]{display:none !important}
 <h1 style="margin: 0">
 <img class="hero-logo" src="assets/blob/bd8d6ee885cd447f39d73ea5ec4478b3.png" alt="BERI" style="display: block; width: 100%; max-width: 420px; height: auto">
 </h1>
-<p class="hero-tag" style="margin: 0; font-family: var(--display); font-size: 44px; line-height: 1.15; text-transform: uppercase">Built for <span class="hero-sticker">50,000 puffs.</span><br>Engineered to last.</p>
+<p class="hero-tag" style="margin: 0; font-family: var(--display); font-size: 44px; line-height: 1.15; text-transform: uppercase">Built for <span class="hero-sticker">{{heroPuffs}}</span><br>Engineered to last.</p>
 <p class="hero-sub" style="margin: 0; font-size: 18px; color: var(--mute)">Crush, Cliq and Cirql. Mesh coils, big batteries and Type-C charging in a lineup designed to go the distance.</p>
 <a class="hero-cta" href="#products" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 12px; min-height: 56px; padding: 0 32px; border-radius: 999px; background: var(--fg); color: var(--bg); font-weight: 700; letter-spacing: 0.08em; text-decoration: none">EXPLORE THE LINEUP
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14"></path><path d="M6 13l6 6 6-6"></path></svg>
@@ -1125,7 +1183,7 @@ class Component extends DCLogic {
       // Floating pill header: no bar behind it at any scroll point, only the glass pill and the logo.
       navStyle: 'padding: 10px 0; background: transparent',
       heroFadeStyle: 'position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(90deg, ' + rgba(richRgb, 0.95) + ' 0%, ' + rgba(richRgb, 0.7) + ' 26%, ' + rgba(tintRgb, 0.35) + ' 44%, ' + rgba(tintRgb, 0) + ' 60%)',
-      heroTrackStyle: 'position: relative; margin-top: -' + (this.state.hdr || 116) + 'px; height: ' + (pinned ? '3600px' : 'auto'),
+      heroTrackStyle: 'position: relative; margin-top: -' + (this.state.hdr || 116) + 'px; height: ' + (pinned ? (mobile ? '2200px' : '3600px') : 'auto'),
       heroStageStyle: (pinned ? 'position: sticky; top: 0; height: 100vh; ' : 'position: relative; height: 900px; ') + 'min-height: 720px; overflow: hidden; isolation: isolate; background: ' + rgba(tintRgb, 1),
       // The logo tile is multiplied over a moving rainbow (white fill takes the colour, the outline stays dark),
       // then masked by the same tile so only the logos show.
@@ -1152,6 +1210,17 @@ class Component extends DCLogic {
         return 'position: absolute; z-index: 0; top: 0; height: 100%; ' + (wide
           ? 'right: 0; width: auto; max-width: none; transform: translateX(8%); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 22%); mask-image: linear-gradient(90deg, transparent 0%, #000 22%)'
           : 'left: 0; width: 100%; object-fit: cover; object-position: 62% 50%');
+      })(),
+      // Phones: which of the three products the clip is on (Cliq, Crush, Cirql), from the stage colour's progress.
+      ...(() => {
+        const vp = pinned ? (this.state.vp || 0) : 0;
+        const step = vp < 0.33 ? 0 : vp < 0.68 ? 1 : 2;
+        const dot = (i) => i === step ? 'width: 22px; background: #111113' : 'width: 7px; background: rgba(17,17,19,0.28)';
+        return {
+          heroPuffs: mobile && step === 2 ? '150,000 puffs.' : '50,000 puffs.',
+          hmDot0: dot(0), hmDot1: dot(1), hmDot2: dot(2),
+          hmScrollStyle: 'opacity: ' + clamp01(1 - p * 8).toFixed(3)
+        };
       })(),
       heroBarStyle: 'height: 100%; border-radius: 3px; background: linear-gradient(90deg, #2B7FFF, #FF9A1F, #C2414F); width: ' + (p * 100).toFixed(2) + '%; display: ' + (pinned ? 'block' : 'none'),
       hintStyle: 'position: absolute; z-index: 3; left: 50%; bottom: 110px; transform: translateX(-50%); display: ' + (pinned ? 'flex' : 'none') + '; flex-direction: column; align-items: center; gap: 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.32em; color: var(--mute); opacity: ' + clamp01(1 - p * 5),
