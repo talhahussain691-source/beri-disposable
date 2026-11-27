@@ -2,7 +2,7 @@
 /**
  * Product verification endpoint used by the Authenticate page.
  *
- *   POST /wp-json/beri/v1/verify   { "code": "XXXX-XXXX-XXXX" }
+ *   POST /wp-json/beri/v1/verify   { "code": "123456789012" }
  *
  * Answers with JSON:
  *   { "status": "genuine" | "already_verified" | "invalid" | "error",
@@ -42,8 +42,8 @@ function beri_rest_verify( WP_REST_Request $request ) {
 	}
 	set_transient( $key, $hits + 1, 10 * MINUTE_IN_SECONDS );
 
-	// Codes are letters, digits and dashes; anything else is dropped.
-	$code = strtoupper( preg_replace( '/[^A-Za-z0-9-]/', '', (string) $request->get_param( 'code' ) ) );
+	// Codes are 12 digits (printed on the box); spaces, dashes and anything else typed with them are dropped.
+	$code = strtoupper( preg_replace( '/[^A-Za-z0-9]/', '', (string) $request->get_param( 'code' ) ) );
 	$code = substr( $code, 0, 64 );
 	if ( '' === $code ) {
 		return new WP_REST_Response( array( 'status' => 'invalid' ), 200 );
@@ -83,10 +83,10 @@ function beri_rest_verify( WP_REST_Request $request ) {
  * Use it to check the page before the plugin is connected. Turn it off on the live site.
  */
 function beri_verify_test_codes( $code ) {
-	if ( 'BERI-TEST-0001' === $code ) {
+	if ( '100000000001' === $code ) {
 		return array( 'status' => 'genuine', 'product' => 'BERI Crush · Blue Razz Ice', 'batch' => 'TEST', 'check_count' => 1 );
 	}
-	if ( 'BERI-TEST-0002' === $code ) {
+	if ( '100000000002' === $code ) {
 		return array( 'status' => 'already_verified', 'product' => 'BERI Cliq · Miami Mint', 'batch' => 'TEST', 'check_count' => 4, 'first_checked' => '12 Jan 2026' );
 	}
 	return array( 'status' => 'invalid' );

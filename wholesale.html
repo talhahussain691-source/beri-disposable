@@ -449,23 +449,23 @@ main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)
 <form class="wf-grid" onSubmit="{{submit}}" style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px">
 <div style="display: flex; flex-direction: column; gap: 8px">
 <label for="wf-business" style="font-weight: 600; font-size: 15px">Business name</label>
-<input id="wf-business" class="wf-field" type="text" required="{{yes}}">
+<input id="wf-business" name="company" class="wf-field" type="text" required="{{yes}}">
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px">
 <label for="wf-name" style="font-weight: 600; font-size: 15px">Contact name</label>
-<input id="wf-name" class="wf-field" type="text" required="{{yes}}">
+<input id="wf-name" name="contact_name" class="wf-field" type="text" required="{{yes}}">
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px">
 <label for="wf-email" style="font-weight: 600; font-size: 15px">Email</label>
-<input id="wf-email" class="wf-field" type="email" required="{{yes}}">
+<input id="wf-email" name="email" class="wf-field" type="email" required="{{yes}}">
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px">
 <label for="wf-phone" style="font-weight: 600; font-size: 15px">Phone</label>
-<input id="wf-phone" class="wf-field" type="tel">
+<input id="wf-phone" name="phone_number" class="wf-field" type="tel">
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px">
 <label for="wf-type" style="font-weight: 600; font-size: 15px">Business type</label>
-<select id="wf-type" class="wf-field">
+<select id="wf-type" name="business_type" class="wf-field">
 <option>Vape / smoke shop</option>
 <option>Convenience store</option>
 <option>Distributor</option>
@@ -474,26 +474,27 @@ main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)
 </div>
 <div style="display: flex; flex-direction: column; gap: 8px">
 <label for="wf-region" style="font-weight: 600; font-size: 15px">State / region</label>
-<input id="wf-region" class="wf-field" type="text">
+<input id="wf-region" name="region" class="wf-field" type="text">
 </div>
 <fieldset style="grid-column: 1 / -1; margin: 0; padding: 0; border: none; display: flex; flex-direction: column; gap: 10px">
 <legend style="font-weight: 600; font-size: 15px; padding: 0; margin-bottom: 10px">Products you’re interested in</legend>
 <div class="wi-prods" style="display: flex; flex-wrap: wrap; gap: 10px">
-<label style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #DDD6CA; font-weight: 600; cursor: pointer"><input type="checkbox" style="width: 18px; height: 18px; accent-color: #0F7A42">BERI Cliq</label>
-<label style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #DDD6CA; font-weight: 600; cursor: pointer"><input type="checkbox" style="width: 18px; height: 18px; accent-color: #C81E64">BERI Crush</label>
-<label style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #DDD6CA; font-weight: 600; cursor: pointer"><input type="checkbox" style="width: 18px; height: 18px; accent-color: #7A1626">BERI Cirql</label>
-<label style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #DDD6CA; font-weight: 600; cursor: pointer"><input type="checkbox" style="width: 18px; height: 18px; accent-color: #0084BF">BERI E-liquid</label>
+<label style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #DDD6CA; font-weight: 600; cursor: pointer"><input type="checkbox" name="products[]" value="BERI Cliq" style="width: 18px; height: 18px; accent-color: #0F7A42">BERI Cliq</label>
+<label style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #DDD6CA; font-weight: 600; cursor: pointer"><input type="checkbox" name="products[]" value="BERI Crush" style="width: 18px; height: 18px; accent-color: #C81E64">BERI Crush</label>
+<label style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #DDD6CA; font-weight: 600; cursor: pointer"><input type="checkbox" name="products[]" value="BERI Cirql" style="width: 18px; height: 18px; accent-color: #7A1626">BERI Cirql</label>
+<label style="display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 18px; border-radius: 999px; border: 1.5px solid #DDD6CA; font-weight: 600; cursor: pointer"><input type="checkbox" name="products[]" value="BERI E-liquid" style="width: 18px; height: 18px; accent-color: #0084BF">BERI E-liquid</label>
 </div>
 </fieldset>
 <div style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 8px">
 <label for="wf-message" style="font-weight: 600; font-size: 15px">Message</label>
-<textarea id="wf-message" class="wf-field" placeholder="Monthly volume, locations, anything else we should know"></textarea>
+<textarea id="wf-message" name="message" class="wf-field" placeholder="Monthly volume, locations, anything else we should know"></textarea>
 </div>
 <label style="grid-column: 1 / -1; display: flex; align-items: flex-start; gap: 12px; font-size: 14px; color: #5E5A53; cursor: pointer">
-<input type="checkbox" required="{{yes}}" style="flex: 0 0 auto; width: 18px; height: 18px; margin-top: 2px; accent-color: #3B1478">
-<span>I confirm my business is licensed to sell tobacco and nicotine products and sells only to adults 21 and over. [confirm wording]</span>
+<input type="checkbox" name="consent" value="1" required="{{yes}}" style="flex: 0 0 auto; width: 18px; height: 18px; margin-top: 2px; accent-color: #3B1478">
+<span>I confirm my business is licensed to sell tobacco and nicotine products and sells only to adults 21 and over.</span>
 </label>
-<button type="submit" style="grid-column: 1 / -1; height: 60px; border: none; border-radius: 999px; background: #3B1478; color: #FFFFFF; font: inherit; font-size: 16px; font-weight: 700; letter-spacing: 0.06em; cursor: pointer">SEND INQUIRY</button>
+<sc-if value="{{hasErr}}" hint-placeholder-val="{{false}}"><p role="alert" style="grid-column: 1 / -1; margin: 0; padding: 12px 16px; border-radius: 14px; background: #FDEDEC; border: 1.5px solid #F1A9A3; color: #912018; font-size: 14px">{{err}}</p></sc-if>
+<button type="submit" style="grid-column: 1 / -1; height: 60px; border: none; border-radius: 999px; background: #3B1478; color: #FFFFFF; font: inherit; font-size: 16px; font-weight: 700; letter-spacing: 0.06em; cursor: pointer" disabled="{{sending}}">{{sendLabel}}</button>
 </form>
 </sc-if>
 <sc-if value="{{sent}}" hint-placeholder-val="{{false}}">
@@ -502,7 +503,7 @@ main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)
 <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#3B1478" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"></path></svg>
 </span>
 <span style="font-family: var(--display); font-size: 48px; line-height: 1; text-transform: uppercase">Thanks, we got it</span>
-<span style="max-width: 460px; font-size: 17px; color: var(--mute)">Our wholesale team will reply to the email you gave us. [Connect this form to email or CRM.]</span>
+<span style="max-width: 460px; font-size: 17px; color: var(--mute)">{{sentMsg}}</span>
 <button type="button" onClick="{{reset}}" style="min-height: 48px; padding: 0 22px; border-radius: 999px; border: 1.5px solid #111113; background: transparent; color: #111113; font: inherit; font-weight: 600; cursor: pointer">Send another inquiry</button>
 </div>
 </sc-if>
@@ -558,7 +559,7 @@ main section[aria-label$=" highlights"] ul.feat-grid > li.feat-tile:nth-child(n)
 class Component extends DCLogic {
   constructor(props) {
     super(props);
-    this.state = { scrolled: false, sent: false };
+    this.state = { scrolled: false, sent: false, sending: false, err: '', sentMsg: '' };
   }
   componentDidMount() {
     this.reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
@@ -634,11 +635,26 @@ class Component extends DCLogic {
       yes: true,
       sent: this.state.sent,
       notSent: !this.state.sent,
+      // On the WordPress site the theme defines window.BERI_WHOLESALE_SEND(formData), which sends the inquiry to the
+      // Beri Wholesale plugin and resolves to { ok, msg, warning }. Anywhere else (canvas, preview link) it just shows the thank-you.
       submit: (e) => {
         e.preventDefault();
-        this.setState({ sent: true });
+        if (this.state.sending) return;
+        const send = typeof window !== 'undefined' ? window.BERI_WHOLESALE_SEND : null;
+        if (typeof send !== 'function') { this.setState({ sent: true, err: '', sentMsg: '' }); return; }
+        const fail = 'We couldn’t send your inquiry right now. Please try again or email wholesale@beridisposable.com.';
+        this.setState({ sending: true, err: '' });
+        Promise.resolve(send(new FormData(e.target))).then(
+          (r) => this.setState(r && r.ok ? { sending: false, sent: true, sentMsg: r.warning ? r.msg : '' } : { sending: false, err: (r && r.msg) || fail }),
+          () => this.setState({ sending: false, err: fail })
+        );
       },
-      reset: () => this.setState({ sent: false }),
+      reset: () => this.setState({ sent: false, err: '', sentMsg: '' }),
+      sending: this.state.sending,
+      sendLabel: this.state.sending ? 'SENDING…' : 'SEND INQUIRY',
+      hasErr: !!this.state.err,
+      err: this.state.err,
+      sentMsg: this.state.sentMsg || 'Our wholesale team will reply to the email you gave us.',
       perks: perks.map((k, i) => ({
         title: k.title,
         text: k.text,

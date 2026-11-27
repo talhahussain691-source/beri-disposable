@@ -4,7 +4,8 @@
  *  CONNECT THE VERIFY PLUGIN HERE
  * ============================================================================
  *
- * This is the only file to edit to connect the Authenticate page to the verify plugin.
+ * The Beri Authenticate plugin answers the beri_verify_code filter itself (priority 5), so with that plugin this
+ * file needs no changes. Edit it only to connect a different verify plugin.
  * The page design (form, buttons, result screens) is already done; please don't load the
  * plugin's own form template, CSS or JS on the Authenticate page.
  *
@@ -12,7 +13,7 @@
  *   1. A visitor types a code on the Authenticate page and presses VERIFY CODE.
  *   2. The page sends it to /wp-json/beri/v1/verify (inc/verify-endpoint.php).
  *   3. That endpoint calls beri_verify_bridge() below with the cleaned code
- *      (upper case, only A-Z, 0-9 and "-").
+ *      (upper case, only A-Z and 0-9; spaces and dashes removed).
  *   4. Return one of these arrays and the page shows the matching result screen:
  *
  *      Genuine, first check:
