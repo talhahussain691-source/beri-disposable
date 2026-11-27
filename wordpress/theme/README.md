@@ -40,71 +40,78 @@ A page with a different slug can use a design by choosing it under **Page → Te
 
 The page content in the WordPress editor is not used by these designs; the text and images live in the theme.
 
-## 3. Connect the verify plugin (Authenticate page)
+## 3. Plugins: Beri Authenticate and Beri Wholesale
 
-The Authenticate page design is complete: code field, button and four result screens
-(genuine, already checked, not found, and "couldn't check right now").
+Install and activate both plugins (Plugins → Add New → Upload Plugin). The theme connects to them on its own; there
+is nothing to edit in the theme.
 
-Only one file needs to be edited: **`inc/verify-bridge.php`**.
+### Authenticate page (Beri Authenticate)
 
-1. Open `inc/verify-bridge.php`. The comments at the top explain everything.
-2. In `beri_verify_bridge( $result, $code )`, call the verify plugin with `$code` and return one of:
-
-   ```php
-   array( 'status' => 'genuine', 'product' => 'BERI Crush · Blue Razz Ice', 'batch' => 'B2026-11', 'check_count' => 1 )
-   array( 'status' => 'already_verified', 'product' => '...', 'batch' => '...', 'check_count' => 4, 'first_checked' => '12 Jan 2026' )
-   array( 'status' => 'invalid' )
-   ```
-
-   `product`, `batch`, `check_count` and `first_checked` are optional. Return `null` if the check could not run.
-
-3. Please **don't load the plugin's own form template, CSS or JS** on the Authenticate page; the theme already has the design.
-
-How the page talks to the site:
+The plugin answers the theme's `beri_verify_code` filter. The page sends the code to the theme's endpoint, which asks
+the plugin and shows one of four result screens: genuine, already checked, not found, or "couldn't check right now".
 
 ```
 POST /wp-json/beri/v1/verify
 Content-Type: application/json
-{ "code": "XXXX-XXXX-XXXX" }
+{ "code": "123456789012" }
 
-→ { "status": "genuine", "product": "...", "batch": "...", "check_count": 1 }
+→ { "status": "genuine", "check_count": 1 }
+→ { "status": "already_verified", "check_count": 3, "first_checked": "12 Jan 2026" }
+→ { "status": "invalid" }
 ```
 
-The endpoint (`inc/verify-endpoint.php`) cleans the code (upper case, only A–Z, 0–9 and "-") and limits each
-visitor to 20 checks per 10 minutes. It does not need any changes.
+- Codes are 12 digits. Spaces and dashes typed with the code are removed before the check.
+- The QR codes on the boxes open `/authenticate?code=123456789012`: the page fills in the code and checks it right away.
+- Each visitor can check 20 codes per 10 minutes.
+- Codes, the query log and the code import are in **Beri Authenticate** in the admin menu. Its importer needs Redis;
+  if the host has no Redis, import the code table (`{prefix}verify_code`) through phpMyAdmin instead.
+- Do not put the plugin's `[beri_authenticate]` shortcode on the page; the theme has its own design.
 
-Alternatively, the plugin itself can answer through the filter instead of editing the bridge file:
+Without the plugin, add `define( 'BERI_VERIFY_TEST_CODES', true );` to `wp-config.php` for test answers:
+`100000000001` → genuine, `100000000002` → already checked, anything else → not found. **Remove this line on the live site.**
+
+### Wholesale page (Beri Wholesale)
+
+The inquiry form sends to the plugin, which saves each inquiry and emails it. The list, CSV export, recipient email
+and limits are in **Beri Wholesale** in the admin menu (set the recipient email in **Form Settings**).
+
+- The form's business types and products match the plugin's default choices. If you change them in Form Settings,
+  the Wholesale page needs the same change.
+- The form asks `/wp-json/beri/v1/wholesale-nonce` for a fresh security token before sending, so it keeps working
+  when the page is served from a cache.
+
+### Support page
+
+The Contact and Report a counterfeit forms email **support@beridisposable.com** (Reply-To is the visitor; report
+photos are attached). To send elsewhere, add to `wp-config.php`:
 
 ```php
-add_filter( 'beri_verify_code', function ( $result, $code ) {
-	// ...check $code...
-	return array( 'status' => 'genuine' );
-}, 10, 2 );
+define( 'BERI_SUPPORT_EMAIL', 'someone@beridisposable.com' );           // both forms
+define( 'BERI_COUNTERFEIT_EMAIL', 'authentic@beridisposable.com' );     // counterfeit reports only
 ```
 
-### Test before connecting
+Each visitor can send 5 messages per 10 minutes.
 
-Add this line to `wp-config.php` to get test answers on the Authenticate page:
+### Email delivery
 
-```php
-define( 'BERI_VERIFY_TEST_CODES', true );
-```
+Wholesale and Support emails are sent with `wp_mail()`. Use an SMTP plugin (for example WP Mail SMTP with the
+Microsoft 365 / Outlook mailer) so they are delivered from the company mailbox and do not land in spam.
 
-- `BERI-TEST-0001` → genuine
-- `BERI-TEST-0002` → already checked
-- anything else → not found
+### Behind Cloudflare
 
-**Remove this line on the live site.**
+When the site is behind Cloudflare, the theme reads the visitor's real address (CF-Connecting-IP) for requests that
+come from Cloudflare (`inc/real-ip.php`), so the per-visitor limits count each visitor separately.
 
 ## 4. After installing: quick check
 
-- Open every page from the top menu: Home, Products (Cliq, Crush, Cirql, E-liquid), Authenticate, Wholesale.
+- Open every page from the top menu: Home, Products (Cliq, Crush, Cirql, E-liquid), Authenticate, Support, Wholesale.
 - Scroll the Home page: the hero video should follow the scroll.
-- On Authenticate, try a test code and a real code.
+- On Authenticate, try a real code (twice: genuine, then already checked) and a wrong code.
+- Send a test wholesale inquiry and a test support message, and check that the emails arrive.
 
 ## 5. Recommended plugins
 
-- A cache plugin (for example LiteSpeed Cache or WP Rocket). **Exclude `/wp-json/beri/v1/verify` from caching.**
+- A cache plugin (for example LiteSpeed Cache or WP Rocket). **Exclude `/wp-json/beri/v1/` and `/wp-admin/admin-ajax.php` from caching.**
 - An SEO plugin (Yoast or Rank Math) works with this theme; page titles come from the WordPress page titles.
 - A backup plugin (for example UpdraftPlus).
 
@@ -113,9 +120,12 @@ define( 'BERI_VERIFY_TEST_CODES', true );
 | File | What it is |
 | --- | --- |
 | `front-page.php`, `page-*.php` | The eight page designs |
-| `inc/verify-bridge.php` | **Connect the verify plugin here** |
-| `inc/verify-endpoint.php` | The verification endpoint used by the Authenticate page |
+| `inc/verify-endpoint.php` | Verify endpoint for the Authenticate page (asks the Beri Authenticate plugin) |
+| `inc/verify-bridge.php` | Hook for a different verify plugin (not needed with Beri Authenticate) |
+| `inc/wholesale-bridge.php` | Fresh token for the Wholesale form (Beri Wholesale plugin) |
+| `inc/support-endpoint.php` | Support page forms: email to support@ |
+| `inc/real-ip.php` | Visitor address behind Cloudflare |
 | `inc/setup.php` | Creates the pages on activation |
-| `functions.php` | Page links, verify script, theme setup |
+| `functions.php` | Page links, form scripts, theme setup |
 | `assets/` | Images, videos and the page script |
 | `index.php` | Layout for any other page or post |

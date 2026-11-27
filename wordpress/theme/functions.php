@@ -2,18 +2,21 @@
 /**
  * BERI theme setup.
  *
- * The seven BERI pages are full designs of their own (front-page.php and page-*.php). Each one renders
+ * The eight BERI pages are full designs of their own (front-page.php and page-*.php). Each one renders
  * from its markup with assets/js/beri-runtime.js, so WordPress only supplies the page URLs, the <head>
- * hooks for plugins, and the product verification endpoint.
+ * hooks for plugins, and the endpoints for the verify, wholesale and support forms.
  */
 
 defined( 'ABSPATH' ) || exit;
 
 define( 'BERI_THEME_VERSION', '1.0.0' );
 
+require_once __DIR__ . '/inc/real-ip.php';
 require_once __DIR__ . '/inc/setup.php';
 require_once __DIR__ . '/inc/verify-endpoint.php';
 require_once __DIR__ . '/inc/verify-bridge.php';
+require_once __DIR__ . '/inc/wholesale-bridge.php';
+require_once __DIR__ . '/inc/support-endpoint.php';
 
 add_action( 'after_setup_theme', function () {
 	add_theme_support( 'title-tag' );
@@ -77,6 +80,9 @@ add_action( 'wp_head', function () {
 	$urls['crush']        = $urls['crush-v2'];
 	$urls['cirql']        = $urls['cirql-v2'];
 	$verify               = esc_url_raw( rest_url( 'beri/v1/verify' ) );
+	$support              = esc_url_raw( rest_url( 'beri/v1/support' ) );
+	$wholesale_nonce      = esc_url_raw( rest_url( 'beri/v1/wholesale-nonce' ) );
+	$ajax                 = esc_url_raw( admin_url( 'admin-ajax.php' ) );
 	?>
 <script>
 window.BERI_PAGES = <?php echo wp_json_encode( $urls ); ?>;
@@ -88,6 +94,30 @@ window.BERI_VERIFY = function (code) {
 		body: JSON.stringify({ code: code })
 	}).then(function (r) { return r.json(); });
 };
+// Support page: sends the Contact or Report a counterfeit form (see inc/support-endpoint.php). Resolves { ok, message }.
+window.BERI_SUPPORT = function (kind, data) {
+	data.set('kind', kind);
+	return fetch(<?php echo wp_json_encode( $support ); ?>, { method: 'POST', body: data })
+		.then(function (r) { return r.json(); });
+};
+<?php if ( beri_wholesale_connected() ) : ?>
+// Wholesale page: sends the inquiry to the Beri Wholesale plugin (see inc/wholesale-bridge.php). Resolves { ok, msg, warning }.
+window.BERI_WHOLESALE_SEND = function (data) {
+	return fetch(<?php echo wp_json_encode( $wholesale_nonce ); ?>, { cache: 'no-store' })
+		.then(function (r) { return r.json(); })
+		.then(function (n) {
+			data.set('action', 'beri_wholesale_plugin');
+			data.set('form_version', 'theme');
+			data.set('nonce', n.nonce || '');
+			return fetch(<?php echo wp_json_encode( $ajax ); ?>, { method: 'POST', body: data, credentials: 'same-origin' });
+		})
+		.then(function (r) { return r.json().catch(function () { return { success: false }; }); })
+		.then(function (j) {
+			var d = (j && j.data) || {};
+			return { ok: !!(j && j.success), msg: d.msg || '', warning: !!d.warning };
+		});
+};
+<?php endif; ?>
 </script>
 	<?php
 }, 1 );
